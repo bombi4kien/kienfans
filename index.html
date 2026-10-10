@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KIEN — Fansite</title>
+  <title>KIEN — Fan Support</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * {
+* {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -18,8 +18,8 @@
       scroll-behavior: smooth;
     }
     body {
-      background-color: #0E0E10;
-      color: #FFFFFF;
+      background-color: #060B14;
+      color: #E2E8F0;
       font-family: 'Plus Jakarta Sans', sans-serif;
       display: flex;
       justify-content: center;
@@ -32,10 +32,18 @@
       width: 100%;
       max-width: 420px;
       min-height: 100vh;
-      background-color: #0E0E10;
+      background-color: #060B14;
       position: relative;
       padding-bottom: 70px;
       overflow-x: hidden;
+      border-left: 1px solid rgba(56, 189, 248, 0.12);
+      border-right: 1px solid rgba(56, 189, 248, 0.12);
+    }
+    /* Chữ trắng viền xanh neon */
+    .blue-outline-text {
+      color: #FFFFFF;
+      -webkit-text-stroke: 1.2px #0284C7;
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.45);
     }
     /* Header & Menu */
     .header {
@@ -45,33 +53,37 @@
       padding: 18px 24px;
       position: sticky;
       top: 0;
-      background: rgba(14, 14, 16, 0.85);
+      background: rgba(6, 11, 20, 0.88);
       backdrop-filter: blur(12px);
       z-index: 50;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.15);
     }
     .logo {
       font-weight: 800;
-      letter-spacing: 2px;
-      font-size: 18px;
+      letter-spacing: 2.5px;
+      font-size: 20px;
+      color: #FFFFFF;
+      -webkit-text-stroke: 1px #0EA5E9;
+      text-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
     }
     .menu-btn {
-      background: #18181B;
+      background: #0C192C;
       color: #FFFFFF;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid #0284C7;
       padding: 6px 16px;
       border-radius: 999px;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 1px;
       cursor: pointer;
+      box-shadow: 0 0 10px rgba(14, 165, 233, 0.25);
     }
     /* Overlay Drawer */
     .menu-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(4px);
+      background: rgba(3, 7, 18, 0.7);
+      backdrop-filter: blur(5px);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease;
@@ -87,8 +99,8 @@
       right: -300px;
       width: 280px;
       height: 100%;
-      background: #141416;
-      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      background: #091322;
+      border-left: 1px solid rgba(56, 189, 248, 0.25);
       padding: 24px;
       display: flex;
       flex-direction: column;
@@ -103,7 +115,7 @@
       align-self: flex-end;
       background: transparent;
       border: none;
-      color: #A1A1AA;
+      color: #38BDF8;
       font-size: 20px;
       cursor: pointer;
       padding: 4px 8px;
@@ -116,14 +128,17 @@
       margin-top: 10px;
     }
     .nav-links a {
-      color: #E4E4E7;
+      color: #E2E8F0;
       text-decoration: none;
       font-size: 14px;
       font-weight: 600;
       letter-spacing: 0.5px;
       display: block;
       padding: 10px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+    }
+    .nav-links a:hover {
+      color: #38BDF8;
     }
     /* Hero */
     .hero {
@@ -133,9 +148,10 @@
     .hero-img-box {
       width: 100%;
       height: 380px;
-      background: #161618;
+      background: #0B192C;
       border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      box-shadow: 0 0 25px rgba(2, 132, 199, 0.15);
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -148,19 +164,19 @@
       object-fit: cover;
     }
     .hero-title {
-      font-size: 32px;
+      font-size: 34px;
       font-weight: 800;
       letter-spacing: -0.5px;
       margin-bottom: 6px;
     }
     .hero-subtitle {
       font-size: 13px;
-      color: #8E8E93;
+      color: #7DD3FC;
     }
     /* Divider */
     .divider {
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.4), transparent);
       margin: 32px 24px;
     }
     /* Sections general */
@@ -169,7 +185,7 @@
     }
     .section-tag {
       font-size: 11px;
-      color: #8E8E93;
+      color: #38BDF8;
       letter-spacing: 1.5px;
       margin-bottom: 4px;
     }
@@ -186,17 +202,18 @@
       margin-bottom: 16px;
     }
     .bento-card {
-      background: #161618;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #0B192C;
+      border: 1px solid rgba(56, 189, 248, 0.2);
       border-radius: 14px;
       padding: 14px;
+      box-shadow: inset 0 0 15px rgba(14, 165, 233, 0.05);
     }
     .bento-card.full-width {
       grid-column: span 2;
     }
     .card-label {
       font-size: 10px;
-      color: #71717A;
+      color: #7DD3FC;
       margin-bottom: 4px;
     }
     .card-value {
@@ -207,7 +224,7 @@
     /* Social Links */
     .social-title {
       font-size: 11px;
-      color: #71717A;
+      color: #7DD3FC;
       margin-bottom: 10px;
       letter-spacing: 1px;
     }
@@ -221,26 +238,29 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: #161618;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #E4E4E7;
+      background: #0C1E36;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #F0F9FF;
       text-decoration: none;
       font-size: 12px;
       font-weight: 600;
       padding: 8px 14px;
       border-radius: 10px;
-      transition: background 0.2s;
+      transition: all 0.2s;
     }
     .social-btn:hover {
-      background: #27272A;
+      background: #0284C7;
+      color: #FFFFFF;
+      box-shadow: 0 0 12px rgba(14, 165, 233, 0.4);
     }
     /* Support Cards */
     .support-card {
-      background: #161618;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #0B192C;
+      border: 1px solid rgba(56, 189, 248, 0.22);
       border-radius: 16px;
       padding: 18px;
       margin-bottom: 14px;
+      box-shadow: 0 4px 20px rgba(3, 7, 18, 0.4);
     }
     .support-card-head {
       display: flex;
@@ -250,7 +270,7 @@
     }
     .support-index {
       font-size: 11px;
-      color: #10B981;
+      color: #38BDF8;
       font-weight: 700;
     }
     .support-title {
@@ -260,16 +280,16 @@
     }
     .support-desc {
       font-size: 12px;
-      color: #8E8E93;
+      color: #94A3B8;
       line-height: 1.5;
       margin-bottom: 12px;
     }
     .status-badge {
       display: inline-block;
       font-size: 10px;
-      color: #F59E0B;
-      background: rgba(245, 158, 11, 0.1);
-      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: #38BDF8;
+      background: rgba(14, 165, 233, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
       padding: 3px 8px;
       border-radius: 6px;
       margin-bottom: 10px;
@@ -284,9 +304,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #1F1F23;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #E4E4E7;
+      background: #0F233E;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: #F0F9FF;
       text-decoration: none;
       font-size: 12px;
       font-weight: 600;
@@ -294,9 +314,9 @@
       border-radius: 10px;
     }
     .code-btn {
-      background: linear-gradient(135deg, #10B981, #059669);
+      background: linear-gradient(135deg, #0284C7, #0369A1);
       color: #FFFFFF;
-      border: none;
+      border: 1px solid #38BDF8;
       font-size: 12px;
       font-weight: 700;
       padding: 11px 14px;
@@ -306,6 +326,7 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
+      box-shadow: 0 0 15px rgba(2, 132, 199, 0.4);
     }
   </style>
 </head>
