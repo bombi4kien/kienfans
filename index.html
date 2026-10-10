@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KIEN — Fansite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #0E0E10;
+      color: #FFFFFF;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .mobile-container {
+      width: 100%;
+      max-width: 420px;
+      min-height: 100vh;
+      background-color: #0E0E10;
+      position: relative;
+      padding-bottom: 70px;
+      overflow-x: hidden;
+    }
+    /* Header & Menu */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      position: sticky;
+      top: 0;
+      background: rgba(14, 14, 16, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .logo {
+      font-weight: 800;
+      letter-spacing: 2px;
+      font-size: 18px;
+    }
+    .menu-btn {
+      background: #18181B;
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+    /* Overlay Drawer */
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 90;
+    }
+    .menu-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 280px;
+      height: 100%;
+      background: #141416;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 99;
+    }
+    .drawer.open {
+      right: 0;
+    }
+    .close-btn {
+      align-self: flex-end;
+      background: transparent;
+      border: none;
+      color: #A1A1AA;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .nav-links a {
+      color: #E4E4E7;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      display: block;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    /* Hero */
+    .hero {
+      padding: 24px 24px 10px;
+      text-align: center;
+    }
+    .hero-img-box {
+      width: 100%;
+      height: 380px;
+      background: #161618;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .hero-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-title {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+    .hero-subtitle {
+      font-size: 13px;
+      color: #8E8E93;
+    }
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+      margin: 32px 24px;
+    }
+    /* Sections general */
+    .section-wrap {
+      padding: 0 24px;
+    }
+    .section-tag {
+      font-size: 11px;
+      color: #8E8E93;
+      letter-spacing: 1.5px;
+      margin-bottom: 4px;
+    }
+    .section-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+    /* Bento Grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .bento-card {
+      background: #161618;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .bento-card.full-width {
+      grid-column: span 2;
+    }
+    .card-label {
+      font-size: 10px;
+      color: #71717A;
+      margin-bottom: 4px;
+    }
+    .card-value {
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    /* Social Links */
+    .social-title {
+      font-size: 11px;
+      color: #71717A;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    .social-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #161618;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #E4E4E7;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 10px;
+      transition: background 0.2s;
+    }
+    .social-btn:hover {
+      background: #27272A;
+    }
+    /* Support Cards */
+    .support-card {
+      background: #161618;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+    .support-card-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .support-index {
+      font-size: 11px;
+      color: #10B981;
+      font-weight: 700;
+    }
+    .support-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .support-desc {
+      font-size: 12px;
+      color: #8E8E93;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .status-badge {
+      display: inline-block;
+      font-size: 10px;
+      color: #F59E0B;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 3px 8px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    /* Buttons in Support */
+    .action-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .stream-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #1F1F23;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #E4E4E7;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 10px 14px;
+      border-radius: 10px;
+    }
+    .code-btn {
+      background: linear-gradient(135deg, #10B981, #059669);
+      color: #FFFFFF;
+      border: none;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 11px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="mobile-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo mono">KIEN</div>
+      <button class="menu-btn mono" onclick="toggleMenu()">MENU</button>
+    </header>
+
+    <!-- Overlay & Drawer Menu -->
+    <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+    <div class="drawer" id="menuDrawer">
+      <button class="close-btn" onclick="toggleMenu()">✕</button>
+      <ul class="nav-links">
+        <li><a href="#hero" onclick="toggleMenu()">01 / TRANG CHỦ</a></li>
+        <li><a href="#about" onclick="toggleMenu()">02 / VỀ KIEN</a></li>
+        <li><a href="#fansupport" onclick="toggleMenu()">03 / FAN SUPPORT</a></li>
+      </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-img-box">
+        <!-- Chỗ dán link ảnh của KIEN: thay đường dẫn vào thuộc tính src -->
+        <span class="mono" style="color: #52525B; font-size: 13px;">[ Ảnh KIEN ]</span>
+      </div>
+      <h1 class="hero-title">KIEN</h1>
+      <p class="hero-subtitle mono">Vocalist · Songwriter</p>
+    </section>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- MỤC 1: VỀ KIEN -->
+    <section class="section-wrap" id="about">
+      <div class="section-tag mono">01/PR0F1LE — About</div>
+      <h2 class="section-title">VỀ KIEN</h2>
+      
+      <div class="bento-grid">
+        <div class="bento-card">
+          <div class="card-label mono">Họ và Tên</div>
+          <div class="card-value">Nguyễn Trung Kiên</div>
+        </div>
+        <div class="bento-card">
+          <div class="card-label mono">Nghệ danh</div>
+          <div class="card-value">KIEN</div>
+        </div>
+        <div class="bento-card">
+          <div class="card-label mono">Ngày sinh</div>
+          <div class="card-value">19-12-2004</div>
+        </div>
+        <div class="bento-card">
+          <div class="card-label mono">Chiều cao</div>
+          <div class="card-value">1m73 <span style="font-size: 11px; color: #8E8E93;">(updating)</span></div>
+        </div>
+        <div class="bento-card full-width">
+          <div class="card-label mono">Quê quán</div>
+          <div class="card-value">Phan Rang, Khánh Hoà</div>
+        </div>
+      </div>
+
+      <!-- MẠNG XÃ HỘI (Chỉ dẫn dán link ở thuộc tính href="") -->
+      <div class="social-title mono">// CHANNELS & SOCIALS</div>
+      <div class="social-list">
+        <!-- Dán link Facebook vào href="#" -->
+        <a href="https://www.facebook.com/nguyenjungkien" target="_blank" rel="noopener noreferrer" class="social-btn mono">
+          <span>Facebook ↗</span>
+        </a>
+
+        <!-- Dán link YouTube vào href="#" -->
+        <a href="https://www.youtube.com/@KIENOFFICIAL04" target="_blank" rel="noopener noreferrer" class="social-btn mono">
+          <span>YouTube ↗</span>
+        </a>
+
+        <!-- Dán link TikTok vào href="#" -->
+        <a href="https://www.tiktok.com/@nguyen_jungkien" target="_blank" rel="noopener noreferrer" class="social-btn mono">
+          <span>TikTok ↗</span>
+        </a>
+
+        <!-- Dán link Threads vào href="#" -->
+        <a href="https://www.threads.com/@nguyen_jungkien" target="_blank" rel="noopener noreferrer" class="social-btn mono">
+          <span>Threads ↗</span>
+        </a>
+
+        <!-- Dán link X (Twitter) vào href="#" -->
+        <a href="https://x.com/nguyenjungkien" target="_blank" rel="noopener noreferrer" class="social-btn mono">
+          <span>X ↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- MỤC 2: FAN SUPPORT -->
+    <section class="section-wrap" id="fansupport">
+      <div class="section-tag mono">02/PR0J3CT — Support</div>
+      <h2 class="section-title">FAN SUPPORT</h2>
+
+      <!-- 1. Hướng dẫn tăng thảo luận -->
+      <div class="support-card">
+        <div class="support-card-head">
+          <span class="support-index mono">#01</span>
+          <h3 class="support-title">Hướng dẫn tăng thảo luận</h3>
+        </div>
+        <span class="status-badge mono">● Updating</span>
+        <p class="support-desc">
+          Các bài viết định hướng hashtag, lịch trình đẩy tương tác bài viết trên các nền tảng mạng xã hội đang được cập nhật.
+        </p>
+      </div>
+
+      <!-- 2. Hướng dẫn Stream nhạc & Code iTunes -->
+      <div class="support-card">
+        <div class="support-card-head">
+          <span class="support-index mono">#02</span>
+          <h3 class="support-title">Hướng dẫn Stream nhạc</h3>
+        </div>
+        <span class="status-badge mono">● Updating</span>
+        <p class="support-desc">
+          Quy chuẩn stream bài hát trên Apple Music, Spotify, YouTube và lấy mã tải nhạc iTunes miễn phí.
+        </p>
+        
+        <div class="action-links">
+          <!-- Chỗ dán link nhạc: thay href="..." bằng link bài hát -->
+          <a href="#" target="_blank" rel="noopener noreferrer" class="stream-link mono">
+            <span>🎵 Nghe nhạc trực tuyến</span>
+            <span>[Updating] ↗</span>
+          </a>
+
+          <!-- NÚT LẤY CODE ITUNES: Bấm vào mở sang trang phân phối mã code của bạn ở tab mới -->
+          <!-- Bạn thay link web phát code của bạn vào href="..." dưới đây -->
+          <a href="https://kien-itunes-code.vercel.app/" target="_blank" rel="noopener noreferrer" class="code-btn mono">
+            <span>🎁 Lấy mã iTunes miễn phí ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. Các dự án support -->
+      <div class="support-card">
+        <div class="support-card-head">
+          <span class="support-index mono">#03</span>
+          <h3 class="support-title">Các dự án Support</h3>
+        </div>
+        <span class="status-badge mono">● Updating</span>
+        <p class="support-desc">
+          Tổng hợp các chiến dịch, hoạt động tiếp ứng, dự án sinh nhật và sự kiện của fandom dành cho KIEN.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const drawer = document.getElementById('menuDrawer');
+      const overlay = document.getElementById('menuOverlay');
+      drawer.classList.toggle('open');
+      overlay.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
