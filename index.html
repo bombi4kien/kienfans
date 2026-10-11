@@ -785,10 +785,8 @@
     </section>
   </div>
 
-  <!-- Thẻ audio ẩn và nút điều khiển -->
-  <audio id="bgMusic" loop preload="auto">
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+  <!-- Khung phát YouTube ẩn -->
+  <div id="ytPlayer" style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none;"></div>
 
   <button class="music-disc-btn" id="musicBtn" onclick="toggleAudio()" title="Bật/Tắt nhạc">
     🎵
@@ -802,31 +800,89 @@
       overlay.classList.toggle('open');
     }
 
-    const audio = document.getElementById('bgMusic');
-    const musicBtn = document.getElementById('musicBtn');
-    let hasStarted = false;
-
-    // Tự động phát nhạc ngay cú chạm/click đầu tiên
-    function startAudioOnFirstTouch() {
-      if (!hasStarted) {
-        audio.play().then(() => {
-          musicBtn.classList.add('playing');
-          hasStarted = true;
-          document.removeEventListener('click', startAudioOnFirstTouch);
-          document.removeEventListener('touchstart', startAudioOnFirstTouch);
-        }).catch(() => {});
-      }
+   <script>
+    function toggleMenu() {
+      const drawer = document.getElementById('menuDrawer');
+      const overlay = document.getElementById('menuOverlay');
+      drawer.classList.toggle('open');
+      overlay.classList.toggle('open');
     }
-    document.addEventListener('click', startAudioOnFirstTouch);
-    document.addEventListener('touchstart', startAudioOnFirstTouch);
 
-    // Bấm nút đĩa nhạc để chủ động Bật/Tắt
-    function toggleAudio() {
-      if (window.event) window.event.stopPropagation();
-      if (audio.paused) {
-        audio.play();
+    // ID video YouTube của bài hát
+    const YT_VIDEO_ID = 'V1Ehfy4YFFg';
+
+    let player;
+    let isPlaying = false;
+    const musicBtn = document.getElementById('musicBtn');
+
+    // Tải mã API IFrame của YouTube
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('ytPlayer', {
+        height: '1',
+        width: '1',
+        videoId: YT_VIDEO_ID,
+        playerVars: {
+          autoplay: 0,
+          loop: 1,
+          playlist: YT_VIDEO_ID, // Lặp lại bài hát vô tận
+          playsinline: 1
+        },
+        events: {
+          'onReady': onPlayerReady
+        }
+      });
+    }
+
+    function onPlayerReady() {
+      function startOnFirstTouch() {
+        if (!isPlaying && player && player.playVideo) {
+          player.playVideo();
+          isPlaying = true;
+          musicBtn.classList.add('playing');
+          musicBtn.innerText = '🎵';
+          document.removeEventListener('click', startOnFirstTouch);
+          document.removeEventListener('touchstart', startOnFirstTouch);
+        }
+      }
+      document.addEventListener('click', startOnFirstTouch);
+      document.addEventListener('touchstart', startOnFirstTouch);
+    }
+
+    // Bấm nút đĩa nhạc để chủ động Bật / Tắt mượt mà
+    function toggleAudio(e) {
+      if (e) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+      if (!player || !player.playVideo) return;
+
+      if (isPlaying) {
+        player.pauseVideo();
+        isPlaying = false;
+        musicBtn.classList.remove('playing');
+        musicBtn.innerText = '🔇';
+      } else {
+        player.playVideo();
+        isPlaying = true;
         musicBtn.classList.add('playing');
         musicBtn.innerText = '🎵';
+      }
+    }
+  </script>
+      if (e) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+      if (audio.paused) {
+        audio.play().then(() => {
+          musicBtn.classList.add('playing');
+          musicBtn.innerText = '🎵';
+        }).catch((err) => console.log(err));
       } else {
         audio.pause();
         musicBtn.classList.remove('playing');
