@@ -6,7 +6,7 @@
   <title>KIEN - Fan Support</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -20,13 +20,13 @@
     body {
       background-color: #060B14;
       color: #E2E8F0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Syne', sans-serif;
       display: flex;
       justify-content: center;
       min-height: 100vh;
     }
     .mono {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Space Grotesk', sans-serif;
     }
     .mobile-container {
       width: 100%;
@@ -58,13 +58,37 @@
       z-index: 50;
       border-bottom: 1px solid rgba(56, 189, 248, 0.15);
     }
+    /* Logo phát sáng và nhấp nháy neon */
     .logo {
       font-weight: 800;
-      letter-spacing: 2.5px;
+      letter-spacing: 3px;
       font-size: 20px;
       color: #FFFFFF;
-      -webkit-text-stroke: 1px #0EA5E9;
-      text-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
+      -webkit-text-stroke: 1px #38BDF8;
+      animation: neonPulse 2s ease-in-out infinite alternate;
+    }
+    @keyframes neonPulse {
+      0% {
+        text-shadow: 
+          0 0 4px #FFFFFF,
+          0 0 10px #38BDF8,
+          0 0 20px #0284C7;
+        opacity: 0.85;
+      }
+      50% {
+        text-shadow: 
+          0 0 2px #FFFFFF,
+          0 0 5px #0284C7;
+        opacity: 0.6;
+      }
+      100% {
+        text-shadow: 
+          0 0 6px #FFFFFF,
+          0 0 15px #38BDF8,
+          0 0 30px #00F2FE,
+          0 0 45px #0284C7;
+        opacity: 1;
+      }
     }
     .menu-btn {
       background: #0C192C;
@@ -230,27 +254,23 @@
     }
     .social-list {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      gap: 10px;
+      justify-content: flex-start;
       margin-bottom: 10px;
     }
     .social-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      justify-content: center;
       background: #0C1E36;
       border: 1px solid rgba(56, 189, 248, 0.35);
-      color: #F0F9FF;
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 8px 14px;
-      border-radius: 10px;
+      padding: 10px;
+      border-radius: 12px;
       transition: all 0.2s;
+      text-decoration: none;
     }
     .social-btn:hover {
       background: #0284C7;
-      color: #FFFFFF;
       box-shadow: 0 0 12px rgba(14, 165, 233, 0.4);
     }
     /* Support Cards */
@@ -464,7 +484,7 @@
   <div class="mobile-container">
     <!-- Header -->
     <header class="header">
-      <div class="logo mono">KIEN</div>
+      <div class="logo">KIEN</div>
       <button class="menu-btn mono" onclick="toggleMenu()">MENU</button>
     </header>
 
@@ -519,23 +539,42 @@
         </div>
       </div>
 
-      <!-- MẠNG XÃ HỘI -->
+      <!-- MẠNG XÃ HỘI (ICON DẠNG SVG) -->
       <div class="social-title mono">// CHANNELS & SOCIALS</div>
       <div class="social-list">
-        <a href="https://www.facebook.com/nguyenjungkien" target="_blank" rel="noopener noreferrer" class="social-btn mono">
-          <span>Facebook ↗</span>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/nguyenjungkien" target="_blank" rel="noopener noreferrer" class="social-btn" title="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877F2">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
         </a>
-        <a href="https://www.youtube.com/@KIENOFFICIAL04" target="_blank" rel="noopener noreferrer" class="social-btn mono">
-          <span>YouTube ↗</span>
+
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/@KIENOFFICIAL04" target="_blank" rel="noopener noreferrer" class="social-btn" title="YouTube">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF0000">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
         </a>
-        <a href="https://www.tiktok.com/@nguyen_jungkien" target="_blank" rel="noopener noreferrer" class="social-btn mono">
-          <span>TikTok ↗</span>
+
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@nguyen_jungkien" target="_blank" rel="noopener noreferrer" class="social-btn" title="TikTok">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#00F2FE">
+            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+          </svg>
         </a>
-        <a href="https://www.threads.com/@nguyen_jungkien" target="_blank" rel="noopener noreferrer" class="social-btn mono">
-          <span>Threads ↗</span>
+
+        <!-- Threads -->
+        <a href="https://www.threads.com/@nguyen_jungkien" target="_blank" rel="noopener noreferrer" class="social-btn" title="Threads">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFFFFF">
+            <path d="M12.186 24h-.007c-3.581-.024-6.334-1.203-8.184-3.504C2.278 18.328 1.5 15.347 1.5 11.966c0-3.388.79-6.368 2.533-8.529C5.908 1.164 8.683 0 12.28 0c3.551 0 6.324 1.144 8.243 3.401 1.802 2.12 2.703 5.093 2.703 8.565 0 .285-.008.58-.024.887h-3.69c.01-.285.016-.566.016-.838 0-2.617-.622-4.747-1.849-6.331-1.32-1.704-3.238-2.585-5.7-2.585-2.518 0-4.484.908-5.845 2.698C4.945 7.42 4.3 9.489 4.3 11.966c0 2.478.645 4.547 1.834 6.171 1.361 1.79 3.327 2.698 5.845 2.698 2.378 0 4.22-.824 5.474-2.45.698-.905 1.184-2.072 1.455-3.486-1.517.728-3.325 1.109-5.32 1.109-4.227 0-6.84-2.316-6.84-6.05 0-3.673 2.548-5.986 6.649-5.986 2.324 0 4.275.762 5.644 2.204 1.196 1.258 1.835 2.984 1.897 5.13h-3.62c-.066-1.285-.436-2.296-1.127-3.006-.827-.852-2.032-1.3-3.494-1.3-2.284 0-3.666 1.168-3.666 3.096 0 1.954 1.408 3.14 3.763 3.14 1.758 0 3.298-.445 4.577-1.322-.058 1.49-.395 2.748-1.002 3.738-1.077 1.758-2.868 2.684-5.18 2.684z"/>
+          </svg>
         </a>
-        <a href="https://x.com/nguyenjungkien" target="_blank" rel="noopener noreferrer" class="social-btn mono">
-          <span>X ↗</span>
+
+        <!-- X (Twitter) -->
+        <a href="https://x.com/nguyenjungkien" target="_blank" rel="noopener noreferrer" class="social-btn" title="X">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFFFFF">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
         </a>
       </div>
     </section>
@@ -795,7 +834,7 @@
     let isPlaying = false;
     const musicBtn = document.getElementById('musicBtn');
 
-    // Nạp mã YouTube IFrame API
+    // Tải mã YouTube IFrame API
     const tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     const firstScriptTag = document.getElementsByTagName('script')[0];
