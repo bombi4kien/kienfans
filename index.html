@@ -6,7 +6,7 @@
   <title>KIEN - Fan Support</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:ital,wght@0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -208,19 +208,14 @@
       padding: 0 24px;
     }
     
-    /* Nhãn đề mục in nghiêng, vát góc hiện đại */
+    /* Nhãn đề mục dáng đứng chuẩn Space Grotesk */
     .section-tag {
-      font-family: 'Syne', sans-serif;
-      font-style: italic;
-      font-weight: 800;
-      font-size: 11.5px;
-      letter-spacing: 2.5px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
       color: #38BDF8;
-      text-transform: uppercase;
+      letter-spacing: 2px;
       margin-bottom: 6px;
-      display: inline-block;
-      transform: skewX(-8deg);
-      text-shadow: 0 0 10px rgba(56, 189, 248, 0.45);
     }
     .section-title {
       font-size: 22px;
@@ -539,7 +534,7 @@
 
     <!-- MỤC 1: VỀ KIEN -->
     <section class="section-wrap" id="about">
-      <div class="section-tag">01/PR0F1LE — About</div>
+      <div class="section-tag mono">01/PR0FILE - ABOUT</div>
       <h2 class="section-title blue-outline-text">VỀ KIEN</h2>
       
       <div class="bento-grid">
@@ -565,7 +560,7 @@
         </div>
       </div>
 
-      <!-- MẠNG XÃ HỘI (ICON DẠNG SVG) -->
+      <!-- MẠNG XÃ HỘI (ICON DẠNG SVG & FILE ẢNH THR.PNG) -->
       <div class="social-title">// CHANNELS & SOCIALS</div>
       <div class="social-list">
         <!-- Facebook -->
@@ -589,11 +584,9 @@
           </svg>
         </a>
 
-        <!-- Threads (Chuẩn Meta) -->
+        <!-- Threads (Sử dụng trực tiếp file ảnh thr.png) -->
         <a href="https://www.threads.com/@nguyen_jungkien" target="_blank" rel="noopener noreferrer" class="social-btn" title="Threads">
-          <svg width="20" height="20" viewBox="0 0 192 192" fill="#FFFFFF">
-            <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.745C77.4171 44.745 61.4371 55.4958 54.4996 73.6195L73.1979 81.334C78.0772 68.6019 88.8252 62.4636 97.2471 62.4636C108.627 62.4636 117.844 69.5847 119.577 82.5029C112.585 81.6508 104.992 81.6787 96.8669 82.5898C69.4589 85.6631 53.0722 101.444 54.6726 123.834C56.1493 144.502 73.1118 156.417 93.6339 155.882C109.914 155.457 122.569 146.402 129.434 134.195C134.685 143.513 143.649 149.208 155.602 149.208C171.696 149.208 181.761 138.169 181.761 120.355C181.761 97.3828 165.617 83.1594 141.537 88.9883ZM97.0279 137.587C84.4442 137.915 73.2372 131.547 72.3929 119.742C71.3934 105.776 81.2584 96.8837 99.0763 94.8876C105.074 94.2155 110.849 94.4984 116.143 95.5398C113.684 125.864 104.606 137.389 97.0279 137.587Z"/>
-          </svg>
+          <img src="thr.png" alt="Threads" style="width: 20px; height: 20px; object-fit: contain; display: block;">
         </a>
 
         <!-- X (Twitter) -->
@@ -610,7 +603,7 @@
 
     <!-- MỤC 2: FAN SUPPORT -->
     <section class="section-wrap" id="fansupport">
-      <div class="section-tag">02/PR0J3CT — Support</div>
+      <div class="section-tag mono">02/PR0JECT - SUPPORT</div>
       <h2 class="section-title blue-outline-text">FAN SUPPORT</h2>
 
       <!-- 1. HƯỚNG DẪN SUPPORT KIEN -->
@@ -757,14 +750,12 @@
           </div>
         </details>
 
-        <!-- THREADS (Chuẩn Meta) -->
+        <!-- THREADS (Sử dụng trực tiếp file ảnh thr.png) -->
         <details class="platform-accordion">
           <summary class="platform-header">
             <div class="platform-left">
               <span class="platform-icon">
-                <svg viewBox="0 0 192 192" fill="#FFFFFF">
-                  <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.745C77.4171 44.745 61.4371 55.4958 54.4996 73.6195L73.1979 81.334C78.0772 68.6019 88.8252 62.4636 97.2471 62.4636C108.627 62.4636 117.844 69.5847 119.577 82.5029C112.585 81.6508 104.992 81.6787 96.8669 82.5898C69.4589 85.6631 53.0722 101.444 54.6726 123.834C56.1493 144.502 73.1118 156.417 93.6339 155.882C109.914 155.457 122.569 146.402 129.434 134.195C134.685 143.513 143.649 149.208 155.602 149.208C171.696 149.208 181.761 138.169 181.761 120.355C181.761 97.3828 165.617 83.1594 141.537 88.9883ZM97.0279 137.587C84.4442 137.915 73.2372 131.547 72.3929 119.742C71.3934 105.776 81.2584 96.8837 99.0763 94.8876C105.074 94.2155 110.849 94.4984 116.143 95.5398C113.684 125.864 104.606 137.389 97.0279 137.587Z"/>
-                </svg>
+                <img src="thr.png" alt="Threads" style="width: 22px; height: 22px; object-fit: contain; display: block;">
               </span>
               <span class="platform-name">Threads</span>
             </div>
