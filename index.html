@@ -416,19 +416,6 @@
       flex-direction: column;
       gap: 8px;
     }
-    .stream-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #0F233E;
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      color: #F0F9FF;
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 10px 14px;
-      border-radius: 10px;
-    }
     .code-btn {
       background: linear-gradient(135deg, #0284C7, #0369A1);
       color: #FFFFFF;
@@ -524,7 +511,7 @@
         </div>
         <div class="bento-card">
           <div class="card-label mono">Chiều cao</div>
-          <div class="card-value">1m73 <span style="font-size: 11px; color: #8E8E93;">(updating)</span></div>
+          <div class="card-value">1m73 <span style="font-size: 11px; color: #7DD3FC;">(updating)</span></div>
         </div>
         <div class="bento-card full-width">
           <div class="card-label mono">Quê quán</div>
@@ -561,7 +548,7 @@
       <div class="section-tag mono">02/PR0J3CT — Support</div>
       <h2 class="section-title blue-outline-text">FAN SUPPORT</h2>
 
-      <!-- 1. HƯỚNG DẪN SUPPORT KIEN (STREAM & TĂNG THẢO LUẬN) -->
+      <!-- 1. HƯỚNG DẪN SUPPORT KIEN -->
       <div class="support-card">
         <div class="support-card-head">
           <span class="support-index mono">#01</span>
@@ -748,7 +735,7 @@
         </details>
       </div>
 
-     <!-- 2. HƯỚNG DẪN MASS BUY ITUNES -->
+      <!-- 2. HƯỚNG DẪN MASS BUY ITUNES -->
       <div class="support-card">
         <div class="support-card-head">
           <span class="support-index mono">#02</span>
@@ -762,7 +749,7 @@
           Quy trình tạo nhiều tài khoản Apple ID, gift code và hướng dẫn mua bài hát đồng loạt để đẩy thứ hạng nhạc số đang được cập nhật.
         </p>
 
-        <!-- Mục 2: Lấy mã itunes miễn phí (Giữ nguyên link phát code) -->
+        <!-- Mục 2: Lấy mã itunes miễn phí (Giữ link phát code) -->
         <div class="guide-category mono" style="margin-top: 14px;">2. LẤY MÃ ITUNES MIỄN PHÍ</div>
         <div class="action-links" style="margin-top: 8px;">
           <a href="https://kien-itunes-code.vercel.app/" target="_blank" rel="noopener noreferrer" class="code-btn mono">
@@ -786,9 +773,10 @@
   </div>
 
   <!-- Khung phát YouTube ẩn -->
-  <div id="ytPlayer" style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none;"></div>
+  <div id="ytPlayer" style="position: fixed; bottom: 0; right: 0; width: 1px; height: 1px; opacity: 0; pointer-events: none; z-index: -1;"></div>
 
-  <button class="music-disc-btn" id="musicBtn" onclick="toggleAudio()" title="Bật/Tắt nhạc">
+  <!-- Nút đĩa nhạc điều khiển Bật / Tắt -->
+  <button class="music-disc-btn" id="musicBtn" onclick="toggleAudio(event)" title="Bật/Tắt nhạc">
     🎵
   </button>
 
@@ -800,22 +788,14 @@
       overlay.classList.toggle('open');
     }
 
-   <script>
-    function toggleMenu() {
-      const drawer = document.getElementById('menuDrawer');
-      const overlay = document.getElementById('menuOverlay');
-      drawer.classList.toggle('open');
-      overlay.classList.toggle('open');
-    }
-
-    // ID video YouTube của bài hát
+    // ID video YouTube
     const YT_VIDEO_ID = 'V1Ehfy4YFFg';
 
     let player;
     let isPlaying = false;
     const musicBtn = document.getElementById('musicBtn');
 
-    // Tải mã API IFrame của YouTube
+    // Nạp mã YouTube IFrame API
     const tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     const firstScriptTag = document.getElementsByTagName('script')[0];
@@ -829,7 +809,7 @@
         playerVars: {
           autoplay: 0,
           loop: 1,
-          playlist: YT_VIDEO_ID, // Lặp lại bài hát vô tận
+          playlist: YT_VIDEO_ID,
           playsinline: 1
         },
         events: {
@@ -839,6 +819,7 @@
     }
 
     function onPlayerReady() {
+      // Tự động phát khi chạm vào màn hình lần đầu
       function startOnFirstTouch() {
         if (!isPlaying && player && player.playVideo) {
           player.playVideo();
@@ -853,7 +834,7 @@
       document.addEventListener('touchstart', startOnFirstTouch);
     }
 
-    // Bấm nút đĩa nhạc để chủ động Bật / Tắt mượt mà
+    // Bật / Tắt nhạc thủ công
     function toggleAudio(e) {
       if (e) {
         e.stopPropagation();
@@ -871,22 +852,6 @@
         isPlaying = true;
         musicBtn.classList.add('playing');
         musicBtn.innerText = '🎵';
-      }
-    }
-  </script>
-      if (e) {
-        e.stopPropagation();
-        e.preventDefault();
-      }
-      if (audio.paused) {
-        audio.play().then(() => {
-          musicBtn.classList.add('playing');
-          musicBtn.innerText = '🎵';
-        }).catch((err) => console.log(err));
-      } else {
-        audio.pause();
-        musicBtn.classList.remove('playing');
-        musicBtn.innerText = '🔇';
       }
     }
   </script>
