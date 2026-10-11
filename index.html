@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-* {
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -274,7 +274,7 @@
       font-weight: 700;
     }
     .support-title {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
       color: #FFFFFF;
     }
@@ -282,7 +282,7 @@
       font-size: 12px;
       color: #94A3B8;
       line-height: 1.5;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     .status-badge {
       display: inline-block;
@@ -294,6 +294,122 @@
       border-radius: 6px;
       margin-bottom: 10px;
     }
+
+    /* Sub-section headings for Support Guide */
+    .guide-category {
+      margin-top: 14px;
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #38BDF8;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.5px;
+    }
+    .guide-category::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #38BDF8;
+      box-shadow: 0 0 6px #38BDF8;
+    }
+
+    /* Accordion Details/Summary */
+    details.platform-accordion {
+      background: #081426;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+    details.platform-accordion[open] {
+      border-color: #0284C7;
+      box-shadow: 0 0 14px rgba(2, 132, 199, 0.2);
+    }
+    summary.platform-header {
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+    }
+    summary.platform-header::-webkit-details-marker {
+      display: none;
+    }
+    .platform-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .platform-icon {
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .platform-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+    .platform-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #F0F9FF;
+    }
+    .accordion-arrow {
+      font-size: 10px;
+      color: #7DD3FC;
+      transition: transform 0.25s ease;
+    }
+    details.platform-accordion[open] .accordion-arrow {
+      transform: rotate(180deg);
+      color: #38BDF8;
+    }
+    .platform-body {
+      padding: 0 14px 14px;
+      border-top: 1px dashed rgba(56, 189, 248, 0.15);
+      font-size: 12px;
+      line-height: 1.6;
+      color: #CBD5E1;
+    }
+    .rule-title-do {
+      color: #4ADE80;
+      font-weight: 700;
+      font-size: 11px;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: 0.5px;
+    }
+    .rule-title-dont {
+      color: #F87171;
+      font-weight: 700;
+      font-size: 11px;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: 0.5px;
+    }
+    .platform-body ul {
+      margin-left: 16px;
+      margin-bottom: 6px;
+    }
+    .platform-body li {
+      margin-bottom: 5px;
+    }
+
     /* Buttons in Support */
     .action-links {
       display: flex;
@@ -328,6 +444,33 @@
       gap: 6px;
       box-shadow: 0 0 15px rgba(2, 132, 199, 0.4);
     }
+
+    /* Nút đĩa nhạc nổi góc màn hình */
+    .music-disc-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #0C1E36;
+      border: 1.5px solid #38BDF8;
+      color: #38BDF8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+      font-size: 18px;
+      transition: transform 0.2s;
+    }
+    .music-disc-btn.playing {
+      animation: spin 3s linear infinite;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body>
@@ -352,10 +495,9 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
       <div class="hero-img-box">
-        <!-- Chỗ dán link ảnh của KIEN: thay đường dẫn vào thuộc tính src -->
         <img src="1.jpg" alt="KIEN">
       </div>
-      <h1 class="hero-title">KIEN</h1>
+      <h1 class="hero-title blue-outline-text">KIEN</h1>
       <p class="hero-subtitle mono">Nghệ sĩ độc lập</p>
     </section>
 
@@ -365,7 +507,7 @@
     <!-- MỤC 1: VỀ KIEN -->
     <section class="section-wrap" id="about">
       <div class="section-tag mono">01/PR0F1LE — About</div>
-      <h2 class="section-title">VỀ KIEN</h2>
+      <h2 class="section-title blue-outline-text">VỀ KIEN</h2>
       
       <div class="bento-grid">
         <div class="bento-card">
@@ -390,30 +532,21 @@
         </div>
       </div>
 
-      <!-- MẠNG XÃ HỘI (Chỉ dẫn dán link ở thuộc tính href="") -->
+      <!-- MẠNG XÃ HỘI -->
       <div class="social-title mono">// CHANNELS & SOCIALS</div>
       <div class="social-list">
-        <!-- Dán link Facebook vào href="#" -->
         <a href="https://www.facebook.com/nguyenjungkien" target="_blank" rel="noopener noreferrer" class="social-btn mono">
           <span>Facebook ↗</span>
         </a>
-
-        <!-- Dán link YouTube vào href="#" -->
         <a href="https://www.youtube.com/@KIENOFFICIAL04" target="_blank" rel="noopener noreferrer" class="social-btn mono">
           <span>YouTube ↗</span>
         </a>
-
-        <!-- Dán link TikTok vào href="#" -->
         <a href="https://www.tiktok.com/@nguyen_jungkien" target="_blank" rel="noopener noreferrer" class="social-btn mono">
           <span>TikTok ↗</span>
         </a>
-
-        <!-- Dán link Threads vào href="#" -->
         <a href="https://www.threads.com/@nguyen_jungkien" target="_blank" rel="noopener noreferrer" class="social-btn mono">
           <span>Threads ↗</span>
         </a>
-
-        <!-- Dán link X (Twitter) vào href="#" -->
         <a href="https://x.com/nguyenjungkien" target="_blank" rel="noopener noreferrer" class="social-btn mono">
           <span>X ↗</span>
         </a>
@@ -426,25 +559,200 @@
     <!-- MỤC 2: FAN SUPPORT -->
     <section class="section-wrap" id="fansupport">
       <div class="section-tag mono">02/PR0J3CT — Support</div>
-      <h2 class="section-title">FAN SUPPORT</h2>
+      <h2 class="section-title blue-outline-text">FAN SUPPORT</h2>
 
-      <!-- 1. Hướng dẫn tăng thảo luận -->
+      <!-- 1. HƯỚNG DẪN SUPPORT KIEN (STREAM & TĂNG THẢO LUẬN) -->
       <div class="support-card">
         <div class="support-card-head">
           <span class="support-index mono">#01</span>
-          <h3 class="support-title">Hướng dẫn tăng thảo luận</h3>
+          <h3 class="support-title">Hướng dẫn Support KIEN</h3>
         </div>
-        <span class="status-badge mono">● Updating</span>
         <p class="support-desc">
-          Các bài viết định hướng hashtag, lịch trình đẩy tương tác bài viết trên các nền tảng mạng xã hội đang được cập nhật.
+          Bấm vào logo hoặc tên nền tảng bên dưới để xem hướng dẫn chi tiết:
         </p>
+
+        <!-- 1.1 HƯỚNG DẪN STREAM -->
+        <div class="guide-category mono">1. HƯỚNG DẪN STREAM</div>
+
+        <!-- YOUTUBE STREAM -->
+        <details class="platform-accordion">
+          <summary class="platform-header">
+            <div class="platform-left">
+              <span class="platform-icon">
+                <svg viewBox="0 0 24 24" fill="#FF0000">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </span>
+              <span class="platform-name">YouTube</span>
+            </div>
+            <span class="accordion-arrow">▼</span>
+          </summary>
+          <div class="platform-body">
+            <div class="rule-title-do mono">✔ NÊN:</div>
+            <ul>
+              <li>Đăng nhập 1 tài khoản trên 1 thiết bị, sử dụng nhiều tài khoản và thiết bị khác nhau, tìm kiếm nội dung kèm tên của KIEN.</li>
+              <li>Xem trọn vẹn video ở chất lượng từ 720p trở lên, âm lượng trên 50%.</li>
+              <li>Like, bình luận trong lúc xem.</li>
+              <li>Chia sẻ video lên các nền tảng khác: Facebook, Threads, Instagram, X,...</li>
+              <li>Xem xen kẽ 2-3 video khác nhau trước khi quay lại video chính cần stream.</li>
+            </ul>
+
+            <div class="rule-title-dont mono">✖ KHÔNG NÊN:</div>
+            <ul>
+              <li>Không tua nhanh, không tạm dừng, không bỏ qua quảng cáo (nếu bỏ qua, hãy đợi sau 30 giây).</li>
+              <li>Không bấm phát lại (replay) liên tục.</li>
+              <li>Không dùng trình duyệt ẩn danh khi stream.</li>
+              <li>Không bình luận lặp lại nội dung giống y hệt các bình luận trước đó, hạn chế sử dụng quá nhiều emoji.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- SPOTIFY STREAM -->
+        <details class="platform-accordion">
+          <summary class="platform-header">
+            <div class="platform-left">
+              <span class="platform-icon">
+                <svg viewBox="0 0 24 24" fill="#1DB954">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.496 17.306a.75.75 0 0 1-1.032.248c-2.827-1.728-6.386-2.119-10.58-1.161a.75.75 0 0 1-.336-1.462c4.588-1.047 8.528-.601 11.7 1.343a.75.75 0 0 1 .248 1.032zm1.467-3.264a.938.938 0 0 1-1.29.31c-3.236-1.99-8.17-2.565-11.997-1.403a.938.938 0 1 1-.546-1.794c4.372-1.328 9.808-.687 13.523 1.597a.938.938 0 0 1 .31 1.29zm.126-3.412c-3.882-2.305-10.288-2.518-13.993-1.393a1.125 1.125 0 0 1-.652-2.153c4.257-1.293 11.325-1.045 15.803 1.614a1.125 1.125 0 0 1-1.158 1.932z"/>
+                </svg>
+              </span>
+              <span class="platform-name">Spotify</span>
+            </div>
+            <span class="accordion-arrow">▼</span>
+          </summary>
+          <div class="platform-body">
+            <div class="rule-title-do mono">✔ NÊN:</div>
+            <ul>
+              <li>Nên có tài khoản Premium.</li>
+              <li>Đăng nhập và bấm theo dõi kênh chính thức của KIEN.</li>
+              <li>Thực hiện stream bằng cách tìm kiếm, bấm nghe bài hát. Có thể tạo các playlist cá nhân, xen kẽ các bài hát khác để stream hàng ngày.</li>
+              <li>Thường xuyên thay đổi playlist, tránh lặp lại playlist nhiều lần.</li>
+            </ul>
+
+            <div class="rule-title-dont mono">✖ KHÔNG NÊN:</div>
+            <ul>
+              <li>Không sử dụng VPN.</li>
+              <li>Không bật chế độ lặp lại, chế độ trộn bài hát.</li>
+              <li>Không tua nhanh, không tạm dừng, không bỏ qua bài hát đang nghe.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- 1.2 HƯỚNG DẪN TĂNG THẢO LUẬN -->
+        <div class="guide-category mono" style="margin-top: 18px;">2. HƯỚNG DẪN TĂNG THẢO LUẬN</div>
+
+        <!-- FACEBOOK -->
+        <details class="platform-accordion">
+          <summary class="platform-header">
+            <div class="platform-left">
+              <span class="platform-icon">
+                <svg viewBox="0 0 24 24" fill="#1877F2">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </span>
+              <span class="platform-name">Facebook</span>
+            </div>
+            <span class="accordion-arrow">▼</span>
+          </summary>
+          <div class="platform-body">
+            <ul style="margin-top: 10px;">
+              <li>Like, chia sẻ, bình luận vào tất cả các bài đăng liên quan đến KIEN.</li>
+              <li>Khi bình luận, kèm tên KIEN + nội dung cần đề cập tới (VD: <em>KIEN đi họp báo chương trình ABC hôm nay thật XYZ, KIEN mặc đồ nhãn hàng OPQ rất GHJ,...</em>).</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- INSTAGRAM -->
+        <details class="platform-accordion">
+          <summary class="platform-header">
+            <div class="platform-left">
+              <span class="platform-icon">
+                <svg viewBox="0 0 24 24" fill="#E4405F">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </span>
+              <span class="platform-name">Instagram</span>
+            </div>
+            <span class="accordion-arrow">▼</span>
+          </summary>
+          <div class="platform-body">
+            <ul style="margin-top: 10px;">
+              <li>Like, đăng lại, bình luận vào tất cả các bài đăng liên quan đến KIEN.</li>
+              <li>Chia sẻ nội dung về KIEN lên Story, gửi cho bạn bè trên Instagram.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- TIKTOK -->
+        <details class="platform-accordion">
+          <summary class="platform-header">
+            <div class="platform-left">
+              <span class="platform-icon">
+                <svg viewBox="0 0 24 24" fill="#00F2FE">
+                  <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                </svg>
+              </span>
+              <span class="platform-name">TikTok</span>
+            </div>
+            <span class="accordion-arrow">▼</span>
+          </summary>
+          <div class="platform-body">
+            <ul style="margin-top: 10px;">
+              <li>Like, đăng lại, bình luận vào tất cả các bài đăng liên quan đến KIEN.</li>
+              <li>Chia sẻ nội dung về KIEN lên Story, gửi cho bạn bè trên TikTok.</li>
+              <li>Trong lúc xem video, có thể bấm tìm kiếm các nội dung mang tính tích cực về KIEN.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- THREADS -->
+        <details class="platform-accordion">
+          <summary class="platform-header">
+            <div class="platform-left">
+              <span class="platform-icon">
+                <svg viewBox="0 0 24 24" fill="#FFFFFF">
+                  <path d="M12.186 24h-.007c-3.581-.024-6.334-1.203-8.184-3.504C2.278 18.328 1.5 15.347 1.5 11.966c0-3.388.79-6.368 2.533-8.529C5.908 1.164 8.683 0 12.28 0c3.551 0 6.324 1.144 8.243 3.401 1.802 2.12 2.703 5.093 2.703 8.565 0 .285-.008.58-.024.887h-3.69c.01-.285.016-.566.016-.838 0-2.617-.622-4.747-1.849-6.331-1.32-1.704-3.238-2.585-5.7-2.585-2.518 0-4.484.908-5.845 2.698C4.945 7.42 4.3 9.489 4.3 11.966c0 2.478.645 4.547 1.834 6.171 1.361 1.79 3.327 2.698 5.845 2.698 2.378 0 4.22-.824 5.474-2.45.698-.905 1.184-2.072 1.455-3.486-1.517.728-3.325 1.109-5.32 1.109-4.227 0-6.84-2.316-6.84-6.05 0-3.673 2.548-5.986 6.649-5.986 2.324 0 4.275.762 5.644 2.204 1.196 1.258 1.835 2.984 1.897 5.13h-3.62c-.066-1.285-.436-2.296-1.127-3.006-.827-.852-2.032-1.3-3.494-1.3-2.284 0-3.666 1.168-3.666 3.096 0 1.954 1.408 3.14 3.763 3.14 1.758 0 3.298-.445 4.577-1.322-.058 1.49-.395 2.748-1.002 3.738-1.077 1.758-2.868 2.684-5.18 2.684z"/>
+                </svg>
+              </span>
+              <span class="platform-name">Threads</span>
+            </div>
+            <span class="accordion-arrow">▼</span>
+          </summary>
+          <div class="platform-body">
+            <ul style="margin-top: 10px;">
+              <li>Trích dẫn, đăng các bài đăng kèm chủ đề: <em>KIEN, KIEN 끼엔, KIEN + chủ đề cần tăng thảo luận</em> (VD: KIEN họp báo ABC…).</li>
+              <li>Đăng 1, 2 hình ảnh / đoạn cắt để tạo điều hướng sang bài viết gốc của KIEN, không đăng toàn bộ video, hình ảnh lên.</li>
+              <li>Dùng công cụ “Trích dẫn” thay vì “Sử dụng file phương tiện”.</li>
+              <li>Hạn chế bình luận, tương tác với các bài đăng tiêu cực về KIEN.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- CÁC NỀN TẢNG KHÁC -->
+        <details class="platform-accordion">
+          <summary class="platform-header">
+            <div class="platform-left">
+              <span class="platform-icon">
+                <svg viewBox="0 0 24 24" fill="#38BDF8">
+                  <circle cx="12" cy="12" r="10" stroke="#38BDF8" stroke-width="2" fill="none"/>
+                  <path d="M12 7v5l3 3" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="platform-name">Các nền tảng khác</span>
+            </div>
+            <span class="accordion-arrow">▼</span>
+          </summary>
+          <div class="platform-body">
+            <p style="margin-top: 10px;">Áp dụng quy tắc tương tự các nền tảng trên (X, TikTok, Instagram...).</p>
+          </div>
+        </details>
       </div>
 
-      <!-- 2. Hướng dẫn Stream nhạc & Code iTunes -->
+      <!-- 2. HƯỚNG DẪN STREAM NHẠC & ITUNES -->
       <div class="support-card">
         <div class="support-card-head">
           <span class="support-index mono">#02</span>
-          <h3 class="support-title">Hướng dẫn Stream nhạc</h3>
+          <h3 class="support-title">Hướng dẫn Stream nhạc & iTunes</h3>
         </div>
         <span class="status-badge mono">● Updating</span>
         <p class="support-desc">
@@ -452,21 +760,18 @@
         </p>
         
         <div class="action-links">
-          <!-- Chỗ dán link nhạc: thay href="..." bằng link bài hát -->
           <a href="#" target="_blank" rel="noopener noreferrer" class="stream-link mono">
             <span>🎵 Nghe nhạc trực tuyến</span>
             <span>[Updating] ↗</span>
           </a>
 
-          <!-- NÚT LẤY CODE ITUNES: Bấm vào mở sang trang phân phối mã code của bạn ở tab mới -->
-          <!-- Bạn thay link web phát code của bạn vào href="..." dưới đây -->
           <a href="https://kien-itunes-code.vercel.app/" target="_blank" rel="noopener noreferrer" class="code-btn mono">
             <span>🎁 Lấy mã iTunes miễn phí ↗</span>
           </a>
         </div>
       </div>
 
-      <!-- 3. Các dự án support -->
+      <!-- 3. CÁC DỰ ÁN SUPPORT -->
       <div class="support-card">
         <div class="support-card-head">
           <span class="support-index mono">#03</span>
@@ -480,12 +785,53 @@
     </section>
   </div>
 
+  <!-- Thẻ audio ẩn và nút điều khiển -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <button class="music-disc-btn" id="musicBtn" onclick="toggleAudio()" title="Bật/Tắt nhạc">
+    🎵
+  </button>
+
   <script>
     function toggleMenu() {
       const drawer = document.getElementById('menuDrawer');
       const overlay = document.getElementById('menuOverlay');
       drawer.classList.toggle('open');
       overlay.classList.toggle('open');
+    }
+
+    const audio = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    let hasStarted = false;
+
+    // Tự động phát nhạc ngay cú chạm/click đầu tiên
+    function startAudioOnFirstTouch() {
+      if (!hasStarted) {
+        audio.play().then(() => {
+          musicBtn.classList.add('playing');
+          hasStarted = true;
+          document.removeEventListener('click', startAudioOnFirstTouch);
+          document.removeEventListener('touchstart', startAudioOnFirstTouch);
+        }).catch(() => {});
+      }
+    }
+    document.addEventListener('click', startAudioOnFirstTouch);
+    document.addEventListener('touchstart', startAudioOnFirstTouch);
+
+    // Bấm nút đĩa nhạc để chủ động Bật/Tắt
+    function toggleAudio() {
+      if (window.event) window.event.stopPropagation();
+      if (audio.paused) {
+        audio.play();
+        musicBtn.classList.add('playing');
+        musicBtn.innerText = '🎵';
+      } else {
+        audio.pause();
+        musicBtn.classList.remove('playing');
+        musicBtn.innerText = '🔇';
+      }
     }
   </script>
 </body>
