@@ -6,7 +6,7 @@
   <title>KIEN - Fan Support</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:ital,wght@0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -207,15 +207,20 @@
     .section-wrap {
       padding: 0 24px;
     }
+    
+    /* Nhãn đề mục in nghiêng, vát góc hiện đại */
     .section-tag {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
+      font-family: 'Syne', sans-serif;
+      font-style: italic;
+      font-weight: 800;
+      font-size: 11.5px;
+      letter-spacing: 2.5px;
       color: #38BDF8;
-      letter-spacing: 2px;
       text-transform: uppercase;
       margin-bottom: 6px;
-      text-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
+      display: inline-block;
+      transform: skewX(-8deg);
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.45);
     }
     .section-title {
       font-size: 22px;
@@ -300,7 +305,7 @@
       gap: 8px;
       margin-bottom: 8px;
     }
-   .support-index {
+    .support-index {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 12px;
       color: #38BDF8;
@@ -420,6 +425,7 @@
       color: #CBD5E1;
     }
     .rule-title-do {
+      font-family: 'Space Grotesk', sans-serif;
       color: #4ADE80;
       font-weight: 700;
       font-size: 11px;
@@ -431,6 +437,7 @@
       letter-spacing: 0.5px;
     }
     .rule-title-dont {
+      font-family: 'Space Grotesk', sans-serif;
       color: #F87171;
       font-weight: 700;
       font-size: 11px;
@@ -532,34 +539,34 @@
 
     <!-- MỤC 1: VỀ KIEN -->
     <section class="section-wrap" id="about">
-      <div class="section-tag mono">01/PR0F1LE — About</div>
+      <div class="section-tag">01/PR0F1LE — About</div>
       <h2 class="section-title blue-outline-text">VỀ KIEN</h2>
       
       <div class="bento-grid">
         <div class="bento-card">
-          <div class="card-label mono">Họ và Tên</div>
+          <div class="card-label">Họ và Tên</div>
           <div class="card-value">Nguyễn Trung Kiên</div>
         </div>
         <div class="bento-card">
-          <div class="card-label mono">Nghệ danh</div>
+          <div class="card-label">Nghệ danh</div>
           <div class="card-value">KIEN</div>
         </div>
         <div class="bento-card">
-          <div class="card-label mono">Ngày sinh</div>
+          <div class="card-label">Ngày sinh</div>
           <div class="card-value">19-12-2004</div>
         </div>
         <div class="bento-card">
-          <div class="card-label mono">Chiều cao</div>
+          <div class="card-label">Chiều cao</div>
           <div class="card-value">1m73 <span style="font-size: 11px; color: #7DD3FC;">(updating)</span></div>
         </div>
         <div class="bento-card full-width">
-          <div class="card-label mono">Quê quán</div>
+          <div class="card-label">Quê quán</div>
           <div class="card-value">Phan Rang, Khánh Hoà</div>
         </div>
       </div>
 
       <!-- MẠNG XÃ HỘI (ICON DẠNG SVG) -->
-      <div class="social-title mono">// CHANNELS & SOCIALS</div>
+      <div class="social-title">// CHANNELS & SOCIALS</div>
       <div class="social-list">
         <!-- Facebook -->
         <a href="https://www.facebook.com/nguyenjungkien" target="_blank" rel="noopener noreferrer" class="social-btn" title="Facebook">
@@ -582,10 +589,10 @@
           </svg>
         </a>
 
-        <!-- Threads -->
+        <!-- Threads (Chuẩn Meta) -->
         <a href="https://www.threads.com/@nguyen_jungkien" target="_blank" rel="noopener noreferrer" class="social-btn" title="Threads">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFFFFF">
-            <path d="M12.186 24h-.007c-3.581-.024-6.334-1.203-8.184-3.504C2.278 18.328 1.5 15.347 1.5 11.966c0-3.388.79-6.368 2.533-8.529C5.908 1.164 8.683 0 12.28 0c3.551 0 6.324 1.144 8.243 3.401 1.802 2.12 2.703 5.093 2.703 8.565 0 .285-.008.58-.024.887h-3.69c.01-.285.016-.566.016-.838 0-2.617-.622-4.747-1.849-6.331-1.32-1.704-3.238-2.585-5.7-2.585-2.518 0-4.484.908-5.845 2.698C4.945 7.42 4.3 9.489 4.3 11.966c0 2.478.645 4.547 1.834 6.171 1.361 1.79 3.327 2.698 5.845 2.698 2.378 0 4.22-.824 5.474-2.45.698-.905 1.184-2.072 1.455-3.486-1.517.728-3.325 1.109-5.32 1.109-4.227 0-6.84-2.316-6.84-6.05 0-3.673 2.548-5.986 6.649-5.986 2.324 0 4.275.762 5.644 2.204 1.196 1.258 1.835 2.984 1.897 5.13h-3.62c-.066-1.285-.436-2.296-1.127-3.006-.827-.852-2.032-1.3-3.494-1.3-2.284 0-3.666 1.168-3.666 3.096 0 1.954 1.408 3.14 3.763 3.14 1.758 0 3.298-.445 4.577-1.322-.058 1.49-.395 2.748-1.002 3.738-1.077 1.758-2.868 2.684-5.18 2.684z"/>
+          <svg width="20" height="20" viewBox="0 0 192 192" fill="#FFFFFF">
+            <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.745C77.4171 44.745 61.4371 55.4958 54.4996 73.6195L73.1979 81.334C78.0772 68.6019 88.8252 62.4636 97.2471 62.4636C108.627 62.4636 117.844 69.5847 119.577 82.5029C112.585 81.6508 104.992 81.6787 96.8669 82.5898C69.4589 85.6631 53.0722 101.444 54.6726 123.834C56.1493 144.502 73.1118 156.417 93.6339 155.882C109.914 155.457 122.569 146.402 129.434 134.195C134.685 143.513 143.649 149.208 155.602 149.208C171.696 149.208 181.761 138.169 181.761 120.355C181.761 97.3828 165.617 83.1594 141.537 88.9883ZM97.0279 137.587C84.4442 137.915 73.2372 131.547 72.3929 119.742C71.3934 105.776 81.2584 96.8837 99.0763 94.8876C105.074 94.2155 110.849 94.4984 116.143 95.5398C113.684 125.864 104.606 137.389 97.0279 137.587Z"/>
           </svg>
         </a>
 
@@ -603,13 +610,13 @@
 
     <!-- MỤC 2: FAN SUPPORT -->
     <section class="section-wrap" id="fansupport">
-      <div class="section-tag mono">02/PR0J3CT — Support</div>
+      <div class="section-tag">02/PR0J3CT — Support</div>
       <h2 class="section-title blue-outline-text">FAN SUPPORT</h2>
 
       <!-- 1. HƯỚNG DẪN SUPPORT KIEN -->
       <div class="support-card">
         <div class="support-card-head">
-          <span class="support-index mono">#01</span>
+          <span class="support-index">#01</span>
           <h3 class="support-title">Hướng dẫn Support KIEN</h3>
         </div>
         <p class="support-desc">
@@ -617,7 +624,7 @@
         </p>
 
         <!-- 1.1 HƯỚNG DẪN STREAM -->
-        <div class="guide-category mono">1. HƯỚNG DẪN STREAM</div>
+        <div class="guide-category">1. HƯỚNG DẪN STREAM</div>
 
         <!-- YOUTUBE STREAM -->
         <details class="platform-accordion">
@@ -633,7 +640,7 @@
             <span class="accordion-arrow">▼</span>
           </summary>
           <div class="platform-body">
-            <div class="rule-title-do mono">✔ NÊN:</div>
+            <div class="rule-title-do">✔ NÊN:</div>
             <ul>
               <li>Đăng nhập 1 tài khoản trên 1 thiết bị, sử dụng nhiều tài khoản và thiết bị khác nhau, tìm kiếm nội dung kèm tên của KIEN.</li>
               <li>Xem trọn vẹn video ở chất lượng từ 720p trở lên, âm lượng trên 50%.</li>
@@ -642,7 +649,7 @@
               <li>Xem xen kẽ 2-3 video khác nhau trước khi quay lại video chính cần stream.</li>
             </ul>
 
-            <div class="rule-title-dont mono">✖ KHÔNG NÊN:</div>
+            <div class="rule-title-dont">✖ KHÔNG NÊN:</div>
             <ul>
               <li>Không tua nhanh, không tạm dừng, không bỏ qua quảng cáo (nếu bỏ qua, hãy đợi sau 30 giây).</li>
               <li>Không bấm phát lại (replay) liên tục.</li>
@@ -666,7 +673,7 @@
             <span class="accordion-arrow">▼</span>
           </summary>
           <div class="platform-body">
-            <div class="rule-title-do mono">✔ NÊN:</div>
+            <div class="rule-title-do">✔ NÊN:</div>
             <ul>
               <li>Nên có tài khoản Premium.</li>
               <li>Đăng nhập và bấm theo dõi kênh chính thức của KIEN.</li>
@@ -674,7 +681,7 @@
               <li>Thường xuyên thay đổi playlist, tránh lặp lại playlist nhiều lần.</li>
             </ul>
 
-            <div class="rule-title-dont mono">✖ KHÔNG NÊN:</div>
+            <div class="rule-title-dont">✖ KHÔNG NÊN:</div>
             <ul>
               <li>Không sử dụng VPN.</li>
               <li>Không bật chế độ lặp lại, chế độ trộn bài hát.</li>
@@ -684,7 +691,7 @@
         </details>
 
         <!-- 1.2 HƯỚNG DẪN TĂNG THẢO LUẬN -->
-        <div class="guide-category mono" style="margin-top: 18px;">2. HƯỚNG DẪN TĂNG THẢO LUẬN</div>
+        <div class="guide-category" style="margin-top: 18px;">2. HƯỚNG DẪN TĂNG THẢO LUẬN</div>
 
         <!-- FACEBOOK -->
         <details class="platform-accordion">
@@ -750,13 +757,13 @@
           </div>
         </details>
 
-        <!-- THREADS -->
+        <!-- THREADS (Chuẩn Meta) -->
         <details class="platform-accordion">
           <summary class="platform-header">
             <div class="platform-left">
               <span class="platform-icon">
-                <svg viewBox="0 0 24 24" fill="#FFFFFF">
-                  <path d="M12.186 24h-.007c-3.581-.024-6.334-1.203-8.184-3.504C2.278 18.328 1.5 15.347 1.5 11.966c0-3.388.79-6.368 2.533-8.529C5.908 1.164 8.683 0 12.28 0c3.551 0 6.324 1.144 8.243 3.401 1.802 2.12 2.703 5.093 2.703 8.565 0 .285-.008.58-.024.887h-3.69c.01-.285.016-.566.016-.838 0-2.617-.622-4.747-1.849-6.331-1.32-1.704-3.238-2.585-5.7-2.585-2.518 0-4.484.908-5.845 2.698C4.945 7.42 4.3 9.489 4.3 11.966c0 2.478.645 4.547 1.834 6.171 1.361 1.79 3.327 2.698 5.845 2.698 2.378 0 4.22-.824 5.474-2.45.698-.905 1.184-2.072 1.455-3.486-1.517.728-3.325 1.109-5.32 1.109-4.227 0-6.84-2.316-6.84-6.05 0-3.673 2.548-5.986 6.649-5.986 2.324 0 4.275.762 5.644 2.204 1.196 1.258 1.835 2.984 1.897 5.13h-3.62c-.066-1.285-.436-2.296-1.127-3.006-.827-.852-2.032-1.3-3.494-1.3-2.284 0-3.666 1.168-3.666 3.096 0 1.954 1.408 3.14 3.763 3.14 1.758 0 3.298-.445 4.577-1.322-.058 1.49-.395 2.748-1.002 3.738-1.077 1.758-2.868 2.684-5.18 2.684z"/>
+                <svg viewBox="0 0 192 192" fill="#FFFFFF">
+                  <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.745C77.4171 44.745 61.4371 55.4958 54.4996 73.6195L73.1979 81.334C78.0772 68.6019 88.8252 62.4636 97.2471 62.4636C108.627 62.4636 117.844 69.5847 119.577 82.5029C112.585 81.6508 104.992 81.6787 96.8669 82.5898C69.4589 85.6631 53.0722 101.444 54.6726 123.834C56.1493 144.502 73.1118 156.417 93.6339 155.882C109.914 155.457 122.569 146.402 129.434 134.195C134.685 143.513 143.649 149.208 155.602 149.208C171.696 149.208 181.761 138.169 181.761 120.355C181.761 97.3828 165.617 83.1594 141.537 88.9883ZM97.0279 137.587C84.4442 137.915 73.2372 131.547 72.3929 119.742C71.3934 105.776 81.2584 96.8837 99.0763 94.8876C105.074 94.2155 110.849 94.4984 116.143 95.5398C113.684 125.864 104.606 137.389 97.0279 137.587Z"/>
                 </svg>
               </span>
               <span class="platform-name">Threads</span>
@@ -796,19 +803,19 @@
       <!-- 2. HƯỚNG DẪN MASS BUY ITUNES -->
       <div class="support-card">
         <div class="support-card-head">
-          <span class="support-index mono">#02</span>
+          <span class="support-index">#02</span>
           <h3 class="support-title">Hướng dẫn Mass Buy iTunes</h3>
         </div>
         
         <!-- Mục 1: Hướng dẫn mass buy (Updating) -->
-        <div class="guide-category mono">1. HƯỚNG DẪN MASS BUY</div>
-        <span class="status-badge mono">● Updating</span>
+        <div class="guide-category">1. HƯỚNG DẪN MASS BUY</div>
+        <span class="status-badge">● Updating</span>
         <p class="support-desc">
           Quy trình tạo nhiều tài khoản Apple ID, gift code và hướng dẫn mua bài hát đồng loạt để đẩy thứ hạng nhạc số đang được cập nhật.
         </p>
 
         <!-- Mục 2: Lấy mã itunes miễn phí (Giữ link phát code) -->
-        <div class="guide-category mono" style="margin-top: 14px;">2. LẤY MÃ ITUNES MIỄN PHÍ</div>
+        <div class="guide-category" style="margin-top: 14px;">2. LẤY MÃ ITUNES MIỄN PHÍ</div>
         <div class="action-links" style="margin-top: 8px;">
           <a href="https://kien-itunes-code.vercel.app/" target="_blank" rel="noopener noreferrer" class="code-btn mono">
             <span>🎁 Lấy mã iTunes miễn phí ↗</span>
@@ -819,10 +826,10 @@
       <!-- 3. CÁC DỰ ÁN SUPPORT -->
       <div class="support-card">
         <div class="support-card-head">
-          <span class="support-index mono">#03</span>
+          <span class="support-index">#03</span>
           <h3 class="support-title">Các dự án Support</h3>
         </div>
-        <span class="status-badge mono">● Updating</span>
+        <span class="status-badge">● Updating</span>
         <p class="support-desc">
           Tổng hợp các chiến dịch, hoạt động tiếp ứng, dự án sinh nhật và sự kiện của fandom dành cho KIEN.
         </p>
@@ -853,7 +860,7 @@
     let isPlaying = false;
     const musicBtn = document.getElementById('musicBtn');
 
-    // Tải mã YouTube IFrame API
+    // Nạp mã YouTube IFrame API
     const tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     const firstScriptTag = document.getElementsByTagName('script')[0];
