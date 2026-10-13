@@ -513,6 +513,78 @@
     @keyframes spin {
       100% { transform: rotate(360deg); }
     }
+        .schedule-trigger-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #0f233a, #091526);
+      color: #fff;
+      border: 1px solid rgba(56,189,248,0.4);
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .acorn-btn-icon { width: 20px; height: 20px; object-fit: contain; }
+    
+    /* Pop-up hôm nay */
+    .schedule-popup-backdrop {
+      position: fixed; inset: 0; background: rgba(3,7,18,0.75); backdrop-filter: blur(8px);
+      z-index: 200; display: none; align-items: center; justify-content: center; padding: 20px;
+    }
+    .schedule-popup-backdrop.show { display: flex; }
+    .schedule-popup-card {
+      background: linear-gradient(165deg, #0f243a, #081322);
+      border: 1px solid #38bdf8; border-radius: 20px; width: 100%; max-width: 360px; padding: 22px; position: relative; color: #fff;
+    }
+    .popup-close-x { position: absolute; top: 16px; right: 18px; background: none; border: none; color: #94a3b8; font-size: 20px; cursor: pointer; }
+    .popup-tag { font-size: 10px; color: #38bdf8; letter-spacing: 1.5px; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+    .popup-tag-dot { width: 7px; height: 7px; background: #00f2fe; border-radius: 50%; box-shadow: 0 0 8px #00f2fe; }
+    .popup-headline { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+    .popup-date-row { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .popup-date-box { background: #fff; color: #0c192c; border-radius: 12px; padding: 6px 12px; text-align: center; font-weight: 800; }
+    .popup-date-box .p-day { font-size: 22px; }
+    .popup-date-box .p-month { font-size: 10px; color: #0284c7; }
+    .popup-count-text { font-size: 13px; font-weight: 700; color: #38bdf8; }
+    .popup-events-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; max-height: 180px; overflow-y: auto; }
+    .popup-event-item { display: flex; gap: 10px; font-size: 12.5px; }
+    .popup-event-time { color: #38bdf8; font-size: 11px; white-space: nowrap; }
+    .popup-event-name { color: #f1f5f9; font-weight: 600; }
+    .popup-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .popup-btn-main { flex: 1; background: #fff; color: #081322; border: none; padding: 10px 14px; border-radius: 999px; font-size: 11.5px; font-weight: 800; cursor: pointer; }
+    .popup-btn-dismiss { background: none; border: none; color: #94a3b8; font-size: 11px; cursor: pointer; }
+
+    /* Modal bảng lịch */
+    .schedule-modal-backdrop {
+      position: fixed; inset: 0; background: rgba(3,7,18,0.85); backdrop-filter: blur(10px);
+      z-index: 250; display: none; align-items: flex-end; justify-content: center;
+    }
+    .schedule-modal-backdrop.show { display: flex; }
+    .schedule-modal-card {
+      background: #091322; border: 1px solid rgba(56,189,248,0.3); border-top-left-radius: 24px; border-top-right-radius: 24px;
+      width: 100%; max-width: 420px; max-height: 85vh; overflow-y: auto; padding: 24px 20px 40px; color: #e2e8f0;
+    }
+    .cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+    .cal-title { font-size: 17px; font-weight: 800; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 20px; text-align: center; }
+    .cal-day-name { font-size: 10px; color: #7dd3fc; font-weight: 700; padding: 4px 0; }
+    .cal-date-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; position: relative; cursor: pointer; }
+    .acorn-bg { position: absolute; inset: 2px; width: calc(100% - 4px); height: calc(100% - 4px); object-fit: contain; z-index: 1; }
+    .acorn-day-number { position: relative; z-index: 2; font-size: 12px; font-weight: 800; color: #fff; text-shadow: 0 1px 3px #000; }
+    .cal-date-cell.has-event .acorn-bg { filter: brightness(1.1) drop-shadow(0 0 6px #38bdf8); }
+    .cal-date-cell.has-event::after { content: ""; position: absolute; top: 2px; right: 2px; width: 6px; height: 6px; background: #00f2fe; border-radius: 50%; z-index: 3; }
+    .cal-date-cell.active-selected .acorn-bg { transform: scale(1.08); filter: drop-shadow(0 0 10px #38bdf8); }
+    
+    .day-detail-panel { background: #0b1a2e; border: 1px solid rgba(56,189,248,0.25); border-radius: 16px; padding: 16px; }
+    .day-detail-title { font-size: 14px; font-weight: 800; color: #38bdf8; margin-bottom: 12px; }
+    .schedule-detail-card { background: #071322; border: 1px solid rgba(56,189,248,0.15); border-radius: 12px; padding: 12px; margin-bottom: 10px; }
+    .detail-time { font-size: 11px; color: #38bdf8; font-weight: 700; }
+    .detail-event-title { font-size: 14px; font-weight: 700; margin: 4px 0; }
+    .copy-tag-badge { display: inline-block; background: rgba(14,165,233,0.2); border: 1px dashed #38bdf8; padding: 3px 8px; border-radius: 6px; color: #38bdf8; font-size: 11px; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -609,6 +681,11 @@
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
         </a>
+              <!-- Nút lịch trình -->
+      <button class="mono schedule-trigger-btn" onclick="openScheduleModal()">
+        <img src="hatde.png.PNG" alt="Acorn" class="acorn-btn-icon">
+        <span>XEM LỊCH TRÌNH →</span>
+      </button>
       </div>
     </section>
 
@@ -983,6 +1060,129 @@
       render();
     })();
   </script>
+  <!-- Pop-up hôm nay -->
+  <div class="schedule-popup-backdrop" id="todayPopup">
+    <div class="schedule-popup-card">
+      <button class="popup-close-x" onclick="closeTodayPopup()">✕</button>
+      <div class="popup-tag mono"><span class="popup-tag-dot"></span>TÍN HIỆU HÔM NAY · /S1GN4L_D3T3CT3D</div>
+      <div class="popup-headline">Hôm nay có điều gì đó đang diễn ra ✦</div>
+      <div class="popup-date-row">
+        <div class="popup-date-box mono"><div class="p-day" id="popupDay">--</div><div class="p-month" id="popupMonth">TH--</div></div>
+        <div class="popup-count-text mono" id="popupCountText">0 SỰ KIỆN HÔM NAY</div>
+      </div>
+      <div class="popup-events-list" id="popupEventsList"></div>
+      <div class="popup-actions">
+        <button class="popup-btn-main mono" onclick="openScheduleModalFromPopup()">XEM LỊCH TRÌNH →</button>
+        <button class="popup-btn-dismiss mono" onclick="closeTodayPopup()">Tiếp tục khám phá</button>
+      </div>
+    </div>
+  </div>
 
+  <!-- Modal bảng lịch -->
+  <div class="schedule-modal-backdrop" id="scheduleModal">
+    <div class="schedule-modal-card">
+      <div class="cal-header">
+        <div class="cal-title mono" id="calMonthYearTitle">LỊCH TRÌNH</div>
+        <button class="close-btn" onclick="closeScheduleModal()">✕</button>
+      </div>
+      <div class="cal-grid" id="calendarGrid"></div>
+      <div class="day-detail-panel">
+        <div class="day-detail-title mono" id="detailDateHeading">Chọn một ngày để xem</div>
+        <div id="detailContentList"></div>
+      </div>
+    </div>
+  </div>
+        <script>
+    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRDdQBion_yHeDasMcUbRsl5qSyXq7_3s-X9cTDPpfTk63MefxFIxw0XmZVu-wg-zGrcZq7CalrRJfj/pub?output=csv";
+
+    let scheduleData = [];
+    let currentViewingDate = new Date();
+
+    async function loadScheduleFromSheet() {
+      try {
+        const res = await fetch(CSV_URL);
+        const text = await res.text();
+        const rows = text.split('\n').map(r => r.split(','));
+        scheduleData = [];
+        for (let i = 1; i < rows.length; i++) {
+          const r = rows[i];
+          if (r[0] && r[0].trim()) {
+            scheduleData.push({
+              date: r[0].replace(/"/g, '').trim(),
+              time: r[1] ? r[1].replace(/"/g, '').trim() : 'Cả ngày',
+              title: r[2] ? r[2].replace(/"/g, '').trim() : '',
+              hashtags: r[3] ? r[3].replace(/"/g, '').trim() : '',
+              threads_topic: r[4] ? r[4].replace(/"/g, '').trim() : '',
+              desc: r[5] ? r[5].replace(/"/g, '').trim() : ''
+            });
+          }
+        }
+        checkTodayEvents();
+        renderCalendar();
+      } catch (err) { console.error(err); }
+    }
+
+    function checkTodayEvents() {
+      const today = new Date();
+      const todayStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+      const evs = scheduleData.filter(e => e.date === todayStr);
+      if (evs.length > 0) {
+        document.getElementById('popupDay').innerText = String(today.getDate()).padStart(2,'0');
+        document.getElementById('popupMonth').innerText = `TH${today.getMonth()+1}`;
+        document.getElementById('popupCountText').innerText = `${evs.length} SỰ KIỆN HÔM NAY`;
+        const list = document.getElementById('popupEventsList');
+        list.innerHTML = evs.map(e => `<div class="popup-event-item"><span class="popup-event-time mono">${e.time}</span><span class="popup-event-name">${e.title}</span></div>`).join('');
+        document.getElementById('todayPopup').classList.add('show');
+      }
+    }
+
+    function closeTodayPopup() { document.getElementById('todayPopup').classList.remove('show'); }
+    function openScheduleModalFromPopup() { closeTodayPopup(); openScheduleModal(); }
+
+    function renderCalendar() {
+      const grid = document.getElementById('calendarGrid');
+      grid.innerHTML = ['CN','T2','T3','T4','T5','T6','T7'].map(d => `<div class="cal-day-name mono">${d}</div>`).join('');
+      const y = currentViewingDate.getFullYear(), m = currentViewingDate.getMonth();
+      document.getElementById('calMonthYearTitle').innerText = `THÁNG ${m+1} /${y}`;
+      const first = new Date(y, m, 1).getDay(), total = new Date(y, m+1, 0).getDate();
+      for (let i = 0; i < first; i++) grid.innerHTML += `<div class="cal-date-cell"></div>`;
+      for (let d = 1; d <= total; d++) {
+        const dStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        const has = scheduleData.some(e => e.date === dStr);
+        const cell = document.createElement('div');
+        cell.className = `cal-date-cell ${has ? 'has-event' : ''}`;
+        cell.innerHTML = `<img src="hatde2.png.PNG" alt="acorn" class="acorn-bg"><span class="acorn-day-number">${d}</span>`;
+        cell.onclick = () => {
+          document.querySelectorAll('.cal-date-cell').forEach(c => c.classList.remove('active-selected'));
+          cell.classList.add('active-selected');
+          showDateDetail(dStr);
+        };
+        grid.appendChild(cell);
+      }
+    }
+
+    function showDateDetail(dStr) {
+      document.getElementById('detailDateHeading').innerText = `LỊCH TRÌNH NGÀY ${dStr}`;
+      const evs = scheduleData.filter(e => e.date === dStr);
+      const list = document.getElementById('detailContentList');
+      if (evs.length === 0) {
+        list.innerHTML = `<div style="font-size:12px;color:#94a3b8;">Không có sự kiện nào trong ngày này.</div>`;
+        return;
+      }
+      list.innerHTML = evs.map(e => `
+        <div class="schedule-detail-card">
+          <div class="detail-time mono">⏰ ${e.time}</div>
+          <div class="detail-event-title">${e.title}</div>${e.hashtags ? `<div><span class="copy-tag-badge mono" onclick="navigator.clipboard.writeText('${e.hashtags}');alert('Đã sao chép!')">${e.hashtags}</span></div>` : ''}
+          ${e.threads_topic ? `<div style="margin-top:6px;font-size:11.5px;color:#cbd5e1;"><b style="color:#7dd3fc">Threads:</b> ${e.threads_topic}</div>` : ''}
+          ${e.desc ? `<div style="margin-top:4px;font-size:11px;color:#94a3b8;">${e.desc}</div>` : ''}
+        </div>
+      `).join('');
+    }
+
+    function openScheduleModal() {
+      document.getElementById('scheduleModal').classList.add('show');
+      renderCalendar();
+      const t = new Date();
+      showDateDetail(`${t.getFullYear()}-${
 </body>
 </html>
