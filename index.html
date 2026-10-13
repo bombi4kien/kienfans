@@ -17,7 +17,7 @@
     html {
       scroll-behavior: smooth;
     }
-        body {
+    body {
       background-color: #0b1118;
       color: #E2E8F0;
       font-family: 'Syne', sans-serif;
@@ -32,7 +32,6 @@
       width: 100%;
       max-width: 420px;
       min-height: 100vh;
-      /* Nền màu bạc kim loại pha chiều sâu ánh kim */
       background: radial-gradient(circle at 50% 18%, #2d3748 0%, #17202c 50%, #0d131a 100%);
       position: relative;
       padding-bottom: 70px;
@@ -41,7 +40,7 @@
       border-right: 1px solid rgba(203, 213, 225, 0.2);
       box-shadow: 0 0 35px rgba(148, 163, 184, 0.12);
     }
-    /* Lớp phủ hiệu ứng tuyết rơi toàn màn hình */
+    /* Lớp phủ tuyết rơi */
     #snowCanvas {
       position: fixed;
       top: 0;
@@ -53,7 +52,7 @@
       pointer-events: none;
       z-index: 80;
     }
-    /* Chữ trắng viền xanh neon */
+    /* Chữ trắng viền neon xanh */
     .blue-outline-text {
       color: #FFFFFF;
       -webkit-text-stroke: 1.2px #0284C7;
@@ -72,7 +71,6 @@
       z-index: 50;
       border-bottom: 1px solid rgba(56, 189, 248, 0.15);
     }
-    /* Logo phát sáng và nhấp nháy neon */
     .logo {
       font-weight: 800;
       letter-spacing: 3px;
@@ -83,24 +81,15 @@
     }
     @keyframes neonPulse {
       0% {
-        text-shadow: 
-          0 0 4px #FFFFFF,
-          0 0 10px #38BDF8,
-          0 0 20px #0284C7;
+        text-shadow: 0 0 4px #FFFFFF, 0 0 10px #38BDF8, 0 0 20px #0284C7;
         opacity: 0.85;
       }
       50% {
-        text-shadow: 
-          0 0 2px #FFFFFF,
-          0 0 5px #0284C7;
+        text-shadow: 0 0 2px #FFFFFF, 0 0 5px #0284C7;
         opacity: 0.6;
       }
       100% {
-        text-shadow: 
-          0 0 6px #FFFFFF,
-          0 0 15px #38BDF8,
-          0 0 30px #00F2FE,
-          0 0 45px #0284C7;
+        text-shadow: 0 0 6px #FFFFFF, 0 0 15px #38BDF8, 0 0 30px #00F2FE, 0 0 45px #0284C7;
         opacity: 1;
       }
     }
@@ -116,7 +105,7 @@
       cursor: pointer;
       box-shadow: 0 0 10px rgba(14, 165, 233, 0.25);
     }
-    /* Overlay Drawer */
+    /* Menu Drawer */
     .menu-overlay {
       position: fixed;
       inset: 0;
@@ -211,18 +200,14 @@
       font-size: 13px;
       color: #7DD3FC;
     }
-    /* Divider */
     .divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.4), transparent);
       margin: 32px 24px;
     }
-    /* Sections general */
     .section-wrap {
       padding: 0 24px;
     }
-    
-    /* Nhãn đề mục dáng đứng chuẩn Space Grotesk */
     .section-tag {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 11px;
@@ -282,7 +267,7 @@
       display: flex;
       gap: 10px;
       justify-content: flex-start;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .social-btn {
       display: inline-flex;
@@ -299,6 +284,47 @@
       background: #0284C7;
       box-shadow: 0 0 12px rgba(14, 165, 233, 0.4);
     }
+    /* NÚT LỊCH TRÌNH 1 HÀNG DƯỚI - CHỮ PHÁT SÁNG */
+    .schedule-trigger-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #0e1e33 0%, #081220 100%);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      border-radius: 999px;
+      padding: 12px 20px;
+      margin-top: 6px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 0 16px rgba(14, 165, 233, 0.25);
+      transition: all 0.25s ease;
+    }
+    .schedule-trigger-btn:hover {
+      border-color: #38bdf8;
+      box-shadow: 0 0 22px rgba(56, 189, 248, 0.5);
+      transform: translateY(-1px);
+    }
+    .acorn-btn-icon {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      display: block;
+    }
+    .schedule-btn-text {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #ffffff;
+      text-shadow: 0 0 4px #ffffff, 0 0 10px #38bdf8, 0 0 20px #0284c7;
+      animation: scheduleGlow 2s ease-in-out infinite alternate;
+    }
+    @keyframes scheduleGlow {
+      0% { text-shadow: 0 0 3px #ffffff, 0 0 8px #38bdf8; }
+      100% { text-shadow: 0 0 5px #ffffff, 0 0 14px #38bdf8, 0 0 25px #00f2fe; }
+    }
+
     /* Support Cards */
     .support-card {
       background: #0B192C;
@@ -345,8 +371,6 @@
       letter-spacing: 0.5px;
       margin-bottom: 10px;
     }
-
-    /* Sub-section headings for Support Guide */
     .guide-category {
       font-family: 'Space Grotesk', sans-serif;
       margin-top: 16px;
@@ -369,8 +393,6 @@
       background: #38BDF8;
       box-shadow: 0 0 6px #38BDF8;
     }
-
-    /* Accordion Details/Summary */
     details.platform-accordion {
       background: #081426;
       border: 1px solid rgba(56, 189, 248, 0.2);
@@ -464,8 +486,6 @@
     .platform-body li {
       margin-bottom: 5px;
     }
-
-    /* Buttons in Support */
     .action-links {
       display: flex;
       flex-direction: column;
@@ -487,7 +507,7 @@
       box-shadow: 0 0 15px rgba(2, 132, 199, 0.4);
     }
 
-    /* Nút đĩa nhạc nổi góc màn hình */
+    /* Đĩa nhạc nổi */
     .music-disc-btn {
       position: fixed;
       bottom: 24px;
@@ -513,78 +533,264 @@
     @keyframes spin {
       100% { transform: rotate(360deg); }
     }
-        .schedule-trigger-btn {
+
+    /* Pop-up hôm nay */
+    .schedule-popup-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .schedule-popup-backdrop.show {
+      display: flex;
+    }
+    .schedule-popup-card {
+      background: linear-gradient(165deg, #0f243a, #081322);
+      border: 1px solid #38bdf8;
+      border-radius: 20px;
       width: 100%;
-      background: linear-gradient(135deg, #0f233a, #091526);
+      max-width: 360px;
+      padding: 22px;
+      position: relative;
       color: #fff;
-      border: 1px solid rgba(56,189,248,0.4);
+    }
+    .popup-close-x {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .popup-tag {
+      font-size: 10px;
+      color: #38bdf8;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .popup-tag-dot {
+      width: 7px;
+      height: 7px;
+      background: #00f2fe;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #00f2fe;
+    }
+    .popup-headline {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .popup-date-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .popup-date-box {
+      background: #fff;
+      color: #0c192c;
+      border-radius: 12px;
+      padding: 6px 12px;
+      text-align: center;
+      font-weight: 800;
+    }
+    .popup-date-box .p-day { font-size: 22px; }
+    .popup-date-box .p-month { font-size: 10px; color: #0284c7; }
+    .popup-count-text {
+      font-size: 13px;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+    .popup-events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 18px;
+      max-height: 180px;
+      overflow-y: auto;
+    }
+    .popup-event-item {
+      display: flex;
+      gap: 10px;
+      font-size: 12.5px;
+    }
+    .popup-event-time {
+      color: #38bdf8;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    .popup-event-name {
+      color: #f1f5f9;
+      font-weight: 600;
+    }
+    .popup-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .popup-btn-main {
+      flex: 1;
+      background: #fff;
+      color: #081322;
+      border: none;
+      padding: 10px 14px;
       border-radius: 999px;
-      padding: 10px 18px;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 800;
       cursor: pointer;
+    }
+    .popup-btn-dismiss {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    /* Modal bảng lịch hạt dẻ */
+    .schedule-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 250;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .schedule-modal-backdrop.show {
+      display: flex;
+    }
+    .schedule-modal-card {
+      background: #091322;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      width: 100%;
+      max-width: 420px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 24px 20px 40px;
+      color: #e2e8f0;
+    }
+    .cal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .cal-title {
+      font-size: 17px;
+      font-weight: 800;
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .cal-day-name {
+      font-size: 10px;
+      color: #7dd3fc;
+      font-weight: 700;
+      padding: 4px 0;
+    }
+    .cal-date-cell {
+      aspect-ratio: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      margin-top: 14px;
+      position: relative;
+      cursor: pointer;
     }
-    .acorn-btn-icon { width: 20px; height: 20px; object-fit: contain; }
-    
-    /* Pop-up hôm nay */
-    .schedule-popup-backdrop {
-      position: fixed; inset: 0; background: rgba(3,7,18,0.75); backdrop-filter: blur(8px);
-      z-index: 200; display: none; align-items: center; justify-content: center; padding: 20px;
+    .cal-date-cell.empty {
+      cursor: default;
     }
-    .schedule-popup-backdrop.show { display: flex; }
-    .schedule-popup-card {
-      background: linear-gradient(165deg, #0f243a, #081322);
-      border: 1px solid #38bdf8; border-radius: 20px; width: 100%; max-width: 360px; padding: 22px; position: relative; color: #fff;
+    .acorn-bg {
+      position: absolute;
+      inset: 2px;
+      width: calc(100% - 4px);
+      height: calc(100% - 4px);
+      object-fit: contain;
+      z-index: 1;
     }
-    .popup-close-x { position: absolute; top: 16px; right: 18px; background: none; border: none; color: #94a3b8; font-size: 20px; cursor: pointer; }
-    .popup-tag { font-size: 10px; color: #38bdf8; letter-spacing: 1.5px; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
-    .popup-tag-dot { width: 7px; height: 7px; background: #00f2fe; border-radius: 50%; box-shadow: 0 0 8px #00f2fe; }
-    .popup-headline { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
-    .popup-date-row { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-    .popup-date-box { background: #fff; color: #0c192c; border-radius: 12px; padding: 6px 12px; text-align: center; font-weight: 800; }
-    .popup-date-box .p-day { font-size: 22px; }
-    .popup-date-box .p-month { font-size: 10px; color: #0284c7; }
-    .popup-count-text { font-size: 13px; font-weight: 700; color: #38bdf8; }
-    .popup-events-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; max-height: 180px; overflow-y: auto; }
-    .popup-event-item { display: flex; gap: 10px; font-size: 12.5px; }
-    .popup-event-time { color: #38bdf8; font-size: 11px; white-space: nowrap; }
-    .popup-event-name { color: #f1f5f9; font-weight: 600; }
-    .popup-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-    .popup-btn-main { flex: 1; background: #fff; color: #081322; border: none; padding: 10px 14px; border-radius: 999px; font-size: 11.5px; font-weight: 800; cursor: pointer; }
-    .popup-btn-dismiss { background: none; border: none; color: #94a3b8; font-size: 11px; cursor: pointer; }
-
-    /* Modal bảng lịch */
-    .schedule-modal-backdrop {
-      position: fixed; inset: 0; background: rgba(3,7,18,0.85); backdrop-filter: blur(10px);
-      z-index: 250; display: none; align-items: flex-end; justify-content: center;
+    .acorn-day-number {
+      position: relative;
+      z-index: 2;
+      font-size: 12px;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 1px 3px #000;
     }
-    .schedule-modal-backdrop.show { display: flex; }
-    .schedule-modal-card {
-      background: #091322; border: 1px solid rgba(56,189,248,0.3); border-top-left-radius: 24px; border-top-right-radius: 24px;
-      width: 100%; max-width: 420px; max-height: 85vh; overflow-y: auto; padding: 24px 20px 40px; color: #e2e8f0;
+    .cal-date-cell.has-event .acorn-bg {
+      filter: brightness(1.2) drop-shadow(0 0 6px #38bdf8);
     }
-    .cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
-    .cal-title { font-size: 17px; font-weight: 800; }
-    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 20px; text-align: center; }
-    .cal-day-name { font-size: 10px; color: #7dd3fc; font-weight: 700; padding: 4px 0; }
-    .cal-date-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; position: relative; cursor: pointer; }
-    .acorn-bg { position: absolute; inset: 2px; width: calc(100% - 4px); height: calc(100% - 4px); object-fit: contain; z-index: 1; }
-    .acorn-day-number { position: relative; z-index: 2; font-size: 12px; font-weight: 800; color: #fff; text-shadow: 0 1px 3px #000; }
-    .cal-date-cell.has-event .acorn-bg { filter: brightness(1.1) drop-shadow(0 0 6px #38bdf8); }
-    .cal-date-cell.has-event::after { content: ""; position: absolute; top: 2px; right: 2px; width: 6px; height: 6px; background: #00f2fe; border-radius: 50%; z-index: 3; }
-    .cal-date-cell.active-selected .acorn-bg { transform: scale(1.08); filter: drop-shadow(0 0 10px #38bdf8); }
-    
-    .day-detail-panel { background: #0b1a2e; border: 1px solid rgba(56,189,248,0.25); border-radius: 16px; padding: 16px; }
-    .day-detail-title { font-size: 14px; font-weight: 800; color: #38bdf8; margin-bottom: 12px; }
-    .schedule-detail-card { background: #071322; border: 1px solid rgba(56,189,248,0.15); border-radius: 12px; padding: 12px; margin-bottom: 10px; }
-    .detail-time { font-size: 11px; color: #38bdf8; font-weight: 700; }
-    .detail-event-title { font-size: 14px; font-weight: 700; margin: 4px 0; }
-    .copy-tag-badge { display: inline-block; background: rgba(14,165,233,0.2); border: 1px dashed #38bdf8; padding: 3px 8px; border-radius: 6px; color: #38bdf8; font-size: 11px; cursor: pointer; }
+    .cal-date-cell.has-event::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 6px;
+      height: 6px;
+      background: #00f2fe;
+      border-radius: 50%;
+      z-index: 3;
+    }
+    .cal-date-cell.active-selected .acorn-bg {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 10px #38bdf8);
+    }
+    .day-detail-panel {
+      background: #0b1a2e;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .day-detail-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #38bdf8;
+      margin-bottom: 12px;
+    }
+    .schedule-detail-card {
+      background: #071322;
+      border: 1px solid rgba(56, 189, 248, 0.15);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    .detail-time {
+      font-size: 11px;
+      color: #38bdf8;
+      font-weight: 700;
+    }
+    .detail-event-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 4px 0;
+    }
+    .copy-tag-badge {
+      display: inline-block;
+      background: rgba(14, 165, 233, 0.2);
+      border: 1px dashed #38bdf8;
+      padding: 3px 8px;
+      border-radius: 6px;
+      color: #38bdf8;
+      font-size: 11px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -646,7 +852,7 @@
         </div>
       </div>
 
-      <!-- MẠNG XÃ HỘI (ICON DẠNG SVG & FILE ẢNH THR.PNG) -->
+      <!-- MẠNG XÃ HỘI (5 ICON NẰM RIÊNG) -->
       <div class="social-title">// CHANNELS & SOCIALS</div>
       <div class="social-list">
         <!-- Facebook -->
@@ -670,7 +876,7 @@
           </svg>
         </a>
 
-        <!-- Threads (Sử dụng trực tiếp file ảnh thr.png) -->
+        <!-- Threads (thr.png) -->
         <a href="https://www.threads.com/@nguyen_jungkien" target="_blank" rel="noopener noreferrer" class="social-btn" title="Threads">
           <img src="thr.png" alt="Threads" style="width: 20px; height: 20px; object-fit: contain; display: block;">
         </a>
@@ -681,12 +887,13 @@
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
         </a>
-              <!-- Nút lịch trình -->
+      </div>
+
+      <!-- NÚT LỊCH TRÌNH 1 HÀNG DƯỚI - CHỮ PHÁT SÁNG -->
       <button class="mono schedule-trigger-btn" onclick="openScheduleModal()">
         <img src="hatde.png.PNG" alt="Acorn" class="acorn-btn-icon">
-        <span>XEM LỊCH TRÌNH →</span>
+        <span class="schedule-btn-text">XEM LỊCH TRÌNH →</span>
       </button>
-      </div>
     </section>
 
     <!-- Divider -->
@@ -841,7 +1048,7 @@
           </div>
         </details>
 
-        <!-- THREADS (Sử dụng trực tiếp file ảnh thr.png) -->
+        <!-- THREADS (thr.png) -->
         <details class="platform-accordion">
           <summary class="platform-header">
             <div class="platform-left">
@@ -889,14 +1096,12 @@
           <h3 class="support-title">Hướng dẫn Mass Buy iTunes</h3>
         </div>
         
-        <!-- Mục 1: Hướng dẫn mass buy (Updating) -->
         <div class="guide-category">1. HƯỚNG DẪN MASS BUY</div>
         <span class="status-badge">● Updating</span>
         <p class="support-desc">
           Quy trình tạo nhiều tài khoản Apple ID, gift code và hướng dẫn mua bài hát đồng loạt để đẩy thứ hạng nhạc số đang được cập nhật.
         </p>
 
-        <!-- Mục 2: Lấy mã itunes miễn phí (Giữ link phát code) -->
         <div class="guide-category" style="margin-top: 14px;">2. LẤY MÃ ITUNES MIỄN PHÍ</div>
         <div class="action-links" style="margin-top: 8px;">
           <a href="https://kien-itunes-code.vercel.app/" target="_blank" rel="noopener noreferrer" class="code-btn mono">
@@ -905,7 +1110,7 @@
         </div>
       </div>
 
-     <!-- 3. CÁC DỰ ÁN SUPPORT -->
+      <!-- 3. CÁC DỰ ÁN SUPPORT -->
       <div class="support-card">
         <div class="support-card-head">
           <span class="support-index">#03</span>
@@ -917,150 +1122,19 @@
           </a>
         </div>
       </div>
+    </section>
+  </div>
 
   <!-- Khung phát YouTube ẩn -->
   <div id="ytPlayer" style="position: fixed; bottom: 0; right: 0; width: 1px; height: 1px; opacity: 0; pointer-events: none; z-index: -1;"></div>
 
   <!-- Nút đĩa nhạc điều khiển Bật / Tắt -->
-  <button class="music-disc-btn" id="musicBtn" onclick="toggleAudio(event)" title="Bật/Tắt nhạc">
-    🎵
-  </button>
+  <button class="music-disc-btn" id="musicBtn" onclick="toggleAudio(event)" title="Bật/Tắt nhạc">🎵</button>
 
-  <script>
-    function toggleMenu() {
-      const drawer = document.getElementById('menuDrawer');
-      const overlay = document.getElementById('menuOverlay');
-      drawer.classList.toggle('open');
-      overlay.classList.toggle('open');
-    }
-
-    // ID video YouTube
-    const YT_VIDEO_ID = 'V1Ehfy4YFFg';
-
-    let player;
-    let isPlaying = false;
-    const musicBtn = document.getElementById('musicBtn');
-
-    // Nạp mã YouTube IFrame API
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('ytPlayer', {
-        height: '1',
-        width: '1',
-        videoId: YT_VIDEO_ID,
-        playerVars: {
-          autoplay: 0,
-          loop: 1,
-          playlist: YT_VIDEO_ID,
-          playsinline: 1
-        },
-        events: {
-          'onReady': onPlayerReady
-        }
-      });
-    }
-
-    function onPlayerReady() {
-      // Tự động phát khi chạm vào màn hình lần đầu
-      function startOnFirstTouch() {
-        if (!isPlaying && player && player.playVideo) {
-          player.playVideo();
-          isPlaying = true;
-          musicBtn.classList.add('playing');
-          musicBtn.innerText = '🎵';
-          document.removeEventListener('click', startOnFirstTouch);
-          document.removeEventListener('touchstart', startOnFirstTouch);
-        }
-      }
-      document.addEventListener('click', startOnFirstTouch);
-      document.addEventListener('touchstart', startOnFirstTouch);
-    }
-
-    // Bật / Tắt nhạc thủ công
-    function toggleAudio(e) {
-      if (e) {
-        e.stopPropagation();
-        e.preventDefault();
-      }
-      if (!player || !player.playVideo) return;
-
-      if (isPlaying) {
-        player.pauseVideo();
-        isPlaying = false;
-        musicBtn.classList.remove('playing');
-        musicBtn.innerText = '🔇';
-      } else {
-        player.playVideo();
-        isPlaying = true;
-        musicBtn.classList.add('playing');
-        musicBtn.innerText = '🎵';
-      }
-    }
-  </script>
-        <!-- Khung Canvas tạo hiệu ứng tuyết rơi mật độ vừa phải -->
+  <!-- Lớp Canvas Tuyết Rơi -->
   <canvas id="snowCanvas"></canvas>
 
-  <script>
-    (function initSnow() {
-      const canvas = document.getElementById('snowCanvas');
-      const ctx = canvas.getContext('2d');
-      let width = canvas.width = canvas.offsetWidth;
-      let height = canvas.height = canvas.offsetHeight;
-
-      window.addEventListener('resize', () => {
-        width = canvas.width = canvas.offsetWidth;
-        height = canvas.height = canvas.offsetHeight;
-      });
-
-      // Mật độ vừa phải: 35 bông tuyết đa kích cỡ, rơi nhẹ nhàng lấp lánh
-      const flakesCount = 35;
-      const flakes = [];
-
-      for (let i = 0; i < flakesCount; i++) {
-        flakes.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          r: Math.random() * 2.2 + 0.8,     // Kích thước hạt tuyết từ 0.8px - 3px
-          speedY: Math.random() * 0.9 + 0.4, // Tốc độ rơi êm dịu
-          speedX: (Math.random() - 0.5) * 0.4, // Dao động nhẹ ngang
-          opacity: Math.random() * 0.6 + 0.3
-        });
-      }
-
-      function render() {
-        ctx.clearRect(0, 0, width, height);
-        ctx.fillStyle = "#ffffff";
-
-        flakes.forEach(flake => {
-          ctx.beginPath();
-          ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 255, 255, ${flake.opacity})`;
-          ctx.shadowBlur = 6;
-          ctx.shadowColor = "rgba(224, 242, 254, 0.8)";
-          ctx.fill();
-
-          flake.y += flake.speedY;
-          flake.x += flake.speedX;
-
-          // Khi rơi xuống đáy thì lặp lại từ đỉnh
-          if (flake.y > height) {
-            flake.y = -5;
-            flake.x = Math.random() * width;
-          }
-          if (flake.x > width) flake.x = 0;
-          if (flake.x < 0) flake.x = width;
-        });
-
-        requestAnimationFrame(render);
-      }
-      render();
-    })();
-  </script>
-  <!-- Pop-up hôm nay -->
+  <!-- 1. POP-UP TÍN HIỆU HÔM NAY -->
   <div class="schedule-popup-backdrop" id="todayPopup">
     <div class="schedule-popup-card">
       <button class="popup-close-x" onclick="closeTodayPopup()">✕</button>
@@ -1078,7 +1152,7 @@
     </div>
   </div>
 
-  <!-- Modal bảng lịch -->
+  <!-- 2. MODAL BẢNG LỊCH HẠT DẺ -->
   <div class="schedule-modal-backdrop" id="scheduleModal">
     <div class="schedule-modal-card">
       <div class="cal-header">
@@ -1092,34 +1166,163 @@
       </div>
     </div>
   </div>
-        <script>
+
+  <script>
+    function toggleMenu() {
+      const drawer = document.getElementById('menuDrawer');
+      const overlay = document.getElementById('menuOverlay');
+      drawer.classList.toggle('open');
+      overlay.classList.toggle('open');
+    }
+
+    /* NHẠC NỀN YOUTUBE */
+    const YT_VIDEO_ID = 'V1Ehfy4YFFg';
+    let player;
+    let isPlaying = false;
+    const musicBtn = document.getElementById('musicBtn');
+
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('ytPlayer', {
+        height: '1',
+        width: '1',
+        videoId: YT_VIDEO_ID,
+        playerVars: { autoplay: 0, loop: 1, playlist: YT_VIDEO_ID, playsinline: 1 },
+        events: { 'onReady': onPlayerReady }
+      });
+    }
+
+    function onPlayerReady() {
+      function startOnFirstTouch() {
+        if (!isPlaying && player && player.playVideo) {
+          player.playVideo();
+          isPlaying = true;
+          musicBtn.classList.add('playing');
+          musicBtn.innerText = '🎵';
+          document.removeEventListener('click', startOnFirstTouch);
+          document.removeEventListener('touchstart', startOnFirstTouch);
+        }
+      }
+      document.addEventListener('click', startOnFirstTouch);
+      document.addEventListener('touchstart', startOnFirstTouch);
+    }
+
+    function toggleAudio(e) {
+      if (e) { e.stopPropagation(); e.preventDefault(); }
+      if (!player || !player.playVideo) return;
+      if (isPlaying) {
+        player.pauseVideo();
+        isPlaying = false;
+        musicBtn.classList.remove('playing');
+        musicBtn.innerText = '🔇';
+      } else {
+        player.playVideo();
+        isPlaying = true;
+        musicBtn.classList.add('playing');
+        musicBtn.innerText = '🎵';
+      }
+    }
+
+    /* HIỆU ỨNG TUYẾT RƠI CANVAS */
+    (function initSnow() {
+      const canvas = document.getElementById('snowCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth > 420 ? 420 : window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth > 420 ? 420 : window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const flakesCount = 35;
+      const flakes = [];
+      for (let i = 0; i < flakesCount; i++) {
+        flakes.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 2.2 + 0.8,
+          speedY: Math.random() * 0.8 + 0.4,
+          speedX: (Math.random() - 0.5) * 0.4,
+          opacity: Math.random() * 0.6 + 0.3
+        });
+      }
+
+      function render() {
+        ctx.clearRect(0, 0, width, height);
+        for (let i = 0; i < flakesCount; i++) {
+          const flake = flakes[i];
+          ctx.beginPath();
+          ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${flake.opacity})`;
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = "rgba(224, 242, 254, 0.8)";
+          ctx.fill();
+          flake.y += flake.speedY;
+          flake.x += flake.speedX;
+          if (flake.y > height) { flake.y = -5; flake.x = Math.random() * width; }
+          if (flake.x > width) flake.x = 0;
+          if (flake.x < 0) flake.x = width;
+        }
+        requestAnimationFrame(render);
+      }
+      render();
+    })();
+
+    /* ================= LOGIC LỊCH TRÌNH VÀ GOOGLE SHEETS ================= */
     const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRDdQBion_yHeDasMcUbRsl5qSyXq7_3s-X9cTDPpfTk63MefxFIxw0XmZVu-wg-zGrcZq7CalrRJfj/pub?output=csv";
 
     let scheduleData = [];
     let currentViewingDate = new Date();
 
+    function parseCSV(str) {
+      const arr = [];
+      let quote = false;
+      let col = 0, row = 0;
+      for (let c = 0; c < str.length; c++) {
+        let cc = str[c], nc = str[c+1];
+        arr[row] = arr[row] || [];
+        arr[row][col] = arr[row][col] || '';
+        if (cc === '"' && quote && nc === '"') { arr[row][col] += '"'; ++c; continue; }
+        if (cc === '"') { quote = !quote; continue; }
+        if (cc === ',' && !quote) { ++col; continue; }
+        if (cc === '\r' && nc === '\n' && !quote) { ++row; col = 0; ++c; continue; }
+        if (cc === '\n' && !quote) { ++row; col = 0; continue; }
+        if (cc === '\r' && !quote) { ++row; col = 0; continue; }
+        arr[row][col] += cc;
+      }
+      return arr;
+    }
+
     async function loadScheduleFromSheet() {
       try {
         const res = await fetch(CSV_URL);
         const text = await res.text();
-        const rows = text.split('\n').map(r => r.split(','));
+        const rows = parseCSV(text);
         scheduleData = [];
         for (let i = 1; i < rows.length; i++) {
           const r = rows[i];
-          if (r[0] && r[0].trim()) {
+          if (r && r[0] && r[0].trim()) {
             scheduleData.push({
-              date: r[0].replace(/"/g, '').trim(),
-              time: r[1] ? r[1].replace(/"/g, '').trim() : 'Cả ngày',
-              title: r[2] ? r[2].replace(/"/g, '').trim() : '',
-              hashtags: r[3] ? r[3].replace(/"/g, '').trim() : '',
-              threads_topic: r[4] ? r[4].replace(/"/g, '').trim() : '',
-              desc: r[5] ? r[5].replace(/"/g, '').trim() : ''
+              date: r[0].trim(),
+              time: r[1] ? r[1].trim() : 'Cả ngày',
+              title: r[2] ? r[2].trim() : '',
+              hashtags: r[3] ? r[3].trim() : '',
+              threads_topic: r[4] ? r[4].trim() : '',
+              desc: r[5] ? r[5].trim() : ''
             });
           }
         }
         checkTodayEvents();
         renderCalendar();
-      } catch (err) { console.error(err); }
+      } catch (err) {
+        console.error("Lỗi tải Google Sheets:", err);
+      }
     }
 
     function checkTodayEvents() {
@@ -1136,19 +1339,30 @@
       }
     }
 
-    function closeTodayPopup() { document.getElementById('todayPopup').classList.remove('show'); }
-    function openScheduleModalFromPopup() { closeTodayPopup(); openScheduleModal(); }
+    function closeTodayPopup() {
+      document.getElementById('todayPopup').classList.remove('show');
+    }
+
+    function openScheduleModalFromPopup() {
+      closeTodayPopup();
+      openScheduleModal();
+    }
 
     function renderCalendar() {
       const grid = document.getElementById('calendarGrid');
+      if (!grid) return;
       grid.innerHTML = ['CN','T2','T3','T4','T5','T6','T7'].map(d => `<div class="cal-day-name mono">${d}</div>`).join('');
       const y = currentViewingDate.getFullYear(), m = currentViewingDate.getMonth();
-      document.getElementById('calMonthYearTitle').innerText = `THÁNG ${m+1} /${y}`;
+      document.getElementById('calMonthYearTitle').innerText = `THÁNG ${m+1} / ${y}`;
       const first = new Date(y, m, 1).getDay(), total = new Date(y, m+1, 0).getDate();
-      for (let i = 0; i < first; i++) grid.innerHTML += `<div class="cal-date-cell"></div>`;
+      for (let i = 0; i < first; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'cal-date-cell empty';
+        grid.appendChild(emptyCell);
+      }
       for (let d = 1; d <= total; d++) {
         const dStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-        const has = scheduleData.some(e => e.date === dStr);
+        const has = scheduleData && scheduleData.some(e => e.date === dStr);
         const cell = document.createElement('div');
         cell.className = `cal-date-cell ${has ? 'has-event' : ''}`;
         cell.innerHTML = `<img src="hatde2.png.PNG" alt="acorn" class="acorn-bg"><span class="acorn-day-number">${d}</span>`;
@@ -1163,8 +1377,9 @@
 
     function showDateDetail(dStr) {
       document.getElementById('detailDateHeading').innerText = `LỊCH TRÌNH NGÀY ${dStr}`;
-      const evs = scheduleData.filter(e => e.date === dStr);
+      const evs = (scheduleData || []).filter(e => e.date === dStr);
       const list = document.getElementById('detailContentList');
+      if (!list) return;
       if (evs.length === 0) {
         list.innerHTML = `<div style="font-size:12px;color:#94a3b8;">Không có sự kiện nào trong ngày này.</div>`;
         return;
@@ -1172,7 +1387,8 @@
       list.innerHTML = evs.map(e => `
         <div class="schedule-detail-card">
           <div class="detail-time mono">⏰ ${e.time}</div>
-          <div class="detail-event-title">${e.title}</div>${e.hashtags ? `<div><span class="copy-tag-badge mono" onclick="navigator.clipboard.writeText('${e.hashtags}');alert('Đã sao chép!')">${e.hashtags}</span></div>` : ''}
+          <div class="detail-event-title">${e.title}</div>
+          ${e.hashtags ? `<div><span class="copy-tag-badge mono" onclick="navigator.clipboard.writeText('${e.hashtags}');alert('Đã sao chép hashtag!')">${e.hashtags}</span></div>` : ''}
           ${e.threads_topic ? `<div style="margin-top:6px;font-size:11.5px;color:#cbd5e1;"><b style="color:#7dd3fc">Threads:</b> ${e.threads_topic}</div>` : ''}
           ${e.desc ? `<div style="margin-top:4px;font-size:11px;color:#94a3b8;">${e.desc}</div>` : ''}
         </div>
@@ -1180,9 +1396,21 @@
     }
 
     function openScheduleModal() {
-      document.getElementById('scheduleModal').classList.add('show');
+      const modal = document.getElementById('scheduleModal');
+      if (!modal) return;
+      modal.classList.add('show');
       renderCalendar();
       const t = new Date();
-      showDateDetail(`${t.getFullYear()}-${
+      const todayStr = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}-${String(t.getDate()).padStart(2,'0')}`;
+      showDateDetail(todayStr);
+    }
+
+    function closeScheduleModal() {
+      const modal = document.getElementById('scheduleModal');
+      if (modal) modal.classList.remove('show');
+    }
+
+    window.addEventListener('DOMContentLoaded', loadScheduleFromSheet);
+  </script>
 </body>
 </html>
