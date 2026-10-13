@@ -1330,7 +1330,8 @@
     }
 
     function showDateDetail(dStr) {
-      document.getElementById('detailDateHeading').innerText = `LỊCH TRÌNH NGÀY ${dStr}`;
+  const [y, m, d] = dStr.split('-');
+  document.getElementById('detailDateHeading').innerText = `LỊCH TRÌNH NGÀY ${d}/${m}/${y}`;
       const evs = (scheduleData || []).filter(e => e.date === dStr);
       const list = document.getElementById('detailContentList');
       if (!list) return;
