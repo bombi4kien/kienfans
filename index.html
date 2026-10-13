@@ -688,6 +688,7 @@
       font-weight: 700;
       padding: 4px 0;
     }
+        /* Ô chia ngày dạng ô vuông bo góc */
     .cal-date-cell {
       aspect-ratio: 1;
       display: flex;
@@ -695,44 +696,71 @@
       justify-content: center;
       position: relative;
       cursor: pointer;
+      background: rgba(14, 30, 52, 0.55);
+      border: 1px solid rgba(56, 189, 248, 0.12);
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
     }
     .cal-date-cell.empty {
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
       cursor: default;
     }
+    
+    /* Ngày hôm nay được viền sáng xanh neon nổi bật */
+    .cal-date-cell.is-today {
+      border: 1.8px solid #00F2FE !important;
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.45), inset 0 0 8px rgba(0, 242, 254, 0.2) !important;
+      background: rgba(16, 42, 74, 0.75);
+    }
+
+    /* Ảnh hạt dẻ nằm bên trong ô */
     .acorn-bg {
       position: absolute;
-      inset: 2px;
-      width: calc(100% - 4px);
-      height: calc(100% - 4px);
+      inset: 4px;
+      width: calc(100% - 8px);
+      height: calc(100% - 8px);
       object-fit: contain;
       z-index: 1;
+      opacity: 0.9;
     }
-    /* Số ngày màu xanh neon nổi bật */
+
+    /* Số ngày màu xanh neon trên hạt dẻ */
     .acorn-day-number {
       position: relative;
       z-index: 2;
       font-size: 13px;
       font-weight: 800;
       color: #38bdf8;
-      text-shadow: 0 0 6px rgba(12, 25, 44, 0.9), 0 1px 2px #000;
+      text-shadow: 0 0 6px rgba(12, 25, 44, 0.95), 0 1px 2px #000;
     }
+
+    /* Ngày có sự kiện: hạt dẻ phát sáng và có chấm tròn phía dưới */
     .cal-date-cell.has-event .acorn-bg {
-      filter: brightness(1.2) drop-shadow(0 0 6px #38bdf8);
+      filter: brightness(1.25) drop-shadow(0 0 6px #38bdf8);
     }
     .cal-date-cell.has-event::after {
       content: "";
       position: absolute;
-      top: 2px;
-      right: 2px;
-      width: 6px;
-      height: 6px;
-      background: #00f2fe;
+      bottom: 4px;
+      width: 5px;
+      height: 5px;
+      background: #00F2FE;
       border-radius: 50%;
+      box-shadow: 0 0 6px #00F2FE;
       z-index: 3;
     }
+
+    /* Khi chạm chọn ô */
+    .cal-date-cell.active-selected {
+      border-color: #38bdf8;
+      background: rgba(14, 165, 233, 0.2);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.5);
+    }
     .cal-date-cell.active-selected .acorn-bg {
-      transform: scale(1.08);
-      filter: drop-shadow(0 0 10px #38bdf8);
+      transform: scale(1.06);
     }
     .day-detail-panel {
       background: #0b1a2e;
@@ -1327,27 +1355,44 @@
         };
         grid.appendChild(cell);
       }
-    }
+  
+        function renderCalendar() {
+      const grid = document.getElementById('calendarGrid');
+      if (!grid) return;
+      grid.innerHTML = ['CN','T2','T3','T4','T5','T6','T7'].map(d => `<div class="cal-day-name mono">${d}</div>`).join('');
+      
+      const y = currentViewingDate.getFullYear(), m = currentViewingDate.getMonth();
+      const titleEl = document.getElementById('calMonthYearTitle');
+      if (titleEl) titleEl.innerText = `THÁNG ${m+1} / ${y}`;
 
-    function showDateDetail(dStr) {
-  const [y, m, d] = dStr.split('-');
-  document.getElementById('detailDateHeading').innerText = `LỊCH TRÌNH NGÀY ${d}/${m}/${y}`;
-      const evs = (scheduleData || []).filter(e => e.date === dStr);
-      const list = document.getElementById('detailContentList');
-      if (!list) return;
-      if (evs.length === 0) {
-        list.innerHTML = `<div style="font-size:12px;color:#94a3b8;">Không có sự kiện nào trong ngày này.</div>`;
-        return;
+      // Xác định ngày hôm nay trong thực tế
+      const realToday = new Date();
+      const realTodayStr = `${realToday.getFullYear()}-${String(realToday.getMonth()+1).padStart(2,'0')}-${String(realToday.getDate()).padStart(2,'0')}`;
+
+      const first = new Date(y, m, 1).getDay(), total = new Date(y, m+1, 0).getDate();
+      for (let i = 0; i < first; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'cal-date-cell empty';
+        grid.appendChild(emptyCell);
       }
-      list.innerHTML = evs.map(e => `
-        <div class="schedule-detail-card">
-          <div class="detail-time mono">⏰ ${e.time}</div>
-          <div class="detail-event-title">${e.title}</div>
-          ${e.hashtags ? `<div><span class="copy-tag-badge mono" onclick="navigator.clipboard.writeText('${e.hashtags}');alert('Đã sao chép hashtag!')">${e.hashtags}</span></div>` : ''}
-          ${e.threads_topic ? `<div style="margin-top:6px;font-size:11.5px;color:#cbd5e1;"><b style="color:#7dd3fc">Threads:</b> ${e.threads_topic}</div>` : ''}
-          ${e.desc ? `<div style="margin-top:4px;font-size:11px;color:#94a3b8;">${e.desc}</div>` : ''}
-        </div>
-      `).join('');
+
+      for (let d = 1; d <= total; d++) {
+        const dStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        const has = scheduleData && scheduleData.some(e => e.date === dStr);
+        const isToday = (dStr === realTodayStr);
+
+        const cell = document.createElement('div');
+        // Thêm class is-today nếu là ngày hôm nay
+        cell.className = `cal-date-cell ${has ? 'has-event' : ''} ${isToday ? 'is-today' : ''}`;
+        cell.innerHTML = `<img src="hatde2.png.PNG" alt="acorn" class="acorn-bg"><span class="acorn-day-number">${d}</span>`;
+        
+        cell.onclick = () => {
+          document.querySelectorAll('.cal-date-cell').forEach(c => c.classList.remove('active-selected'));
+          cell.classList.add('active-selected');
+          showDateDetail(dStr);
+        };
+        grid.appendChild(cell);
+      }
     }
 
     function openScheduleModal() {
