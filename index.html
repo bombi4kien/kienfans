@@ -1145,14 +1145,17 @@
     </div>
   </div>
 
-  <script>
+    <script>
     function toggleMenu() {
       const drawer = document.getElementById('menuDrawer');
       const overlay = document.getElementById('menuOverlay');
-      drawer.classList.toggle('open');
-      overlay.classList.toggle('open');
+      if (drawer && overlay) {
+        drawer.classList.toggle('open');
+        overlay.classList.toggle('open');
+      }
     }
 
+    /* NHẠC NỀN YOUTUBE */
     const YT_VIDEO_ID = 'V1Ehfy4YFFg';
     let player;
     let isPlaying = false;
@@ -1178,8 +1181,10 @@
         if (!isPlaying && player && player.playVideo) {
           player.playVideo();
           isPlaying = true;
-          musicBtn.classList.add('playing');
-          musicBtn.innerText = '🎵';
+          if (musicBtn) {
+            musicBtn.classList.add('playing');
+            musicBtn.innerText = '🎵';
+          }
           document.removeEventListener('click', startOnFirstTouch);
           document.removeEventListener('touchstart', startOnFirstTouch);
         }
@@ -1194,16 +1199,21 @@
       if (isPlaying) {
         player.pauseVideo();
         isPlaying = false;
-        musicBtn.classList.remove('playing');
-        musicBtn.innerText = '🔇';
+        if (musicBtn) {
+          musicBtn.classList.remove('playing');
+          musicBtn.innerText = '🔇';
+        }
       } else {
         player.playVideo();
         isPlaying = true;
-        musicBtn.classList.add('playing');
-        musicBtn.innerText = '🎵';
+        if (musicBtn) {
+          musicBtn.classList.add('playing');
+          musicBtn.innerText = '🎵';
+        }
       }
     }
 
+    /* TUYẾT RƠI CANVAS */
     (function initSnow() {
       const canvas = document.getElementById('snowCanvas');
       if (!canvas) return;
@@ -1250,6 +1260,7 @@
       render();
     })();
 
+    /* ================= LOGIC LỊCH TRÌNH VÀ GOOGLE SHEETS ================= */
     const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRDdQBion_yHeDasMcUbRsl5qSyXq7_3s-X9cTDPpfTk63MefxFIxw0XmZVu-wg-zGrcZq7CalrRJfj/pub?output=csv";
 
     let scheduleData = [];
@@ -1294,7 +1305,6 @@
           }
         }
         checkTodayEvents();
-        renderCalendar();
       } catch (err) {
         console.error("Lỗi Google Sheets:", err);
       }
@@ -1305,17 +1315,30 @@
       const todayStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
       const evs = scheduleData.filter(e => e.date === todayStr);
       if (evs.length > 0) {
-        document.getElementById('popupDay').innerText = String(today.getDate()).padStart(2,'0');
-        document.getElementById('popupMonth').innerText = `TH${today.getMonth()+1}`;
-        document.getElementById('popupCountText').innerText = `${evs.length} SỰ KIỆN HÔM NAY`;
+        const popDay = document.getElementById('popupDay');
+        const popMonth = document.getElementById('popupMonth');
+        const popCount = document.getElementById('popupCountText');
         const list = document.getElementById('popupEventsList');
-        list.innerHTML = evs.map(e => `<div class="popup-event-item"><span class="popup-event-time mono">${e.time}</span><span class="popup-event-name">${e.title}</span></div>`).join('');
-        document.getElementById('todayPopup').classList.add('show');
+        
+        if (popDay) popDay.innerText = String(today.getDate()).padStart(2,'0');
+        if (popMonth) popMonth.innerText = `TH${today.getMonth()+1}`;
+        if (popCount) popCount.innerText = `${evs.length} SỰ KIỆN HÔM NAY`;
+        if (list) {
+          list.innerHTML = evs.map(e => `
+            <div class="popup-event-item">
+              <span class="popup-event-time mono">${e.time}</span>
+              <span class="popup-event-name">${e.title}</span>
+            </div>
+          `).join('');
+        }
+        const todayPopup = document.getElementById('todayPopup');
+        if (todayPopup) todayPopup.classList.add('show');
       }
     }
 
     function closeTodayPopup() {
-      document.getElementById('todayPopup').classList.remove('show');
+      const todayPopup = document.getElementById('todayPopup');
+      if (todayPopup) todayPopup.classList.remove('show');
     }
 
     function openScheduleModalFromPopup() {
@@ -1332,44 +1355,17 @@
       const grid = document.getElementById('calendarGrid');
       if (!grid) return;
       grid.innerHTML = ['CN','T2','T3','T4','T5','T6','T7'].map(d => `<div class="cal-day-name mono">${d}</div>`).join('');
-      const y = currentViewingDate.getFullYear(), m = currentViewingDate.getMonth();
-      const titleEl = document.getElementById('calMonthYearTitle');
-      if (titleEl) titleEl.innerText = `THÁNG ${m+1} / ${y}`;
-
-      const first = new Date(y, m, 1).getDay(), total = new Date(y, m+1, 0).getDate();
-      for (let i = 0; i < first; i++) {
-        const emptyCell = document.createElement('div');
-        emptyCell.className = 'cal-date-cell empty';
-        grid.appendChild(emptyCell);
-      }
-      for (let d = 1; d <= total; d++) {
-        const dStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-        const has = scheduleData && scheduleData.some(e => e.date === dStr);
-        const cell = document.createElement('div');
-        cell.className = `cal-date-cell ${has ? 'has-event' : ''}`;
-        cell.innerHTML = `<img src="hatde2.png.PNG" alt="acorn" class="acorn-bg"><span class="acorn-day-number">${d}</span>`;
-        cell.onclick = () => {
-          document.querySelectorAll('.cal-date-cell').forEach(c => c.classList.remove('active-selected'));
-          cell.classList.add('active-selected');
-          showDateDetail(dStr);
-        };
-        grid.appendChild(cell);
-      }
-  
-        function renderCalendar() {
-      const grid = document.getElementById('calendarGrid');
-      if (!grid) return;
-      grid.innerHTML = ['CN','T2','T3','T4','T5','T6','T7'].map(d => `<div class="cal-day-name mono">${d}</div>`).join('');
       
       const y = currentViewingDate.getFullYear(), m = currentViewingDate.getMonth();
       const titleEl = document.getElementById('calMonthYearTitle');
       if (titleEl) titleEl.innerText = `THÁNG ${m+1} / ${y}`;
 
-      // Xác định ngày hôm nay trong thực tế
       const realToday = new Date();
       const realTodayStr = `${realToday.getFullYear()}-${String(realToday.getMonth()+1).padStart(2,'0')}-${String(realToday.getDate()).padStart(2,'0')}`;
 
-      const first = new Date(y, m, 1).getDay(), total = new Date(y, m+1, 0).getDate();
+      const first = new Date(y, m, 1).getDay();
+      const total = new Date(y, m+1, 0).getDate();
+
       for (let i = 0; i < first; i++) {
         const emptyCell = document.createElement('div');
         emptyCell.className = 'cal-date-cell empty';
@@ -1382,7 +1378,6 @@
         const isToday = (dStr === realTodayStr);
 
         const cell = document.createElement('div');
-        // Thêm class is-today nếu là ngày hôm nay
         cell.className = `cal-date-cell ${has ? 'has-event' : ''} ${isToday ? 'is-today' : ''}`;
         cell.innerHTML = `<img src="hatde2.png.PNG" alt="acorn" class="acorn-bg"><span class="acorn-day-number">${d}</span>`;
         
@@ -1393,6 +1388,30 @@
         };
         grid.appendChild(cell);
       }
+    }
+
+    function showDateDetail(dStr) {
+      const [y, m, d] = dStr.split('-');
+      const heading = document.getElementById('detailDateHeading');
+      if (heading) heading.innerText = `LỊCH TRÌNH NGÀY ${d}/${m}/${y}`;
+      
+      const list = document.getElementById('detailContentList');
+      if (!list) return;
+
+      const evs = (scheduleData || []).filter(e => e.date === dStr);
+      if (evs.length === 0) {
+        list.innerHTML = `<div style="font-size:12px;color:#94a3b8;">Không có sự kiện nào trong ngày này.</div>`;
+        return;
+      }
+      list.innerHTML = evs.map(e => `
+        <div class="schedule-detail-card">
+          <div class="detail-time mono">⏰ ${e.time}</div>
+          <div class="detail-event-title">${e.title}</div>
+          ${e.hashtags ? `<div><span class="copy-tag-badge mono" onclick="navigator.clipboard.writeText('${e.hashtags}');alert('Đã sao chép hashtag!')">${e.hashtags}</span></div>` : ''}
+          ${e.threads_topic ? `<div style="margin-top:6px;font-size:11.5px;color:#cbd5e1;"><b style="color:#7dd3fc">Threads:</b> ${e.threads_topic}</div>` : ''}
+          ${e.desc ? `<div style="margin-top:4px;font-size:11px;color:#94a3b8;">${e.desc}</div>` : ''}
+        </div>
+      `).join('');
     }
 
     function openScheduleModal() {
