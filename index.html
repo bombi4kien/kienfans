@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ppl là<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
@@ -307,8 +307,8 @@
       transform: translateY(-1px);
     }
     .acorn-btn-icon {
-      width: 22px;
-      height: 22px;
+      width: 30px;
+      height: 30px;
       object-fit: contain;
       display: block;
     }
@@ -726,13 +726,14 @@
       object-fit: contain;
       z-index: 1;
     }
-    .acorn-day-number {
+      .acorn-day-number {
       position: relative;
       z-index: 2;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 800;
-      color: #fff;
-      text-shadow: 0 1px 3px #000;
+      /* Màu xanh công nghệ khớp tone xanh nền và phát sáng nhẹ */
+      color: #38bdf8;
+      text-shadow: 0 0 6px rgba(12, 25, 44, 0.9), 0 1px 2px #000;
     }
     .cal-date-cell.has-event .acorn-bg {
       filter: brightness(1.2) drop-shadow(0 0 6px #38bdf8);
@@ -1155,8 +1156,15 @@
   <!-- 2. MODAL BẢNG LỊCH HẠT DẺ -->
   <div class="schedule-modal-backdrop" id="scheduleModal">
     <div class="schedule-modal-card">
-      <div class="cal-header">
-        <div class="cal-title mono" id="calMonthYearTitle">LỊCH TRÌNH</div>
+            <div class="cal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div class="cal-title mono" id="calMonthYearTitle" style="color: #ffffff; font-weight: 800; font-size: 15px;">THÁNG 10 / 2026</div>
+          <!-- Cụm nút chuyển tháng lui / tới ngay bên phải -->
+          <div style="display: flex; gap: 4px;">
+            <button onclick="changeMonth(-1)" class="mono" title="Tháng trước" style="background: #0d1e34; border: 1px solid rgba(56,189,248,0.4); color: #38bdf8; border-radius: 6px; width: 26px; height: 26px; cursor: pointer; font-size: 11px; display: flex; align-items: center; justify-content: center;">◀</button>
+            <button onclick="changeMonth(1)" class="mono" title="Tháng tiếp theo" style="background: #0d1e34; border: 1px solid rgba(56,189,248,0.4); color: #38bdf8; border-radius: 6px; width: 26px; height: 26px; cursor: pointer; font-size: 11px; display: flex; align-items: center; justify-content: center;">▶</button>
+          </div>
+        </div>
         <button class="close-btn" onclick="closeScheduleModal()">✕</button>
       </div>
       <div class="cal-grid" id="calendarGrid"></div>
@@ -1348,6 +1356,11 @@
       openScheduleModal();
     }
 
+        // Hàm chuyển sang tháng trước hoặc tháng tiếp theo
+    function changeMonth(step) {
+      currentViewingDate.setMonth(currentViewingDate.getMonth() + step);
+      renderCalendar();
+    }
     function renderCalendar() {
       const grid = document.getElementById('calendarGrid');
       if (!grid) return;
