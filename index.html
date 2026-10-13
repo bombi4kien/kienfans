@@ -17,8 +17,8 @@
     html {
       scroll-behavior: smooth;
     }
-    body {
-      background-color: #060B14;
+        body {
+      background-color: #0b1118;
       color: #E2E8F0;
       font-family: 'Syne', sans-serif;
       display: flex;
@@ -32,12 +32,26 @@
       width: 100%;
       max-width: 420px;
       min-height: 100vh;
-      background-color: #060B14;
+      /* Nền màu bạc kim loại pha chiều sâu ánh kim */
+      background: radial-gradient(circle at 50% 18%, #2d3748 0%, #17202c 50%, #0d131a 100%);
       position: relative;
       padding-bottom: 70px;
       overflow-x: hidden;
-      border-left: 1px solid rgba(56, 189, 248, 0.12);
-      border-right: 1px solid rgba(56, 189, 248, 0.12);
+      border-left: 1px solid rgba(203, 213, 225, 0.2);
+      border-right: 1px solid rgba(203, 213, 225, 0.2);
+      box-shadow: 0 0 35px rgba(148, 163, 184, 0.12);
+    }
+    /* Lớp phủ hiệu ứng tuyết rơi toàn màn hình */
+    #snowCanvas {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 420px;
+      height: 100%;
+      pointer-events: none;
+      z-index: 80;
     }
     /* Chữ trắng viền xanh neon */
     .blue-outline-text {
@@ -910,5 +924,65 @@
       }
     }
   </script>
+        <!-- Khung Canvas tạo hiệu ứng tuyết rơi mật độ vừa phải -->
+  <canvas id="snowCanvas"></canvas>
+
+  <script>
+    (function initSnow() {
+      const canvas = document.getElementById('snowCanvas');
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = canvas.offsetWidth;
+      let height = canvas.height = canvas.offsetHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = canvas.offsetWidth;
+        height = canvas.height = canvas.offsetHeight;
+      });
+
+      // Mật độ vừa phải: 35 bông tuyết đa kích cỡ, rơi nhẹ nhàng lấp lánh
+      const flakesCount = 35;
+      const flakes = [];
+
+      for (let i = 0; i < flakesCount; i++) {
+        flakes.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 2.2 + 0.8,     // Kích thước hạt tuyết từ 0.8px - 3px
+          speedY: Math.random() * 0.9 + 0.4, // Tốc độ rơi êm dịu
+          speedX: (Math.random() - 0.5) * 0.4, // Dao động nhẹ ngang
+          opacity: Math.random() * 0.6 + 0.3
+        });
+      }
+
+      function render() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = "#ffffff";
+
+        flakes.forEach(flake => {
+          ctx.beginPath();
+          ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${flake.opacity})`;
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = "rgba(224, 242, 254, 0.8)";
+          ctx.fill();
+
+          flake.y += flake.speedY;
+          flake.x += flake.speedX;
+
+          // Khi rơi xuống đáy thì lặp lại từ đỉnh
+          if (flake.y > height) {
+            flake.y = -5;
+            flake.x = Math.random() * width;
+          }
+          if (flake.x > width) flake.x = 0;
+          if (flake.x < 0) flake.x = width;
+        });
+
+        requestAnimationFrame(render);
+      }
+      render();
+    })();
+  </script>
+
 </body>
 </html>
