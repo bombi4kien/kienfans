@@ -791,15 +791,39 @@
       font-weight: 700;
       margin: 4px 0;
     }
-    .copy-tag-badge {
-      display: inline-block;
-      background: rgba(14, 165, 233, 0.2);
-      border: 1px dashed #38bdf8;
-      padding: 3px 8px;
-      border-radius: 6px;
+        .detail-action-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 6px;
+      background: rgba(14, 30, 52, 0.6);
+      border: 1px solid rgba(56, 189, 248, 0.15);
+      border-radius: 8px;
+      padding: 6px 10px;
+    }
+    .detail-copy-text {
+      font-size: 11.5px;
+      color: #f1f5f9;
+      word-break: break-all;
+      flex: 1;
+    }
+    .btn-copy-mini {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid #38bdf8;
       color: #38bdf8;
-      font-size: 11px;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
       cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    .btn-copy-mini:active {
+      transform: scale(0.95);
+      background: #0284c7;
+      color: #fff;
     }
   </style>
 </head>
@@ -1390,7 +1414,7 @@
       }
     }
 
-    function showDateDetail(dStr) {
+        function showDateDetail(dStr) {
       const [y, m, d] = dStr.split('-');
       const heading = document.getElementById('detailDateHeading');
       if (heading) heading.innerText = `LỊCH TRÌNH NGÀY ${d}/${m}/${y}`;
@@ -1403,15 +1427,53 @@
         list.innerHTML = `<div style="font-size:12px;color:#94a3b8;">Không có sự kiện nào trong ngày này.</div>`;
         return;
       }
+
       list.innerHTML = evs.map(e => `
         <div class="schedule-detail-card">
           <div class="detail-time mono">⏰ ${e.time}</div>
           <div class="detail-event-title">${e.title}</div>
-          ${e.hashtags ? `<div><span class="copy-tag-badge mono" onclick="navigator.clipboard.writeText('${e.hashtags}');alert('Đã sao chép hashtag!')">${e.hashtags}</span></div>` : ''}
-          ${e.threads_topic ? `<div style="margin-top:6px;font-size:11.5px;color:#cbd5e1;"><b style="color:#7dd3fc">Threads:</b> ${e.threads_topic}</div>` : ''}
-          ${e.desc ? `<div style="margin-top:4px;font-size:11px;color:#94a3b8;">${e.desc}</div>` : ''}
+
+          ${e.hashtags ? `
+            <div style="margin-top: 8px;">
+              <span class="detail-label">Hashtag:</span>
+              <div class="detail-action-row">
+                <span class="detail-copy-text mono">${e.hashtags}</span>
+                <button class="btn-copy-mini mono" onclick="copyContent('${e.hashtags.replace(/'/g, "\\'")}', this)">Sao chép</button>
+              </div>
+            </div>
+          ` : ''}
+
+          ${e.threads_topic ? `
+            <div style="margin-top: 8px;">
+              <span class="detail-label">Threads Topic:</span>
+              <div class="detail-action-row">
+                <span class="detail-copy-text">${e.threads_topic}</span>
+                <button class="btn-copy-mini mono" onclick="copyContent('${e.threads_topic.replace(/'/g, "\\'")}', this)">Sao chép</button>
+              </div>
+            </div>
+          ` : ''}
+
+          ${e.desc ? `<div style="margin-top:8px;font-size:11px;color:#94a3b8;line-height:1.4;">${e.desc}</div>` : ''}
         </div>
       `).join('');
+    }
+
+    function copyContent(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.innerText;
+        btn.innerText = '✓ Đã chép';
+        btn.style.borderColor = '#4ade80';
+        btn.style.color = '#4ade80';
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.borderColor = '#38bdf8';
+          btn.style.color = '#38bdf8';
+        }, 1500);
+      }).catch(err => {
+        console.error('Lỗi khi sao chép:', err);
+      });
+    }
+
     }
 
     function openScheduleModal() {
