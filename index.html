@@ -559,6 +559,41 @@
       box-shadow: none;
       cursor: not-allowed;
     }
+
+    /* Khung danh sách bài hát Mass Buy */
+    .song-massbuy-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .song-massbuy-item {
+      background: #081426;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .song-massbuy-name {
+      font-weight: 700;
+      color: #FFFFFF;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+    .song-massbuy-time {
+      font-size: 11px;
+      color: #38BDF8;
+      font-weight: 600;
+      background: rgba(14, 165, 233, 0.15);
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      white-space: nowrap;
+    }
+
     .music-disc-btn {
       position: fixed;
       bottom: 24px;
@@ -1170,13 +1205,23 @@
           <span class="support-index">#02</span>
           <h3 class="support-title">Hướng dẫn Mass Buy iTunes</h3>
         </div>
+        
         <div class="guide-category">1. HƯỚNG DẪN MASS BUY</div>
-        <span class="status-badge">● Updating</span>
-        <p class="support-desc">
-          Quy trình tạo nhiều tài khoản Apple ID, gift code và hướng dẫn mua bài hát đồng loạt để đẩy thứ hạng nhạc số đang được cập nhật.
-        </p>
+        <div class="support-desc" style="margin-bottom: 8px;">
+          <b style="color: #F0F9FF; display: block; margin-bottom: 4px;">Hướng dẫn chung:</b>
+          <p style="margin-bottom: 6px;">• Tập trung mua nhạc tại app iTunes Store vào khung giờ nhất định theo hướng dẫn của các fanbase, fansite.</p>
+          <p>• Nếu qua giờ mass buy đã hướng dẫn, trong vòng 2 tiếng đổ lại vẫn có thể tiếp tục thực hiện mua nhạc. Nếu quá 2 tiếng, vui lòng chờ các hướng dẫn tiếp theo.</p>
+        </div>
 
-        <div class="guide-category" style="margin-top: 14px;">2. LẤY MÃ ITUNES MIỄN PHÍ</div>
+        <!-- Khung danh sách bài hát và khung giờ mass buy -->
+        <div class="song-massbuy-list">
+          <div class="song-massbuy-item">
+            <span class="song-massbuy-name mono">DDCDCLE</span>
+            <span class="song-massbuy-time mono">21 giờ ngày 15/10</span>
+          </div>
+        </div>
+
+        <div class="guide-category" style="margin-top: 18px;">2. LẤY MÃ ITUNES MIỄN PHÍ</div>
         <div class="action-links" style="margin-top: 8px;">
           <a href="https://kien-itunes-code.vercel.app/" target="_blank" rel="noopener noreferrer" class="code-btn mono">
             <span>🎁 Lấy mã iTunes miễn phí ↗</span>
@@ -1184,7 +1229,7 @@
         </div>
       </div>
 
-      <!-- 3. CÁC DỰ ÁN SUPPORT (COMING SOON) -->
+      <!-- 3. CÁC DỰ ÁN SUPPORT -->
       <div class="support-card">
         <div class="support-card-head">
           <span class="support-index">#03</span>
@@ -1192,7 +1237,7 @@
         </div>
         <div class="action-links" style="margin-top: 12px;">
           <div class="code-btn mono disabled-btn">
-            <span>🎂 HAPPY KIEN'S 22ND BIRTHDAY — COMING SOON</span>
+            <span>🔒 COMING SOON</span>
           </div>
         </div>
       </div>
@@ -1209,7 +1254,7 @@
   <div class="schedule-popup-backdrop" id="todayPopup">
     <div class="schedule-popup-card">
       <button class="popup-close-x" onclick="closeTodayPopup()">✕</button>
-      <div class="popup-tag mono"><span class="popup-tag-dot"></span>TÍN HIỆU HÔM NAY · /S1GN4L_D3T3CT3D</div>
+      <div class="popup-tag"><span class="popup-tag-dot"></span>TÍN HIỆU HÔM NAY · Signal Detected</div>
       <div class="popup-headline">Hôm nay có điều gì đó đang diễn ra ✦</div>
       <div class="popup-date-row">
         <div class="popup-date-box mono"><div class="p-day" id="popupDay">--</div><div class="p-month" id="popupMonth">TH--</div></div>
