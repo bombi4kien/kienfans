@@ -279,7 +279,7 @@
       box-shadow: 0 0 12px rgba(14, 165, 233, 0.4);
     }
 
-    /* MỤC LỊCH TRÌNH SẮP TỚI */
+    /* MỤC SỰ KIỆN SẮP TỚI */
     .upcoming-schedule-box {
       background: rgba(11, 25, 44, 0.7);
       border: 1px solid rgba(56, 189, 248, 0.25);
@@ -298,25 +298,30 @@
       align-items: center;
       gap: 6px;
     }
-    .upcoming-header::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      background: #00f2fe;
-      border-radius: 50%;
-      box-shadow: 0 0 6px #00f2fe;
+    .upcoming-header .acorn-header-icon {
+      width: 14px;
+      height: 14px;
+      object-fit: contain;
+      display: inline-block;
     }
     .upcoming-item {
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      padding: 7px 0;
+      padding: 8px 10px;
+      border-radius: 8px;
       border-bottom: 1px dashed rgba(56, 189, 248, 0.15);
       font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .upcoming-item:hover, .upcoming-item:active {
+      background: rgba(56, 189, 248, 0.12);
+      transform: translateX(3px);
     }
     .upcoming-item:last-child {
       border-bottom: none;
-      padding-bottom: 0;
+      padding-bottom: 4px;
     }
     .upcoming-date {
       color: #38bdf8;
@@ -430,14 +435,11 @@
       letter-spacing: 1px;
       text-transform: uppercase;
     }
-    .guide-category::before {
-      content: "";
+    .guide-category .acorn-mini {
+      width: 14px;
+      height: 14px;
+      object-fit: contain;
       display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #38BDF8;
-      box-shadow: 0 0 6px #38BDF8;
     }
     details.platform-accordion {
       background: #081426;
@@ -447,9 +449,9 @@
       overflow: hidden;
       transition: all 0.2s ease;
     }
-    details.platform-accordion[open] {
-      border-color: #0284C7;
-      box-shadow: 0 0 14px rgba(2, 132, 199, 0.2);
+    details.platform-accordion[open] .accordion-arrow {
+      transform: rotate(180deg);
+      color: #38BDF8;
     }
     summary.platform-header {
       padding: 12px 14px;
@@ -489,10 +491,6 @@
       font-size: 10px;
       color: #7DD3FC;
       transition: transform 0.25s ease;
-    }
-    details.platform-accordion[open] .accordion-arrow {
-      transform: rotate(180deg);
-      color: #38BDF8;
     }
     .platform-body {
       padding: 0 14px 14px;
@@ -659,43 +657,70 @@
       font-size: 10px;
       color: #38bdf8;
       letter-spacing: 1.5px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       gap: 6px;
     }
-    .popup-tag-dot {
-      width: 7px;
-      height: 7px;
-      background: #00f2fe;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #00f2fe;
+    .popup-tag .acorn-tag-icon {
+      width: 14px;
+      height: 14px;
+      object-fit: contain;
+      display: inline-block;
     }
     .popup-headline {
       font-size: 16px;
       font-weight: 700;
       margin-bottom: 16px;
     }
+
+    /* KHUNG NGÀY THÁNG MỚI */
     .popup-date-row {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 12px;
       margin-bottom: 16px;
+      background: rgba(14, 30, 52, 0.65);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      padding: 10px 14px;
+      border-radius: 12px;
+      box-shadow: inset 0 0 15px rgba(2, 132, 199, 0.15);
     }
     .popup-date-box {
-      background: #fff;
-      color: #0c192c;
-      border-radius: 12px;
-      padding: 6px 12px;
-      text-align: center;
-      font-weight: 800;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      background: transparent;
+      padding: 0;
     }
-    .popup-date-box .p-day { font-size: 22px; }
-    .popup-date-box .p-month { font-size: 10px; color: #0284c7; }
-    .popup-count-text {
+    .popup-date-box .p-day {
+      font-size: 26px;
+      font-weight: 800;
+      color: #FFFFFF;
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+      line-height: 1;
+    }
+    .popup-date-box .p-slash {
+      font-size: 16px;
+      color: #0284C7;
+      font-weight: 700;
+    }
+    .popup-date-box .p-month {
       font-size: 13px;
       font-weight: 700;
-      color: #38bdf8;
+      color: #38BDF8;
+      letter-spacing: 0.5px;
+    }
+    .popup-count-badge {
+      font-size: 11px;
+      font-weight: 700;
+      color: #00F2FE;
+      letter-spacing: 0.5px;
+      background: rgba(2, 132, 199, 0.2);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 4px 10px;
+      border-radius: 999px;
     }
     .popup-events-list {
       display: flex;
@@ -1004,9 +1029,12 @@
         </a>
       </div>
 
-      <!-- MỤC LỊCH TRÌNH SẮP TỚI RIÊNG TRONG PROFILE -->
+      <!-- MỤC SỰ KIỆN SẮP TỚI RIÊNG TRONG PROFILE -->
       <div class="upcoming-schedule-box">
-        <div class="upcoming-header mono">SỰ KIỆN SẮP TỚI</div>
+        <div class="upcoming-header mono">
+          <img src="hatde.png.PNG" alt="Acorn" class="acorn-header-icon">
+          <span>SỰ KIỆN SẮP TỚI</span>
+        </div>
         <div id="upcomingEventsContainer">
           <div style="font-size: 11.5px; color: #94a3b8;">Đang cập nhật lịch trình...</div>
         </div>
@@ -1035,7 +1063,11 @@
           Bấm vào logo hoặc tên nền tảng bên dưới để xem hướng dẫn chi tiết:
         </p>
 
-        <div class="guide-category">1. HƯỚNG DẪN STREAM</div>
+        <!-- 1. HƯỚNG DẪN STREAM VỚI ICON HẠT DẺ -->
+        <div class="guide-category">
+          <img src="hatde.png.PNG" alt="acorn" class="acorn-mini">
+          <span>1. HƯỚNG DẪN STREAM</span>
+        </div>
 
         <details class="platform-accordion">
           <summary class="platform-header">
@@ -1097,7 +1129,11 @@
           </div>
         </details>
 
-        <div class="guide-category" style="margin-top: 18px;">2. HƯỚNG DẪN TĂNG THẢO LUẬN</div>
+        <!-- 2. HƯỚNG DẪN TĂNG THẢO LUẬN VỚI ICON HẠT DẺ -->
+        <div class="guide-category" style="margin-top: 18px;">
+          <img src="hatde.png.PNG" alt="acorn" class="acorn-mini">
+          <span>2. HƯỚNG DẪN TĂNG THẢO LUẬN</span>
+        </div>
 
         <details class="platform-accordion">
           <summary class="platform-header">
@@ -1207,7 +1243,11 @@
           <h3 class="support-title">Hướng dẫn Mass Buy iTunes</h3>
         </div>
         
-        <div class="guide-category">1. HƯỚNG DẪN MASS BUY</div>
+        <!-- 1. HƯỚNG DẪN MASS BUY VỚI ICON HẠT DẺ -->
+        <div class="guide-category">
+          <img src="hatde.png.PNG" alt="acorn" class="acorn-mini">
+          <span>1. HƯỚNG DẪN MASS BUY</span>
+        </div>
         <div class="support-desc" style="margin-bottom: 8px;">
           <b style="color: #F0F9FF; display: block; margin-bottom: 4px;">Hướng dẫn chung:</b>
           <p style="margin-bottom: 6px;">• Tập trung mua nhạc tại app iTunes Store vào khung giờ nhất định theo hướng dẫn của các fanbase, fansite.</p>
@@ -1222,8 +1262,11 @@
           </div>
         </div>
 
-        <!-- 2. LẤY MÃ ITUNES MIỄN PHÍ (TẠM ẨN - COMING SOON) -->
-        <div class="guide-category" style="margin-top: 18px; opacity: 0.35;">2. LẤY MÃ ITUNES MIỄN PHÍ</div>
+        <!-- 2. LẤY MÃ ITUNES MIỄN PHÍ VỚI ICON HẠT DẺ (TẠM ẨN - COMING SOON) -->
+        <div class="guide-category" style="margin-top: 18px; opacity: 0.35;">
+          <img src="hatde.png.PNG" alt="acorn" class="acorn-mini">
+          <span>2. LẤY MÃ ITUNES MIỄN PHÍ</span>
+        </div>
         <div class="action-links" style="margin-top: 8px;">
           <div class="code-btn mono disabled-btn" style="opacity: 0.45;">
             <span>🔒 COMING SOON</span>
@@ -1268,12 +1311,22 @@
   <div class="schedule-popup-backdrop" id="todayPopup">
     <div class="schedule-popup-card">
       <button class="popup-close-x" onclick="closeTodayPopup()">✕</button>
-      <div class="popup-tag"><span class="popup-tag-dot"></span>------------------> Hạt dẻ đang rơi</div>
-      <div class="popup-headline">Hôm nay KIEN làm gì thế?</div>
-      <div class="popup-date-row">
-        <div class="popup-date-box mono"><div class="p-day" id="popupDay">--</div><div class="p-month" id="popupMonth">TH--</div></div>
-        <div class="popup-count-text mono" id="popupCountText">0 SỰ KIỆN</div>
+      <div class="popup-tag mono">
+        <img src="hatde.png.PNG" alt="Acorn" class="acorn-tag-icon">
+        <span>------------------> Hạt dẻ đang rơi</span>
       </div>
+      <div class="popup-headline">Hôm nay KIEN làm gì thế?</div>
+      
+      <!-- Khung ngày tháng phong cách neon capsule mới -->
+      <div class="popup-date-row">
+        <div class="popup-date-box mono">
+          <span class="p-day" id="popupDay">--</span>
+          <span class="p-slash">/</span>
+          <span class="p-month" id="popupMonth">TH--</span>
+        </div>
+        <div class="popup-count-badge mono" id="popupCountText">0 SỰ KIỆN</div>
+      </div>
+
       <div class="popup-events-list" id="popupEventsList"></div>
       <div class="popup-actions">
         <button class="popup-btn-main mono" onclick="openScheduleModalFromPopup()">XEM CHI TIẾT →</button>
@@ -1469,7 +1522,7 @@
       }
     }
 
-    // Hiển thị 2 lịch trình gần nhất trong Profile
+    // Hiển thị sự kiện sắp tới trong Profile và mở chi tiết khi click
     function renderUpcomingWidget() {
       const box = document.getElementById('upcomingEventsContainer');
       if (!box) return;
@@ -1489,12 +1542,23 @@
       box.innerHTML = upcoming.map(e => {
         const [y, m, d] = e.date.split('-');
         return `
-          <div class="upcoming-item">
+          <div class="upcoming-item" onclick="openDateFromUpcoming('${e.date}')" title="Bấm để xem chi tiết hashtag & topic">
             <span class="upcoming-date mono">${d}/${m} · ${e.time}</span>
             <span class="upcoming-title">${e.title}</span>
           </div>
         `;
       }).join('');
+    }
+
+    // Hàm mở Modal và chọn đúng ngày khi click từ Profile
+    function openDateFromUpcoming(dStr) {
+      const [y, m, d] = dStr.split('-');
+      currentViewingDate = new Date(parseInt(y), parseInt(m) - 1, 1);
+      
+      const modal = document.getElementById('scheduleModal');
+      if (modal) modal.classList.add('show');
+      renderCalendar();
+      showDateDetail(dStr);
     }
 
     function checkTodayEvents() {
@@ -1509,7 +1573,7 @@
         
         if (popDay) popDay.innerText = String(today.getDate()).padStart(2,'0');
         if (popMonth) popMonth.innerText = `TH${today.getMonth()+1}`;
-        if (popCount) popCount.innerText = `${evs.length} SỰ KIỆN HÔM NAY`;
+        if (popCount) popCount.innerText = `${evs.length} SỰ KIỆN`;
         if (list) {
           list.innerHTML = evs.map(e => `
             <div class="popup-event-item">
@@ -1580,7 +1644,8 @@
     function showDateDetail(dStr) {
       const [y, m, d] = dStr.split('-');
       const heading = document.getElementById('detailDateHeading');
-      if (heading) heading.innerText = `LỊCH TRÌNH NGÀY ${d}/${m}/${y}`;
+      // Đổi thành "SỰ KIỆN NGÀY"
+      if (heading) heading.innerText = `SỰ KIỆN NGÀY ${d}/${m}/${y}`;
       
       const list = document.getElementById('detailContentList');
       if (!list) return;
