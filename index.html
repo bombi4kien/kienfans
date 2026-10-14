@@ -190,8 +190,11 @@
     .hero-title {
       font-size: 34px;
       font-weight: 800;
-      letter-spacing: -0.5px;
+      letter-spacing: 2px;
       margin-bottom: 6px;
+      color: #FFFFFF;
+      -webkit-text-stroke: 1.2px #38BDF8;
+      animation: neonPulse 2s ease-in-out infinite alternate;
     }
     .hero-subtitle {
       font-size: 13px;
@@ -951,7 +954,10 @@
 <body>
   <div class="mobile-container">
     <header class="header">
-      <div class="logo">KIEN</div>
+      <div class="logo mono" style="display: flex; align-items: center; gap: 8px; text-transform: lowercase; font-size: 15px; letter-spacing: 1px; animation: none; text-shadow: none; -webkit-text-stroke: 0; color: #7DD3FC; font-weight: 700;">
+        <img src="hatde.png.PNG" alt="Acorn" style="width: 20px; height: 20px; object-fit: contain; display: inline-block;">
+        <span>allforKIEN</span>
+      </div>
       <button class="menu-btn mono" onclick="toggleMenu()">MENU</button>
     </header>
 
@@ -969,7 +975,7 @@
       <div class="hero-img-box">
         <img src="IMG_5948.jpeg" alt="KIEN">
       </div>
-      <h1 class="hero-title blue-outline-text">KIEN</h1>
+      <h1 class="hero-title">KIEN</h1>
       <p class="hero-subtitle mono">Nghệ sĩ độc lập</p>
     </section>
 
