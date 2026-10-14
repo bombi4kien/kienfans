@@ -266,6 +266,7 @@
       gap: 10px;
       justify-content: flex-start;
       margin-bottom: 14px;
+      flex-wrap: wrap;
     }
     .social-btn {
       display: inline-flex;
@@ -282,23 +283,6 @@
       background: #0284C7;
       box-shadow: 0 0 12px rgba(14, 165, 233, 0.4);
     }
-.social-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: #0C1E36;
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      padding: 10px;
-      border-radius: 12px;
-      transition: all 0.2s;
-      text-decoration: none;
-    }
-    .social-btn:hover {
-      background: #0284C7;
-      box-shadow: 0 0 12px rgba(14, 165, 233, 0.4);
-    }
-
-    /* DÁN ĐOẠN ĐÓ VÀO NGAY ĐÂY */
     .email-btn {
       display: inline-flex;
       align-items: center;
@@ -318,6 +302,7 @@
       box-shadow: 0 0 12px rgba(14, 165, 233, 0.4);
       color: #FFFFFF;
     }
+
     /* MỤC CÁC SẢN PHẨM ÂM NHẠC */
     .discography-card {
       background: #0B192C;
@@ -382,7 +367,7 @@
       font-style: italic;
     }
 
-    /* MỤC SỰ KIỆN SẮP TỚI */
+    /* MỤC SỰ KIỆN SẮP TỚI & GẦN ĐÂY */
     .upcoming-schedule-box {
       background: rgba(11, 25, 44, 0.7);
       border: 1px solid rgba(56, 189, 248, 0.25);
@@ -436,6 +421,79 @@
       color: #f1f5f9;
       font-weight: 600;
       line-height: 1.35;
+    }
+
+    /* NÚT XEM THÊM CỦA SỰ KIỆN GẦN ĐÂY */
+    .past-more-btn {
+      width: 100%;
+      background: rgba(14, 30, 52, 0.5);
+      border: 1px dashed rgba(56, 189, 248, 0.35);
+      color: #7DD3FC;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-top: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .past-more-btn:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: #38bdf8;
+      color: #FFFFFF;
+    }
+
+    /* TIMELINE POPUP SỰ KIỆN ĐÃ QUA */
+    .timeline-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 14px;
+      max-height: 55vh;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 20px;
+      border-left: 2px solid rgba(56, 189, 248, 0.3);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #0284C7;
+      border: 2px solid #38BDF8;
+      box-shadow: 0 0 6px rgba(56, 189, 248, 0.6);
+    }
+    .timeline-item:hover {
+      transform: translateX(4px);
+    }
+    .timeline-item:hover::before {
+      background: #00F2FE;
+      box-shadow: 0 0 10px #00F2FE;
+    }
+    .timeline-date {
+      font-size: 11px;
+      color: #38BDF8;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .timeline-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #F1F5F9;
+      line-height: 1.4;
     }
 
     /* NÚT LỊCH TRÌNH CHỮ PHÁT SÁNG */
@@ -1104,7 +1162,7 @@
         </div>
         <div class="bento-card full-width">
           <div class="card-label">Quê quán</div>
-          <div class="card-value">Phan Rang, Khánh Hòa</div>
+          <div class="card-value">Phan Rang, Khánh Hoà</div>
         </div>
       </div>
 
@@ -1134,27 +1192,24 @@
           </svg>
         </a>
       </div>
-<div class="social-title" style="margin-top: 14px;">// EKIP</div>
+
+      <!-- MỤC EKIP -->
+      <div class="social-title" style="margin-top: 14px;">// EKIP</div>
       <div class="social-list" style="margin-bottom: 8px;">
-        <!-- Facebook Ekip -->
         <a href="https://www.facebook.com/profile.php?id=61593963054149" target="_blank" rel="noopener noreferrer" class="social-btn" title="Facebook Ekip">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877F2">
             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
           </svg>
         </a>
-        <!-- TikTok Ekip -->
         <a href="https://www.tiktok.com/@kiendangda" target="_blank" rel="noopener noreferrer" class="social-btn" title="TikTok Ekip">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#00F2FE">
             <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
           </svg>
         </a>
-        <!-- Threads Ekip -->
         <a href="https://www.threads.com/@kiendangda" target="_blank" rel="noopener noreferrer" class="social-btn" title="Threads Ekip">
           <img src="thr.png" alt="Threads" style="width: 20px; height: 20px; object-fit: contain; display: block;">
         </a>
       </div>
-
-      <!-- Dòng Email Ekip -->
       <div style="margin-bottom: 16px;">
         <a href="mailto:kiendangda2026@gmail.com" class="email-btn mono" title="Gửi mail tới Ekip">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1164,26 +1219,25 @@
           <span>kiendangda2026@gmail.com</span>
         </a>
       </div>
+
       <!-- CÁC SẢN PHẨM ÂM NHẠC -->
       <div class="social-title" style="margin-top: 18px;">// CÁC SẢN PHẨM ÂM NHẠC</div>
       <div class="discography-list">
         <div class="discography-card">
-          <!-- Ảnh bìa sản phẩm (Góc trái) -->
           <div class="disco-cover">
             <img src="ddcdcle.jpg" alt="DDCDCLE - KIEN">
           </div>
-          <!-- Thông tin & Kênh nghe nhạc (Bên phải) -->
           <div class="disco-info">
             <div class="disco-title mono" style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-             <span>DDCDCLE ft UMIE</span>
-             <img src="hatde.png.PNG" alt="Acorn" style="width: 14px; height: 14px; object-fit: contain; display: inline-block;">
-             <span style="font-size: 11.5px; color: #7DD3FC; font-weight: 500;">14/10/2026</span>
+              <span>DDCDCLE ft Umie</span>
+              <img src="hatde.png.PNG" alt="Acorn" style="width: 14px; height: 14px; object-fit: contain; display: inline-block;">
+              <span style="font-size: 11.5px; color: #7DD3FC; font-weight: 500;">14/10/2026</span>
             </div>
             <div class="disco-links mono">
-              <a href="https://www.youtube.com/watch?v=KnrtgYvM-kA" target="_blank" rel="noopener noreferrer" class="disco-link">YouTube ↗</a>
-              <a href="https://open.spotify.com/intl-vi/album/78pj6qSdhg1oCPWnTtu69G?go=1&utm_source=Original_Original&utm_medium=Original&utm_content=67e13725-56f2-4e56-8f3a-44e7ea8ae648_none_none_none_none_none_20261012_https%3A%2F%2Fwww.youtube.com%2F_umie_VN_umie.lnk.to%2Fddcdcle&nd=1&dlsi=5971abaeba2f4ce2" target="_blank" rel="noopener noreferrer" class="disco-link">Spotify ↗</a>
               <a href="https://music.apple.com/us/album/6820350360?ls=1&app=itunes&at=1l3vpUI&ct=LFV_cf98ea9c5b21a88d342ae20a33600467&itscg=30440&itsct=catchall_p2&lId=217614133&cId=none&sr=2&src=Linkfire" target="_blank" rel="noopener noreferrer" class="disco-link">iTunes Store ↗</a>
               <a href="https://music.apple.com/us/album/6820350360?ls=1&app=music&at=1l3vpUI&ct=LFV_cf98ea9c5b21a88d342ae20a33600467&itscg=30440&itsct=catchall_p1&lId=217614133&cId=none&sr=1&src=Linkfire" target="_blank" rel="noopener noreferrer" class="disco-link">Apple Music ↗</a>
+              <a href="https://open.spotify.com/intl-vi/album/78pj6qSdhg1oCPWnTtu69G?go=1&utm_source=Original_Original&utm_medium=Original&utm_content=67e13725-56f2-4e56-8f3a-44e7ea8ae648_none_none_none_none_none_20261012_https%3A%2F%2Fwww.youtube.com%2F_umie_VN_umie.lnk.to%2Fddcdcle&nd=1&dlsi=5971abaeba2f4ce2" target="_blank" rel="noopener noreferrer" class="disco-link">Spotify ↗</a>
+              <a href="https://www.youtube.com/watch?v=KnrtgYvM-kA" target="_blank" rel="noopener noreferrer" class="disco-link">YouTube ↗</a>
               <a href="https://www.tiktok.com/music/-7694138618461521921" target="_blank" rel="noopener noreferrer" class="disco-link">TikTok ↗</a>
               <span class="disco-link disabled" title="Chưa có link">ZingMP3 (updating)</span>
             </div>
@@ -1191,7 +1245,7 @@
         </div>
       </div>
 
-      <!-- MỤC SỰ KIỆN SẮP TỚI RIÊNG TRONG PROFILE -->
+      <!-- MỤC SỰ KIỆN SẮP TỚI -->
       <div class="upcoming-schedule-box">
         <div class="upcoming-header mono">
           <img src="hatde.png.PNG" alt="Acorn" class="acorn-header-icon">
@@ -1200,6 +1254,20 @@
         <div id="upcomingEventsContainer">
           <div style="font-size: 11.5px; color: #94a3b8;">Đang cập nhật lịch trình...</div>
         </div>
+      </div>
+
+      <!-- MỤC SỰ KIỆN GẦN ĐÂY -->
+      <div class="upcoming-schedule-box" style="margin-top: 10px;">
+        <div class="upcoming-header mono">
+          <img src="hatde.png.PNG" alt="Acorn" class="acorn-header-icon">
+          <span>SỰ KIỆN GẦN ĐÂY</span>
+        </div>
+        <div id="pastEventsContainer">
+          <div style="font-size: 11.5px; color: #94a3b8;">Đang cập nhật...</div>
+        </div>
+        <button class="mono past-more-btn" onclick="openPastEventsModal()">
+          <span>Xem thêm các sự kiện ↓</span>
+        </button>
       </div>
 
       <!-- NÚT BẤM XEM LỊCH TRÌNH -->
@@ -1225,7 +1293,7 @@
           Bấm vào logo hoặc tên nền tảng bên dưới để xem hướng dẫn chi tiết:
         </p>
 
-        <!-- 1. HƯỚNG DẪN STREAM VỚI ICON HẠT DẺ -->
+        <!-- 1. HƯỚNG DẪN STREAM -->
         <div class="guide-category">
           <img src="hatde.png.PNG" alt="acorn" class="acorn-mini">
           <span>1. HƯỚNG DẪN STREAM</span>
@@ -1291,7 +1359,7 @@
           </div>
         </details>
 
-        <!-- 2. HƯỚNG DẪN TĂNG THẢO LUẬN VỚI ICON HẠT DẺ -->
+        <!-- 2. HƯỚNG DẪN TĂNG THẢO LUẬN -->
         <div class="guide-category" style="margin-top: 18px;">
           <img src="hatde.png.PNG" alt="acorn" class="acorn-mini">
           <span>2. HƯỚNG DẪN TĂNG THẢO LUẬN</span>
@@ -1405,7 +1473,7 @@
           <h3 class="support-title">Hướng dẫn Mass Buy iTunes</h3>
         </div>
         
-        <!-- 1. HƯỚNG DẪN MASS BUY VỚI ICON HẠT DẺ -->
+        <!-- 1. HƯỚNG DẪN MASS BUY -->
         <div class="guide-category">
           <img src="hatde.png.PNG" alt="acorn" class="acorn-mini">
           <span>1. HƯỚNG DẪN MASS BUY</span>
@@ -1416,11 +1484,10 @@
           <p>• Nếu qua giờ mass buy đã hướng dẫn, trong vòng 2 tiếng đổ lại vẫn có thể tiếp tục thực hiện mua nhạc. Nếu quá 2 tiếng, vui lòng chờ các hướng dẫn tiếp theo.</p>
         </div>
 
-        <!-- Khung danh sách bài hát và khung giờ mass buy -->
         <div class="song-massbuy-list">
           <div class="song-massbuy-item">
             <span class="song-massbuy-name mono">DDCDCLE</span>
-            <span class="song-massbuy-time mono">21 giờ ngày 15/10</span>
+            <span class="song-massbuy-time mono">22 giờ ngày 14/10</span>
           </div>
         </div>
 
@@ -1471,7 +1538,6 @@
       </div>
       <div class="popup-headline">Hôm nay KIEN làm gì thế?</div>
       
-      <!-- Khung ngày tháng phong cách neon capsule mới -->
       <div class="popup-date-row">
         <div class="popup-date-box mono">
           <span class="p-day" id="popupDay">--</span>
@@ -1485,6 +1551,23 @@
       <div class="popup-actions">
         <button class="popup-btn-main mono" onclick="openScheduleModalFromPopup()">XEM CHI TIẾT →</button>
         <button class="popup-btn-dismiss mono" onclick="closeTodayPopup()">Về trang chủ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL TIMELINE LOẠT SỰ KIỆN GẦN ĐÂY -->
+  <div class="schedule-popup-backdrop" id="pastEventsModal">
+    <div class="schedule-popup-card" style="max-width: 380px;">
+      <button class="popup-close-x" onclick="closePastEventsModal()">✕</button>
+      <div class="popup-tag mono">
+        <img src="hatde.png.PNG" alt="Acorn" class="acorn-tag-icon">
+        <span>TIMELINE · SỰ KIỆN ĐÃ DIỄN RA</span>
+      </div>
+      <div class="popup-headline" style="margin-bottom: 10px;">Các cột mốc đã qua ✦</div>
+      <div style="font-size: 11px; color: #94A3B8;">Bấm vào một sự kiện để xem chi tiết hashtag & chủ đề:</div>
+      <div class="timeline-list" id="pastTimelineContainer"></div>
+      <div class="popup-actions" style="margin-top: 16px;">
+        <button class="popup-btn-main mono" onclick="closePastEventsModal()">ĐÓNG</button>
       </div>
     </div>
   </div>
@@ -1671,12 +1754,13 @@
         }
         checkTodayEvents();
         renderUpcomingWidget();
+        renderPastWidget();
       } catch (err) {
         console.error("Lỗi Google Sheets:", err);
       }
     }
 
-    // Hiển thị sự kiện sắp tới trong Profile và mở chi tiết khi click
+    // Hiển thị 2 sự kiện sắp tới
     function renderUpcomingWidget() {
       const box = document.getElementById('upcomingEventsContainer');
       if (!box) return;
@@ -1704,7 +1788,35 @@
       }).join('');
     }
 
-    // Hàm mở Modal và chọn đúng ngày khi click từ Profile
+    // Hiển thị 3 sự kiện đã qua gần nhất
+    function renderPastWidget() {
+      const box = document.getElementById('pastEventsContainer');
+      if (!box) return;
+      const today = new Date();
+      const todayStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+      
+      const past = scheduleData
+        .filter(e => e.date < todayStr)
+        .sort((a, b) => b.date.localeCompare(a.date))
+        .slice(0, 3);
+
+      if (past.length === 0) {
+        box.innerHTML = `<div style="font-size: 11.5px; color: #94a3b8;">Chưa có sự kiện nào trước đó.</div>`;
+        return;
+      }
+
+      box.innerHTML = past.map(e => {
+        const [y, m, d] = e.date.split('-');
+        return `
+          <div class="upcoming-item" onclick="openDateFromPast('${e.date}')" title="Bấm để xem chi tiết hashtag & topic">
+            <span class="upcoming-date mono">${d}/${m} · ${e.time}</span>
+            <span class="upcoming-title">${e.title}</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Mở lịch từ sự kiện sắp tới
     function openDateFromUpcoming(dStr) {
       const [y, m, d] = dStr.split('-');
       currentViewingDate = new Date(parseInt(y), parseInt(m) - 1, 1);
@@ -1713,6 +1825,67 @@
       if (modal) modal.classList.add('show');
       renderCalendar();
       showDateDetail(dStr);
+
+      setTimeout(() => {
+        const detailPanel = document.querySelector('.day-detail-panel');
+        if (detailPanel) {
+          detailPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }, 50);
+    }
+
+    // Mở lịch từ sự kiện đã qua
+    function openDateFromPast(dStr) {
+      closePastEventsModal();
+      const [y, m, d] = dStr.split('-');
+      currentViewingDate = new Date(parseInt(y), parseInt(m) - 1, 1);
+      
+      const modal = document.getElementById('scheduleModal');
+      if (modal) modal.classList.add('show');
+      renderCalendar();
+      showDateDetail(dStr);
+
+      setTimeout(() => {
+        const detailPanel = document.querySelector('.day-detail-panel');
+        if (detailPanel) {
+          detailPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }, 50);
+    }
+
+    // Mở popup toàn bộ Timeline sự kiện đã qua
+    function openPastEventsModal() {
+      const modal = document.getElementById('pastEventsModal');
+      const container = document.getElementById('pastTimelineContainer');
+      if (!modal || !container) return;
+
+      const today = new Date();
+      const todayStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+      
+      const allPast = scheduleData
+        .filter(e => e.date < todayStr)
+        .sort((a, b) => b.date.localeCompare(a.date));
+
+      if (allPast.length === 0) {
+        container.innerHTML = `<div style="font-size: 12px; color: #94A3B8; padding: 12px 0;">Chưa có mốc sự kiện nào trước đây.</div>`;
+      } else {
+        container.innerHTML = allPast.map(e => {
+          const [y, m, d] = e.date.split('-');
+          return `
+            <div class="timeline-item" onclick="openDateFromPast('${e.date}')">
+              <div class="timeline-date mono">${d}/${m}/${y} · ${e.time}</div>
+              <div class="timeline-title">${e.title}</div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      modal.classList.add('show');
+    }
+
+    function closePastEventsModal() {
+      const modal = document.getElementById('pastEventsModal');
+      if (modal) modal.classList.remove('show');
     }
 
     function checkTodayEvents() {
@@ -1746,7 +1919,8 @@
       if (todayPopup) todayPopup.classList.remove('show');
     }
 
-        function openScheduleModalFromPopup() {
+    // Bấm xem chi tiết từ Pop-up mở ngay bảng lịch và hiển thị chi tiết
+    function openScheduleModalFromPopup() {
       closeTodayPopup();
       
       const t = new Date();
@@ -1759,7 +1933,6 @@
       renderCalendar();
       showDateDetail(todayStr);
 
-      // Tự động làm sáng ô ngày hôm nay và cuộn đến khung chi tiết
       setTimeout(() => {
         const todayCell = document.querySelector('.cal-date-cell.is-today');
         if (todayCell) {
@@ -1772,7 +1945,6 @@
         }
       }, 50);
     }
-
 
     function changeMonth(step) {
       currentViewingDate.setMonth(currentViewingDate.getMonth() + step);
@@ -1838,7 +2010,7 @@
 
           ${e.hashtags ? `
             <div style="margin-top: 8px;">
-              <span class="detail-label">Hashtags:</span>
+              <span class="detail-label">Hashtag:</span>
               <div class="detail-action-row">
                 <span class="detail-copy-text mono">${e.hashtags}</span>
                 <button class="btn-copy-mini mono" onclick="copyContent('${e.hashtags.replace(/'/g, "\\'")}', this)">Sao chép</button>
@@ -1883,7 +2055,7 @@
       modal.classList.add('show');
       renderCalendar();
       const t = new Date();
-      const todayStr = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+      const todayStr = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}-${String(t.getDate()).padStart(2,'0')}`;
       showDateDetail(todayStr);
     }
 
