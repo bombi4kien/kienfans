@@ -1,1509 +1,1598 @@
 <!DOCTYPE html>
-
 <html lang="vi">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>KIEN Fan Support</title>
-
+  <title>KIEN - Fan Support</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
-
-    :root {
-
-      --bg-dark: #0a0e17;
-
-      --card-bg: #131b2e;
-
-      --card-border: #1e2d4a;
-
-      --accent-cyan: #00f0ff;
-
-      --accent-glow: rgba(0, 240, 255, 0.35);
-
-      --text-main: #f1f5f9;
-
-      --text-muted: #94a3b8;
-
-      --text-dim: #64748b;
-
-      --badge-bg: rgba(0, 240, 255, 0.1);
-
-      --disabled-bg: #1a2234;
-
-      --disabled-text: #475569;
-
-    }
-
     * {
-
       box-sizing: border-box;
-
       margin: 0;
-
       padding: 0;
-
-      font-family: 'Plus Jakarta Sans', sans-serif;
-
+      -webkit-tap-highlight-color: transparent;
     }
-
+    html {
+      scroll-behavior: smooth;
+    }
     body {
-
-      background-color: var(--bg-dark);
-
-      color: var(--text-main);
-
-      line-height: 1.6;
-
-      padding-bottom: 60px;
-
-    }
-
-    .container {
-
-      max-width: 900px;
-
-      margin: 0 auto;
-
-      padding: 20px;
-
-    }
-
-    header {
-
-      text-align: center;
-
-      padding: 40px 0 20px;
-
-    }
-
-    header h1 {
-
-      font-size: 2.2rem;
-
-      font-weight: 800;
-
-      letter-spacing: -0.5px;
-
-      color: #fff;
-
-      text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-
-    }
-
-    header p {
-
-      color: var(--accent-cyan);
-
-      font-size: 0.95rem;
-
-      font-weight: 600;
-
-      letter-spacing: 2px;
-
-      text-transform: uppercase;
-
-      margin-top: 5px;
-
-    }
-
-    /* Profile / About Section */
-
-    #about {
-
-      background: var(--card-bg);
-
-      border: 1px solid var(--card-border);
-
-      border-radius: 20px;
-
-      padding: 28px;
-
-      margin-bottom: 30px;
-
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-
-    }
-
-    .profile-header {
-
+      background-color: #0b1118;
+      color: #E2E8F0;
+      font-family: 'Syne', sans-serif;
       display: flex;
-
-      align-items: center;
-
-      gap: 20px;
-
-      margin-bottom: 24px;
-
+      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
-
-    .profile-avatar {
-
-      width: 80px;
-
-      height: 80px;
-
-      border-radius: 50%;
-
-      border: 2px solid var(--accent-cyan);
-
-      box-shadow: 0 0 15px var(--accent-glow);
-
-      object-fit: cover;
-
-      background: #1e293b;
-
+    .mono {
+      font-family: 'Space Grotesk', sans-serif;
     }
-
-    .profile-info h2 {
-
-      font-size: 1.5rem;
-
-      color: #fff;
-
-    }
-
-    .profile-info p {
-
-      color: var(--text-muted);
-
-      font-size: 0.9rem;
-
-    }
-
-    /* Upcoming Schedule inside Profile */
-
-    .upcoming-section {
-
-      margin-top: 24px;
-
-      padding-top: 20px;
-
-      border-top: 1px solid var(--card-border);
-
-    }
-
-    .section-title-sm {
-
-      font-size: 0.85rem;
-
-      font-weight: 700;
-
-      color: var(--accent-cyan);
-
-      letter-spacing: 1.5px;
-
-      text-transform: uppercase;
-
-      margin-bottom: 12px;
-
-    }
-
-    .upcoming-list {
-
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 10px;
-
-      margin-bottom: 20px;
-
-    }
-
-    .upcoming-card {
-
-      background: rgba(255, 255, 255, 0.03);
-
-      border: 1px solid rgba(255, 255, 255, 0.06);
-
-      border-radius: 12px;
-
-      padding: 12px 16px;
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-    }
-
-    .upcoming-card .date-badge {
-
-      font-size: 0.8rem;
-
-      font-weight: 700;
-
-      color: var(--accent-cyan);
-
-      background: var(--badge-bg);
-
-      padding: 4px 8px;
-
-      border-radius: 6px;
-
-    }
-
-    .upcoming-card .event-title {
-
-      font-size: 0.9rem;
-
-      font-weight: 600;
-
-      color: #fff;
-
-      flex: 1;
-
-      margin: 0 12px;
-
-    }
-
-    /* Dedicated Full-width Schedule Button */
-
-    .btn-schedule-trigger {
-
+    .mobile-container {
       width: 100%;
-
-      background: linear-gradient(135deg, #131b2e 0%, #1a2a4a 100%);
-
-      border: 1.5px solid var(--accent-cyan);
-
-      border-radius: 14px;
-
-      padding: 16px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 12px;
-
-      cursor: pointer;
-
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
-
+      max-width: 420px;
+      min-height: 100vh;
+      background: radial-gradient(circle at 50% 18%, #2d3748 0%, #17202c 50%, #0d131a 100%);
       position: relative;
-
-      overflow: hidden;
-
+      padding-bottom: 70px;
+      overflow-x: hidden;
+      border-left: 1px solid rgba(203, 213, 225, 0.2);
+      border-right: 1px solid rgba(203, 213, 225, 0.2);
+      box-shadow: 0 0 35px rgba(148, 163, 184, 0.12);
     }
-
-    .btn-schedule-trigger:hover {
-
-      transform: translateY(-2px);
-
-      box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
-
-      background: linear-gradient(135deg, #18233c 0%, #20355d 100%);
-
-    }
-
-    .btn-schedule-trigger img {
-
-      width: 28px;
-
-      height: 28px;
-
-      object-fit: contain;
-
-    }
-
-    .btn-schedule-trigger span {
-
-      font-size: 1rem;
-
-      font-weight: 800;
-
-      color: var(--accent-cyan);
-
-      letter-spacing: 1px;
-
-      text-shadow: 0 0 8px var(--accent-glow);
-
-    }
-
-    /* Fan Support Section */
-
-    .section-title {
-
-      font-size: 1.3rem;
-
-      font-weight: 700;
-
-      margin-bottom: 16px;
-
-      color: #fff;
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 10px;
-
-    }
-
-    .support-grid {
-
-      display: grid;
-
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-
-      gap: 16px;
-
-      margin-bottom: 30px;
-
-    }
-
-    .support-card {
-
-      background: var(--card-bg);
-
-      border: 1px solid var(--card-border);
-
-      border-radius: 16px;
-
-      padding: 20px;
-
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: space-between;
-
-      transition: transform 0.2s ease;
-
-    }
-
-    .support-card:hover {
-
-      transform: translateY(-3px);
-
-    }
-
-    .support-card .card-num {
-
-      font-size: 0.75rem;
-
-      font-weight: 700;
-
-      color: var(--text-dim);
-
-      margin-bottom: 8px;
-
-    }
-
-    .support-card h3 {
-
-      font-size: 1.05rem;
-
-      color: #fff;
-
-      margin-bottom: 12px;
-
-    }
-
-    .support-link {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 6px;
-
-      padding: 10px 14px;
-
-      border-radius: 10px;
-
-      background: rgba(0, 240, 255, 0.1);
-
-      color: var(--accent-cyan);
-
-      text-decoration: none;
-
-      font-size: 0.85rem;
-
-      font-weight: 700;
-
-      transition: background 0.2s ease;
-
-    }
-
-    .support-link:hover {
-
-      background: rgba(0, 240, 255, 0.2);
-
-    }
-
-    .support-link.disabled {
-
-      background: var(--disabled-bg);
-
-      color: var(--disabled-text);
-
-      cursor: not-allowed;
-
-      border: 1px dashed #334155;
-
-    }
-
-    /* Modal Backdrop */
-
-    .modal-overlay {
-
+    #snowCanvas {
       position: fixed;
-
       top: 0;
-
-      left: 0;
-
-      width: 100vw;
-
-      height: 100vh;
-
-      background: rgba(6, 9, 15, 0.85);
-
-      backdrop-filter: blur(8px);
-
-      z-index: 1000;
-
-      display: none;
-
-      justify-content: center;
-
-      align-items: center;
-
-      padding: 20px;
-
-    }
-
-    .modal-overlay.active {
-
-      display: flex;
-
-    }
-
-    .modal-container {
-
-      background: var(--card-bg);
-
-      border: 1px solid var(--card-border);
-
-      border-radius: 24px;
-
+      left: 50%;
+      transform: translateX(-50%);
       width: 100%;
-
-      max-width: 650px;
-
-      max-height: 90vh;
-
-      overflow-y: auto;
-
-      padding: 24px;
-
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-
-      position: relative;
-
+      max-width: 420px;
+      height: 100%;
+      pointer-events: none;
+      z-index: 80;
     }
-
-    .modal-close {
-
-      position: absolute;
-
-      top: 20px;
-
-      right: 20px;
-
-      background: rgba(255, 255, 255, 0.05);
-
-      border: none;
-
-      color: var(--text-muted);
-
-      width: 32px;
-
-      height: 32px;
-
-      border-radius: 50%;
-
-      cursor: pointer;
-
-      font-size: 1.1rem;
-
+    .blue-outline-text {
+      color: #FFFFFF;
+      -webkit-text-stroke: 1.2px #0284C7;
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.45);
+    }
+    .header {
       display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-    }
-
-    .modal-close:hover {
-
-      color: #fff;
-
-      background: rgba(255, 255, 255, 0.1);
-
-    }
-
-    /* Calendar Grid Styling */
-
-    .calendar-header {
-
-      display: flex;
-
       justify-content: space-between;
-
       align-items: center;
-
-      margin-bottom: 20px;
-
+      padding: 18px 24px;
+      position: sticky;
+      top: 0;
+      background: rgba(6, 11, 20, 0.88);
+      backdrop-filter: blur(12px);
+      z-index: 50;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.15);
     }
-
-    .calendar-header h3 {
-
-      font-size: 1.2rem;
-
-      color: #fff;
-
-    }
-
-    .calendar-nav {
-
-      display: flex;
-
-      gap: 8px;
-
-    }
-
-    .calendar-nav button {
-
-      background: rgba(255, 255, 255, 0.05);
-
-      border: 1px solid var(--card-border);
-
-      color: #fff;
-
-      width: 36px;
-
-      height: 36px;
-
-      border-radius: 8px;
-
-      cursor: pointer;
-
-      font-size: 0.9rem;
-
-    }
-
-    .calendar-nav button:hover {
-
-      border-color: var(--accent-cyan);
-
-    }
-
-    .calendar-weekdays {
-
-      display: grid;
-
-      grid-template-columns: repeat(7, 1fr);
-
-      text-align: center;
-
-      font-size: 0.75rem;
-
-      font-weight: 700;
-
-      color: var(--text-dim);
-
-      margin-bottom: 10px;
-
-    }
-
-    .calendar-days {
-
-      display: grid;
-
-      grid-template-columns: repeat(7, 1fr);
-
-      gap: 8px;
-
-    }
-
-    .day-cell {
-
-      aspect-ratio: 1;
-
-      background: rgba(255, 255, 255, 0.02);
-
-      border: 1px solid rgba(255, 255, 255, 0.05);
-
-      border-radius: 12px;
-
-      display: flex;
-
-      flex-direction: column;
-
-      align-items: center;
-
-      justify-content: center;
-
-      cursor: pointer;
-
-      position: relative;
-
-      transition: all 0.2s ease;
-
-    }
-
-    .day-cell:hover {
-
-      border-color: rgba(0, 240, 255, 0.4);
-
-      background: rgba(0, 240, 255, 0.03);
-
-    }
-
-    .day-cell.empty {
-
-      background: transparent;
-
-      border: none;
-
-      cursor: default;
-
-    }
-
-    .day-cell .day-num {
-
-      font-size: 0.85rem;
-
-      font-weight: 600;
-
-      color: var(--text-muted);
-
-    }
-
-    .day-cell.active-today {
-
-      border: 2px solid var(--accent-cyan);
-
-      box-shadow: 0 0 12px var(--accent-glow);
-
-    }
-
-    .day-cell.active-today .day-num {
-
-      color: #fff;
-
+    .logo {
       font-weight: 800;
-
+      letter-spacing: 3px;
+      font-size: 20px;
+      color: #FFFFFF;
+      -webkit-text-stroke: 1px #38BDF8;
+      animation: neonPulse 2s ease-in-out infinite alternate;
     }
-
-    .day-cell.has-event::after {
-
-      content: '';
-
-      width: 5px;
-
-      height: 5px;
-
-      background-color: var(--accent-cyan);
-
-      border-radius: 50%;
-
-      position: absolute;
-
-      bottom: 6px;
-
-      box-shadow: 0 0 6px var(--accent-cyan);
-
+    @keyframes neonPulse {
+      0% {
+        text-shadow: 0 0 4px #FFFFFF, 0 0 10px #38BDF8, 0 0 20px #0284C7;
+        opacity: 0.85;
+      }
+      50% {
+        text-shadow: 0 0 2px #FFFFFF, 0 0 5px #0284C7;
+        opacity: 0.6;
+      }
+      100% {
+        text-shadow: 0 0 6px #FFFFFF, 0 0 15px #38BDF8, 0 0 30px #00F2FE, 0 0 45px #0284C7;
+        opacity: 1;
+      }
     }
-
-    /* Event Details inside Modal */
-
-    .event-detail-box {
-
-      margin-top: 20px;
-
-      padding-top: 16px;
-
-      border-top: 1px solid var(--card-border);
-
-    }
-
-    .event-detail-item {
-
-      background: rgba(255, 255, 255, 0.03);
-
-      border-radius: 12px;
-
-      padding: 14px;
-
-      margin-bottom: 12px;
-
-    }
-
-    .event-detail-item h4 {
-
-      font-size: 0.95rem;
-
-      color: var(--accent-cyan);
-
-      margin-bottom: 6px;
-
-    }
-
-    .field-label {
-
-      font-size: 0.75rem;
-
+    .menu-btn {
+      background: #0C192C;
+      color: #FFFFFF;
+      border: 1px solid #0284C7;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 11px;
       font-weight: 700;
-
-      color: var(--text-dim);
-
-      text-transform: uppercase;
-
-      margin-top: 8px;
-
-    }
-
-    .copy-row {
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      background: rgba(0, 0, 0, 0.3);
-
-      padding: 8px 12px;
-
-      border-radius: 8px;
-
-      margin-top: 4px;
-
-    }
-
-    .copy-row code {
-
-      font-size: 0.85rem;
-
-      color: var(--text-main);
-
-      word-break: break-all;
-
-    }
-
-    .btn-copy {
-
-      background: rgba(0, 240, 255, 0.15);
-
-      border: 1px solid var(--accent-cyan);
-
-      color: var(--accent-cyan);
-
-      font-size: 0.75rem;
-
-      font-weight: 700;
-
-      padding: 4px 10px;
-
-      border-radius: 6px;
-
-      cursor: pointer;
-
-      white-space: nowrap;
-
-      transition: all 0.2s ease;
-
-    }
-
-    .btn-copy:hover {
-
-      background: var(--accent-cyan);
-
-      color: #000;
-
-    }
-
-    .btn-copy.copied {
-
-      background: #10b981;
-
-      border-color: #10b981;
-
-      color: #fff;
-
-    }
-
-    /* Pop-up Notification for Today's Event */
-
-    .toast-popup {
-
-      position: fixed;
-
-      bottom: 20px;
-
-      right: 20px;
-
-      background: var(--card-bg);
-
-      border: 1px solid var(--accent-cyan);
-
-      box-shadow: 0 10px 30px rgba(0, 240, 255, 0.2);
-
-      border-radius: 16px;
-
-      padding: 16px;
-
-      max-width: 320px;
-
-      z-index: 2000;
-
-      display: none;
-
-      animation: slideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-    }
-
-    @keyframes slideUp {
-
-      from { transform: translateY(100px); opacity: 0; }
-
-      to { transform: translateY(0); opacity: 1; }
-
-    }
-
-    .toast-popup.active {
-
-      display: block;
-
-    }
-
-    .toast-header {
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      margin-bottom: 8px;
-
-    }
-
-    .toast-title {
-
-      font-size: 0.8rem;
-
-      font-weight: 800;
-
-      color: var(--accent-cyan);
-
-      text-transform: uppercase;
-
       letter-spacing: 1px;
-
-    }
-
-    .toast-close {
-
-      background: none;
-
-      border: none;
-
-      color: var(--text-dim);
-
       cursor: pointer;
-
-      font-size: 1rem;
-
+      box-shadow: 0 0 10px rgba(14, 165, 233, 0.25);
+    }
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.7);
+      backdrop-filter: blur(5px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 90;
+    }
+    .menu-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 280px;
+      height: 100%;
+      background: #091322;
+      border-left: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 99;
+    }
+    .drawer.open {
+      right: 0;
+    }
+    .close-btn {
+      align-self: flex-end;
+      background: transparent;
+      border: none;
+      color: #38BDF8;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .nav-links a {
+      color: #E2E8F0;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      display: block;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+    }
+    .nav-links a:hover {
+      color: #38BDF8;
+    }
+    .hero {
+      padding: 24px 24px 10px;
+      text-align: center;
+    }
+    .hero-img-box {
+      width: 100%;
+      height: 380px;
+      background: #0B192C;
+      border-radius: 20px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      box-shadow: 0 0 25px rgba(2, 132, 199, 0.15);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .hero-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-title {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+    .hero-subtitle {
+      font-size: 13px;
+      color: #7DD3FC;
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.4), transparent);
+      margin: 32px 24px;
+    }
+    .section-wrap {
+      padding: 0 24px;
+    }
+    .section-tag {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: #38BDF8;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .bento-card {
+      background: #0B192C;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: inset 0 0 15px rgba(14, 165, 233, 0.05);
+    }
+    .bento-card.full-width {
+      grid-column: span 2;
+    }
+    .card-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: #7DD3FC;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .card-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+    }
+    .social-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: #7DD3FC;
+      margin-bottom: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .social-list {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-start;
+      margin-bottom: 14px;
+    }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #0C1E36;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      padding: 10px;
+      border-radius: 12px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .social-btn:hover {
+      background: #0284C7;
+      box-shadow: 0 0 12px rgba(14, 165, 233, 0.4);
     }
 
+    /* MỤC LỊCH TRÌNH SẮP TỚI */
+    .upcoming-schedule-box {
+      background: rgba(11, 25, 44, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 14px;
+      padding: 14px;
+      margin-top: 14px;
+      margin-bottom: 8px;
+    }
+    .upcoming-header {
+      font-size: 11px;
+      font-weight: 700;
+      color: #38BDF8;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .upcoming-header::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: #00f2fe;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #00f2fe;
+    }
+    .upcoming-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px dashed rgba(56, 189, 248, 0.15);
+      font-size: 12px;
+    }
+    .upcoming-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .upcoming-date {
+      color: #38bdf8;
+      font-weight: 700;
+      white-space: nowrap;
+      font-size: 11px;
+    }
+    .upcoming-title {
+      color: #f1f5f9;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    /* NÚT LỊCH TRÌNH CHỮ PHÁT SÁNG */
+    .schedule-trigger-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #0e1e33 0%, #081220 100%);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      border-radius: 999px;
+      padding: 12px 20px;
+      margin-top: 8px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 0 16px rgba(14, 165, 233, 0.25);
+      transition: all 0.25s ease;
+    }
+    .schedule-trigger-btn:hover {
+      border-color: #38bdf8;
+      box-shadow: 0 0 22px rgba(56, 189, 248, 0.5);
+      transform: translateY(-1px);
+    }
+    .acorn-btn-icon {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      display: block;
+    }
+    .schedule-btn-text {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #ffffff;
+      text-shadow: 0 0 4px #ffffff, 0 0 10px #38bdf8, 0 0 20px #0284c7;
+      animation: scheduleGlow 2s ease-in-out infinite alternate;
+    }
+    @keyframes scheduleGlow {
+      0% { text-shadow: 0 0 3px #ffffff, 0 0 8px #38bdf8; }
+      100% { text-shadow: 0 0 5px #ffffff, 0 0 14px #38bdf8, 0 0 25px #00f2fe; }
+    }
+
+    /* Support Cards */
+    .support-card {
+      background: #0B192C;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 20px rgba(3, 7, 18, 0.4);
+    }
+    .support-card-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .support-index {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      color: #38BDF8;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .support-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .support-desc {
+      font-size: 12px;
+      color: #94A3B8;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+    .status-badge {
+      font-family: 'Space Grotesk', sans-serif;
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      color: #38BDF8;
+      background: rgba(14, 165, 233, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 3px 9px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+    .guide-category {
+      font-family: 'Space Grotesk', sans-serif;
+      margin-top: 16px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #38BDF8;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .guide-category::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #38BDF8;
+      box-shadow: 0 0 6px #38BDF8;
+    }
+    details.platform-accordion {
+      background: #081426;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+    details.platform-accordion[open] {
+      border-color: #0284C7;
+      box-shadow: 0 0 14px rgba(2, 132, 199, 0.2);
+    }
+    summary.platform-header {
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+    }
+    summary.platform-header::-webkit-details-marker {
+      display: none;
+    }
+    .platform-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .platform-icon {
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .platform-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+    .platform-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #F0F9FF;
+    }
+    .accordion-arrow {
+      font-size: 10px;
+      color: #7DD3FC;
+      transition: transform 0.25s ease;
+    }
+    details.platform-accordion[open] .accordion-arrow {
+      transform: rotate(180deg);
+      color: #38BDF8;
+    }
+    .platform-body {
+      padding: 0 14px 14px;
+      border-top: 1px dashed rgba(56, 189, 248, 0.15);
+      font-size: 12px;
+      line-height: 1.6;
+      color: #CBD5E1;
+    }
+    .rule-title-do {
+      font-family: 'Space Grotesk', sans-serif;
+      color: #4ADE80;
+      font-weight: 700;
+      font-size: 11px;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: 0.5px;
+    }
+    .rule-title-dont {
+      font-family: 'Space Grotesk', sans-serif;
+      color: #F87171;
+      font-weight: 700;
+      font-size: 11px;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: 0.5px;
+    }
+    .platform-body ul {
+      margin-left: 16px;
+      margin-bottom: 6px;
+    }
+    .platform-body li {
+      margin-bottom: 5px;
+    }
+    .action-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .code-btn {
+      background: linear-gradient(135deg, #0284C7, #0369A1);
+      color: #FFFFFF;
+      border: 1px solid #38BDF8;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 11px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      box-shadow: 0 0 15px rgba(2, 132, 199, 0.4);
+    }
+    .code-btn.disabled-btn {
+      background: rgba(15, 31, 51, 0.6);
+      border: 1px dashed rgba(56, 189, 248, 0.35);
+      color: #94a3b8;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+    .music-disc-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #0C1E36;
+      border: 1.5px solid #38BDF8;
+      color: #38BDF8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+      font-size: 18px;
+      transition: transform 0.2s;
+    }
+    .music-disc-btn.playing {
+      animation: spin 3s linear infinite;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* POP-UP TÍN HIỆU HÔM NAY */
+    .schedule-popup-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .schedule-popup-backdrop.show {
+      display: flex;
+    }
+    .schedule-popup-card {
+      background: linear-gradient(165deg, #0f243a, #081322);
+      border: 1px solid #38bdf8;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 360px;
+      padding: 22px;
+      position: relative;
+      color: #fff;
+    }
+    .popup-close-x {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .popup-tag {
+      font-size: 10px;
+      color: #38bdf8;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .popup-tag-dot {
+      width: 7px;
+      height: 7px;
+      background: #00f2fe;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #00f2fe;
+    }
+    .popup-headline {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .popup-date-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .popup-date-box {
+      background: #fff;
+      color: #0c192c;
+      border-radius: 12px;
+      padding: 6px 12px;
+      text-align: center;
+      font-weight: 800;
+    }
+    .popup-date-box .p-day { font-size: 22px; }
+    .popup-date-box .p-month { font-size: 10px; color: #0284c7; }
+    .popup-count-text {
+      font-size: 13px;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+    .popup-events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 18px;
+      max-height: 180px;
+      overflow-y: auto;
+    }
+    .popup-event-item {
+      display: flex;
+      gap: 10px;
+      font-size: 12.5px;
+    }
+    .popup-event-time {
+      color: #38bdf8;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    .popup-event-name {
+      color: #f1f5f9;
+      font-weight: 600;
+    }
+    .popup-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .popup-btn-main {
+      flex: 1;
+      background: #fff;
+      color: #081322;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .popup-btn-dismiss {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    /* MODAL BẢNG LỊCH */
+    .schedule-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 250;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .schedule-modal-backdrop.show {
+      display: flex;
+    }
+    .schedule-modal-card {
+      background: #091322;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      width: 100%;
+      max-width: 420px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 24px 20px 40px;
+      color: #e2e8f0;
+    }
+    .cal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .cal-day-name {
+      font-size: 10px;
+      color: #7dd3fc;
+      font-weight: 700;
+      padding: 4px 0;
+    }
+    .cal-date-cell {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+      background: rgba(14, 30, 52, 0.55);
+      border: 1px solid rgba(56, 189, 248, 0.12);
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    .cal-date-cell.empty {
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+      cursor: default;
+    }
+    .cal-date-cell.is-today {
+      border: 1.8px solid #00F2FE !important;
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.45), inset 0 0 8px rgba(0, 242, 254, 0.2) !important;
+      background: rgba(16, 42, 74, 0.75);
+    }
+    .acorn-bg {
+      position: absolute;
+      inset: 4px;
+      width: calc(100% - 8px);
+      height: calc(100% - 8px);
+      object-fit: contain;
+      z-index: 1;
+      opacity: 0.9;
+    }
+    .acorn-day-number {
+      position: relative;
+      z-index: 2;
+      font-size: 13px;
+      font-weight: 800;
+      color: #38bdf8;
+      text-shadow: 0 0 6px rgba(12, 25, 44, 0.95), 0 1px 2px #000;
+    }
+    .cal-date-cell.has-event .acorn-bg {
+      filter: brightness(1.25) drop-shadow(0 0 6px #38bdf8);
+    }
+    .cal-date-cell.has-event::after {
+      content: "";
+      position: absolute;
+      bottom: 4px;
+      width: 5px;
+      height: 5px;
+      background: #00F2FE;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #00F2FE;
+      z-index: 3;
+    }
+    .cal-date-cell.active-selected {
+      border-color: #38bdf8;
+      background: rgba(14, 165, 233, 0.2);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.5);
+    }
+    .cal-date-cell.active-selected .acorn-bg {
+      transform: scale(1.06);
+    }
+    .day-detail-panel {
+      background: #0b1a2e;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .day-detail-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #38bdf8;
+      margin-bottom: 12px;
+    }
+    .schedule-detail-card {
+      background: #071322;
+      border: 1px solid rgba(56, 189, 248, 0.15);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    .detail-time {
+      font-size: 11px;
+      color: #38bdf8;
+      font-weight: 700;
+    }
+    .detail-event-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 4px 0;
+    }
+    .detail-label {
+      font-size: 11px;
+      color: #7dd3fc;
+      font-weight: 700;
+    }
+    .detail-action-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 6px;
+      background: rgba(14, 30, 52, 0.6);
+      border: 1px solid rgba(56, 189, 248, 0.15);
+      border-radius: 8px;
+      padding: 6px 10px;
+    }
+    .detail-copy-text {
+      font-size: 11.5px;
+      color: #f1f5f9;
+      word-break: break-all;
+      flex: 1;
+    }
+    .btn-copy-mini {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    .btn-copy-mini:active {
+      transform: scale(0.95);
+      background: #0284c7;
+      color: #fff;
+    }
   </style>
-
 </head>
-
 <body>
-
-  <div class="container">
-
-    <header>
-
-      <h1>KIEN FAN SUPPORT</h1>
-
-      <p>Official Event & Project Portal</p>
-
+  <div class="mobile-container">
+    <header class="header">
+      <div class="logo">KIEN</div>
+      <button class="menu-btn mono" onclick="toggleMenu()">MENU</button>
     </header>
 
-    <!-- Profile Section -->
+    <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+    <div class="drawer" id="menuDrawer">
+      <button class="close-btn" onclick="toggleMenu()">✕</button>
+      <ul class="nav-links">
+        <li><a href="#hero" onclick="toggleMenu()">01 / TRANG CHỦ</a></li>
+        <li><a href="#about" onclick="toggleMenu()">02 / VỀ KIEN</a></li>
+        <li><a href="#fansupport" onclick="toggleMenu()">03 / FAN SUPPORT</a></li>
+      </ul>
+    </div>
 
-    <section id="about">
+    <section class="hero" id="hero">
+      <div class="hero-img-box">
+        <img src="IMG_5948.jpeg" alt="KIEN">
+      </div>
+      <h1 class="hero-title blue-outline-text">KIEN</h1>
+      <p class="hero-subtitle mono">Nghệ sĩ độc lập</p>
+    </section>
 
-      <div class="profile-header">
+    <div class="divider"></div>
 
-        <img src="hatde.png.PNG" alt="KIEN Avatar" class="profile-avatar" onerror="this.src='https://via.placeholder.com/80?text=KIEN'">
-
-        <div class="profile-info">
-
-          <h2>KIEN</h2>
-
-          <p>Official Updates & Fan Projects Hub</p>
-
+    <!-- MỤC 1: VỀ KIEN -->
+    <section class="section-wrap" id="about">
+      <div class="section-tag mono">01/PR0FILE - ABOUT</div>
+      <h2 class="section-title blue-outline-text">VỀ KIEN</h2>
+      
+      <div class="bento-grid">
+        <div class="bento-card">
+          <div class="card-label">Họ và Tên</div>
+          <div class="card-value">Nguyễn Trung Kiên</div>
         </div>
-
+        <div class="bento-card">
+          <div class="card-label">Nghệ danh</div>
+          <div class="card-value">KIEN</div>
+        </div>
+        <div class="bento-card">
+          <div class="card-label">Ngày sinh</div>
+          <div class="card-value">19-12-2004</div>
+        </div>
+        <div class="bento-card">
+          <div class="card-label">Chiều cao</div>
+          <div class="card-value">1m73 <span style="font-size: 11px; color: #7DD3FC;">(updating)</span></div>
+        </div>
+        <div class="bento-card full-width">
+          <div class="card-label">Quê quán</div>
+          <div class="card-value">Phan Rang, Khánh Hoà</div>
+        </div>
       </div>
 
-      <!-- Upcoming Schedule List inside Profile -->
-
-      <div class="upcoming-section">
-
-        <div class="section-title-sm">LỊCH TRÌNH SẮP TỚI</div>
-
-        <div class="upcoming-list" id="upcomingList">
-
-          <!-- Populated dynamically via JS -->
-
-        </div>
-
+      <div class="social-title">// CHANNELS & SOCIALS</div>
+      <div class="social-list">
+        <a href="https://www.facebook.com/nguyenjungkien" target="_blank" rel="noopener noreferrer" class="social-btn" title="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877F2">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/@KIENOFFICIAL04" target="_blank" rel="noopener noreferrer" class="social-btn" title="YouTube">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF0000">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@nguyen_jungkien" target="_blank" rel="noopener noreferrer" class="social-btn" title="TikTok">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#00F2FE">
+            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+          </svg>
+        </a>
+        <a href="https://www.threads.com/@nguyen_jungkien" target="_blank" rel="noopener noreferrer" class="social-btn" title="Threads">
+          <img src="thr.png" alt="Threads" style="width: 20px; height: 20px; object-fit: contain; display: block;">
+        </a>
+        <a href="https://x.com/nguyenjungkien" target="_blank" rel="noopener noreferrer" class="social-btn" title="X">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFFFFF">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
       </div>
 
-      <!-- Dedicated Full-Width Schedule Button -->
+      <!-- MỤC LỊCH TRÌNH SẮP TỚI RIÊNG TRONG PROFILE -->
+      <div class="upcoming-schedule-box">
+        <div class="upcoming-header mono">LỊCH TRÌNH SẮP TỚI</div>
+        <div id="upcomingEventsContainer">
+          <div style="font-size: 11.5px; color: #94a3b8;">Đang cập nhật lịch trình...</div>
+        </div>
+      </div>
 
-      <button class="btn-schedule-trigger" onclick="openScheduleModal()">
-
-        <img src="hatde.png.PNG" alt="Acorn Icon" onerror="this.style.display='none'">
-
-        <span>XEM LỊCH TRÌNH →</span>
-
+      <!-- NÚT BẤM XEM LỊCH TRÌNH -->
+      <button class="mono schedule-trigger-btn" onclick="openScheduleModal()">
+        <img src="hatde.png.PNG" alt="Acorn" class="acorn-btn-icon">
+        <span class="schedule-btn-text">XEM LỊCH TRÌNH →</span>
       </button>
-
     </section>
 
-    <!-- Fan Support Section -->
+    <div class="divider"></div>
 
-    <section id="support">
+    <!-- MỤC 2: FAN SUPPORT -->
+    <section class="section-wrap" id="fansupport">
+      <div class="section-tag mono">02/PR0JECT - SUPPORT</div>
+      <h2 class="section-title blue-outline-text">FAN SUPPORT</h2>
 
-      <div class="section-title">Dự Án Fan Support</div>
-
-      <div class="support-grid">
-
-        <div class="support-card">
-
-          <div>
-
-            <div class="card-num">#01</div>
-
-            <h3>Hướng Dẫn Stream</h3>
-
-          </div>
-
-          <a href="#" class="support-link">XEM HƯỚNG DẪN →</a>
-
+      <div class="support-card">
+        <div class="support-card-head">
+          <span class="support-index">#01</span>
+          <h3 class="support-title">Hướng dẫn Support KIEN</h3>
         </div>
+        <p class="support-desc">
+          Bấm vào logo hoặc tên nền tảng bên dưới để xem hướng dẫn chi tiết:
+        </p>
 
-        <div class="support-card">
+        <div class="guide-category">1. HƯỚNG DẪN STREAM</div>
 
-          <div>
-
-            <div class="card-num">#02</div>
-
-            <h3>Tài Nguyên Support</h3>
-
+        <details class="platform-accordion">
+          <summary class="platform-header">
+            <div class="platform-left">
+              <span class="platform-icon">
+                <svg viewBox="0 0 24 24" fill="#FF0000">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </span>
+              <span class="platform-name">YouTube</span>
+            </div>
+            <span class="accordion-arrow">▼</span>
+          </summary>
+          <div class="platform-body">
+            <div class="rule-title-do">✔ NÊN:</div>
+            <ul>
+              <li>Đăng nhập 1 tài khoản trên 1 thiết bị, sử dụng nhiều tài khoản và thiết bị khác nhau, tìm kiếm nội dung kèm tên của KIEN.</li>
+              <li>Xem trọn vẹn video ở chất lượng từ 720p trở lên, âm lượng trên 50%.</li>
+              <li>Like, bình luận trong lúc xem.</li>
+              <li>Chia sẻ video lên các nền tảng khác: Facebook, Threads, Instagram, X,...</li>
+              <li>Xem xen kẽ 2-3 video khác nhau trước khi quay lại video chính cần stream.</li>
+            </ul>
+            <div class="rule-title-dont">✖ KHÔNG NÊN:</div>
+            <ul>
+              <li>Không tua nhanh, không tạm dừng, không bỏ qua quảng cáo (nếu bỏ qua, hãy đợi sau 30 giây).</li>
+              <li>Không bấm phát lại (replay) liên tục.</li>
+              <li>Không dùng trình duyệt ẩn danh khi stream.</li>
+              <li>Không bình luận lặp lại nội dung giống y hệt các bình luận trước đó, hạn chế sử dụng quá nhiều emoji.</li>
+            </ul>
           </div>
+        </details>
 
-          <a href="#" class="support-link">TẢI TÀI NGUYÊN →</a>
-
-        </div>
-
-        <!-- Item #03 Updated to Disabled Coming Soon -->
-
-        <div class="support-card">
-
-          <div>
-
-            <div class="card-num">#03</div>
-
-            <h3>Các Dự Án Support</h3>
-
+        <details class="platform-accordion">
+          <summary class="platform-header">
+            <div class="platform-left">
+              <span class="platform-icon">
+                <svg viewBox="0 0 24 24" fill="#1DB954">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.496 17.306a.75.75 0 0 1-1.032.248c-2.827-1.728-6.386-2.119-10.58-1.161a.75.75 0 0 1-.336-1.462c4.588-1.047 8.528-.601 11.7 1.343a.75.75 0 0 1 .248 1.032zm1.467-3.264a.938.938 0 0 1-1.29.31c-3.236-1.99-8.17-2.565-11.997-1.403a.938.938 0 1 1-.546-1.794c4.372-1.328 9.808-.687 13.523 1.597a.938.938 0 0 1 .31 1.29zm.126-3.412c-3.882-2.305-10.288-2.518-13.993-1.393a1.125 1.125 0 0 1-.652-2.153c4.257-1.293 11.325-1.045 15.803 1.614a1.125 1.125 0 0 1-1.158 1.932z"/>
+                </svg>
+              </span>
+              <span class="platform-name">Spotify</span>
+            </div>
+            <span class="accordion-arrow">▼</span>
+          </summary>
+          <div class="platform-body">
+            <div class="rule-title-do">✔ NÊN:</div>
+            <ul>
+              <li>Nên có tài khoản Premium.</li>
+              <li>Đăng nhập và bấm theo dõi kênh chính thức của KIEN.</li>
+              <li>Thực hiện stream bằng cách tìm kiếm, bấm nghe bài hát. Có thể tạo các playlist cá nhân, xen kẽ các bài hát khác để stream hàng ngày.</li>
+              <li>Thường xuyên thay đổi playlist, tránh lặp lại playlist nhiều lần.</li>
+            </ul>
+            <div class="rule-title-dont">✖ KHÔNG NÊN:</div>
+            <ul>
+              <li>Không sử dụng VPN.</li>
+              <li>Không bật chế độ lặp lại, chế độ trộn bài hát.</li>
+              <li>Không tua nhanh, không tạm dừng, không bỏ qua bài hát đang nghe.</li>
+            </ul>
           </div>
+        </details>
 
-          <span class="support-link disabled">HAPPY KIEN'S 22ND BIRTHDAY — COMING SOON</span>
+        <div class="guide-category" style="margin-top: 18px;">2. HƯỚNG DẪN TĂNG THẢO LUẬN</div>
 
-        </div>
+        <details class="platform-accordion">
+          <summary class="platform-header">
+            <div class="platform-left">
+              <span class="platform-icon">
+                <svg viewBox="0 0 24 24" fill="#1877F2">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </span>
+              <span class="platform-name">Facebook</span>
+            </div>
+            <span class="accordion-arrow">▼</span>
+          </summary>
+          <div class="platform-body">
+            <ul style="margin-top: 10px;">
+              <li>Like, chia sẻ, bình luận vào tất cả các bài đăng liên quan đến KIEN.</li>
+              <li>Khi bình luận, kèm tên KIEN + nội dung cần đề cập tới (VD: <em>KIEN đi họp báo chương trình ABC hôm nay thật XYZ, KIEN mặc đồ nhãn hàng OPQ rất GHJ,...</em>).</li>
+            </ul>
+          </div>
+        </details>
 
+        <details class="platform-accordion">
+          <summary class="platform-header">
+            <div class="platform-left">
+              <span class="platform-icon">
+                <svg viewBox="0 0 24 24" fill="#E4405F">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </span>
+              <span class="platform-name">Instagram</span>
+            </div>
+            <span class="accordion-arrow">▼</span>
+          </summary>
+          <div class="platform-body">
+            <ul style="margin-top: 10px;">
+              <li>Like, đăng lại, bình luận vào tất cả các bài đăng liên quan đến KIEN.</li>
+              <li>Chia sẻ nội dung về KIEN lên Story, gửi cho bạn bè trên Instagram.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="platform-accordion">
+          <summary class="platform-header">
+            <div class="platform-left">
+              <span class="platform-icon">
+                <svg viewBox="0 0 24 24" fill="#00F2FE">
+                  <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                </svg>
+              </span>
+              <span class="platform-name">TikTok</span>
+            </div>
+            <span class="accordion-arrow">▼</span>
+          </summary>
+          <div class="platform-body">
+            <ul style="margin-top: 10px;">
+              <li>Like, đăng lại, bình luận vào tất cả các bài đăng liên quan đến KIEN.</li>
+              <li>Chia sẻ nội dung về KIEN lên Story, gửi cho bạn bè trên TikTok.</li>
+              <li>Trong lúc xem video, có thể bấm tìm kiếm các nội dung mang tính tích cực về KIEN.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="platform-accordion">
+          <summary class="platform-header">
+            <div class="platform-left">
+              <span class="platform-icon">
+                <img src="thr.png" alt="Threads" style="width: 22px; height: 22px; object-fit: contain; display: block;">
+              </span>
+              <span class="platform-name">Threads</span>
+            </div>
+            <span class="accordion-arrow">▼</span>
+          </summary>
+          <div class="platform-body">
+            <ul style="margin-top: 10px;">
+              <li>Trích dẫn, đăng các bài đăng kèm chủ đề: <em>KIEN, KIEN 끼엔, KIEN + chủ đề cần tăng thảo luận</em> (VD: KIEN họp báo ABC…).</li>
+              <li>Đăng 1, 2 hình ảnh / đoạn cắt để tạo điều hướng sang bài viết gốc của KIEN, không đăng toàn bộ video, hình ảnh lên.</li>
+              <li>Dùng công cụ “Trích dẫn” thay vì “Sử dụng file phương tiện”.</li>
+              <li>Hạn chế bình luận, tương tác với các bài đăng tiêu cực về KIEN.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="platform-accordion">
+          <summary class="platform-header">
+            <div class="platform-left">
+              <span class="platform-icon">
+                <svg viewBox="0 0 24 24" fill="#38BDF8">
+                  <circle cx="12" cy="12" r="10" stroke="#38BDF8" stroke-width="2" fill="none"/>
+                  <path d="M12 7v5l3 3" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="platform-name">Các nền tảng khác</span>
+            </div>
+            <span class="accordion-arrow">▼</span>
+          </summary>
+          <div class="platform-body">
+            <p style="margin-top: 10px;">Áp dụng quy tắc tương tự các nền tảng trên (X, TikTok, Instagram...).</p>
+          </div>
+        </details>
       </div>
 
+      <!-- 2. MASS BUY ITUNES -->
+      <div class="support-card">
+        <div class="support-card-head">
+          <span class="support-index">#02</span>
+          <h3 class="support-title">Hướng dẫn Mass Buy iTunes</h3>
+        </div>
+        <div class="guide-category">1. HƯỚNG DẪN MASS BUY</div>
+        <span class="status-badge">● Updating</span>
+        <p class="support-desc">
+          Quy trình tạo nhiều tài khoản Apple ID, gift code và hướng dẫn mua bài hát đồng loạt để đẩy thứ hạng nhạc số đang được cập nhật.
+        </p>
+
+        <div class="guide-category" style="margin-top: 14px;">2. LẤY MÃ ITUNES MIỄN PHÍ</div>
+        <div class="action-links" style="margin-top: 8px;">
+          <a href="https://kien-itunes-code.vercel.app/" target="_blank" rel="noopener noreferrer" class="code-btn mono">
+            <span>🎁 Lấy mã iTunes miễn phí ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. CÁC DỰ ÁN SUPPORT (COMING SOON) -->
+      <div class="support-card">
+        <div class="support-card-head">
+          <span class="support-index">#03</span>
+          <h3 class="support-title">Các dự án Support</h3>
+        </div>
+        <div class="action-links" style="margin-top: 12px;">
+          <div class="code-btn mono disabled-btn">
+            <span>🎂 HAPPY KIEN'S 22ND BIRTHDAY — COMING SOON</span>
+          </div>
+        </div>
+      </div>
     </section>
-
   </div>
 
-  <!-- Schedule Modal -->
+  <div id="ytPlayer" style="position: fixed; bottom: 0; right: 0; width: 1px; height: 1px; opacity: 0; pointer-events: none; z-index: -1;"></div>
 
-  <div class="modal-overlay" id="scheduleModal">
+  <button class="music-disc-btn" id="musicBtn" onclick="toggleAudio(event)" title="Bật/Tắt nhạc">🎵</button>
 
-    <div class="modal-container">
+  <canvas id="snowCanvas"></canvas>
 
-      <button class="modal-close" onclick="closeScheduleModal()">✕</button>
-
-      <div class="calendar-header">
-
-        <h3 id="calendarMonthYear">Tháng --/----</h3>
-
-        <div class="calendar-nav">
-
-          <button onclick="prevMonth()">◀</button>
-
-          <button onclick="nextMonth()">▶</button>
-
-        </div>
-
+  <!-- POP-UP HÔM NAY -->
+  <div class="schedule-popup-backdrop" id="todayPopup">
+    <div class="schedule-popup-card">
+      <button class="popup-close-x" onclick="closeTodayPopup()">✕</button>
+      <div class="popup-tag mono"><span class="popup-tag-dot"></span>TÍN HIỆU HÔM NAY · /S1GN4L_D3T3CT3D</div>
+      <div class="popup-headline">Hôm nay có điều gì đó đang diễn ra ✦</div>
+      <div class="popup-date-row">
+        <div class="popup-date-box mono"><div class="p-day" id="popupDay">--</div><div class="p-month" id="popupMonth">TH--</div></div>
+        <div class="popup-count-text mono" id="popupCountText">0 SỰ KIỆN HÔM NAY</div>
       </div>
-
-      <div class="calendar-weekdays">
-
-        <div>CN</div><div>T2</div><div>T3</div><div>T4</div><div>T5</div><div>T6</div><div>T7</div>
-
+      <div class="popup-events-list" id="popupEventsList"></div>
+      <div class="popup-actions">
+        <button class="popup-btn-main mono" onclick="openScheduleModalFromPopup()">XEM LỊCH TRÌNH →</button>
+        <button class="popup-btn-dismiss mono" onclick="closeTodayPopup()">Tiếp tục khám phá</button>
       </div>
-
-      <div class="calendar-days" id="calendarGrid">
-
-        <!-- Rendered dynamically -->
-
-      </div>
-
-      <div class="event-detail-box" id="eventDetailBox">
-
-        <div style="color: var(--text-dim); text-align: center; font-size: 0.85rem;">
-
-          Chọn một ngày trên lịch để xem chi tiết sự kiện
-
-        </div>
-
-      </div>
-
     </div>
-
   </div>
 
-  <!-- Today's Event Signal Pop-up -->
-
-  <div class="toast-popup" id="toastPopup">
-
-    <div class="toast-header">
-
-      <span class="toast-title">Lịch Trình Hôm Nay</span>
-
-      <button class="toast-close" onclick="closeToast()">✕</button>
-
+  <!-- MODAL BẢNG LỊCH HẠT DẺ -->
+  <div class="schedule-modal-backdrop" id="scheduleModal">
+    <div class="schedule-modal-card">
+      <div class="cal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div class="mono" id="calMonthYearTitle" style="color: #ffffff; font-weight: 800; font-size: 15px;">THÁNG 10 / 2026</div>
+          <div style="display: flex; gap: 4px;">
+            <button onclick="changeMonth(-1)" class="mono" title="Tháng trước" style="background: #0d1e34; border: 1px solid rgba(56,189,248,0.4); color: #38bdf8; border-radius: 6px; width: 26px; height: 26px; cursor: pointer; font-size: 11px; display: flex; align-items: center; justify-content: center;">◀</button>
+            <button onclick="changeMonth(1)" class="mono" title="Tháng tiếp theo" style="background: #0d1e34; border: 1px solid rgba(56,189,248,0.4); color: #38bdf8; border-radius: 6px; width: 26px; height: 26px; cursor: pointer; font-size: 11px; display: flex; align-items: center; justify-content: center;">▶</button>
+          </div>
+        </div>
+        <button class="close-btn" onclick="closeScheduleModal()">✕</button>
+      </div>
+      <div class="cal-grid" id="calendarGrid"></div>
+      <div class="day-detail-panel">
+        <div class="day-detail-title mono" id="detailDateHeading">Chọn một ngày để xem</div>
+        <div id="detailContentList"></div>
+      </div>
     </div>
-
-    <div id="toastContent" style="font-size: 0.9rem; color: #fff; font-weight: 600;">
-
-      <!-- Populated via JS -->
-
-    </div>
-
   </div>
 
   <script>
-
-    // Sample Google Sheets Event Data Store
-
-    // Format: DD/MM/YYYY
-
-    const scheduleData = [
-
-      {
-
-        date: "24/05/2024",
-
-        title: "Kien Live Broadcast & Q&A",
-
-        hashtags: "#KIEN #KienLive #FanSupport",
-
-        threadsTopic: "Cùng nhau chuẩn bị câu hỏi cho buổi livestream tối nay nhé mọi người!"
-
-      },
-
-      {
-
-        date: "28/05/2024",
-
-        title: "Special Project Teaser Release",
-
-        hashtags: "#KIEN_Project #ComingSoon",
-
-        threadsTopic: "Teaser chính thức cho dự án tiếp theo sẽ được công bố!"
-
+    function toggleMenu() {
+      const drawer = document.getElementById('menuDrawer');
+      const overlay = document.getElementById('menuOverlay');
+      if (drawer && overlay) {
+        drawer.classList.toggle('open');
+        overlay.classList.toggle('open');
       }
-
-    ];
-
-    let currentDate = new Date();
-
-    let selectedMonth = currentDate.getMonth();
-
-    let selectedYear = currentDate.getFullYear();
-
-    // Helper: Format Date object to DD/MM/YYYY
-
-    function formatDateDDMMYYYY(d) {
-
-      const day = String(d.getDate()).padStart(2, '0');
-
-      const month = String(d.getMonth() + 1).padStart(2, '0');
-
-      const year = d.getFullYear();
-
-      return `${day}/${month}/${year}`;
-
     }
 
-    // Helper: Parse DD/MM/YYYY string to Date
+    /* NHẠC NỀN YOUTUBE */
+    const YT_VIDEO_ID = 'V1Ehfy4YFFg';
+    let player;
+    let isPlaying = false;
+    const musicBtn = document.getElementById('musicBtn');
 
-    function parseDDMMYYYY(str) {
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-      const parts = str.split('/');
-
-      if (parts.length === 3) {
-
-        return new Date(parts[2], parts[1] - 1, parts[0]);
-
-      }
-
-      return null;
-
-    }
-
-    // Initialize Page Content
-
-    document.addEventListener("DOMContentLoaded", () => {
-
-      renderUpcomingList();
-
-      checkTodayEvent();
-
-    });
-
-    // Render Upcoming Schedule inside Profile (#about)
-
-    function renderUpcomingList() {
-
-      const container = document.getElementById("upcomingList");
-
-      container.innerHTML = "";
-
-      const today = new Date();
-
-      today.setHours(0,0,0,0);
-
-      // Filter for today or future events
-
-      const upcoming = scheduleData.filter(item => {
-
-        const itemDate = parseDDMMYYYY(item.date);
-
-        return itemDate && itemDate >= today;
-
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('ytPlayer', {
+        height: '1',
+        width: '1',
+        videoId: YT_VIDEO_ID,
+        playerVars: { autoplay: 0, loop: 1, playlist: YT_VIDEO_ID, playsinline: 1 },
+        events: { 'onReady': onPlayerReady }
       });
+    }
+
+    function onPlayerReady() {
+      function startOnFirstTouch() {
+        if (!isPlaying && player && player.playVideo) {
+          player.playVideo();
+          isPlaying = true;
+          if (musicBtn) {
+            musicBtn.classList.add('playing');
+            musicBtn.innerText = '🎵';
+          }
+          document.removeEventListener('click', startOnFirstTouch);
+          document.removeEventListener('touchstart', startOnFirstTouch);
+        }
+      }
+      document.addEventListener('click', startOnFirstTouch);
+      document.addEventListener('touchstart', startOnFirstTouch);
+    }
+
+    function toggleAudio(e) {
+      if (e) { e.stopPropagation(); e.preventDefault(); }
+      if (!player || !player.playVideo) return;
+      if (isPlaying) {
+        player.pauseVideo();
+        isPlaying = false;
+        if (musicBtn) {
+          musicBtn.classList.remove('playing');
+          musicBtn.innerText = '🔇';
+        }
+      } else {
+        player.playVideo();
+        isPlaying = true;
+        if (musicBtn) {
+          musicBtn.classList.add('playing');
+          musicBtn.innerText = '🎵';
+        }
+      }
+    }
+
+    /* HIỆU ỨNG TUYẾT RƠI CANVAS */
+    (function initSnow() {
+      const canvas = document.getElementById('snowCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth > 420 ? 420 : window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth > 420 ? 420 : window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const flakesCount = 35;
+      const flakes = [];
+      for (let i = 0; i < flakesCount; i++) {
+        flakes.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 2.2 + 0.8,
+          speedY: Math.random() * 0.8 + 0.4,
+          speedX: (Math.random() - 0.5) * 0.4,
+          opacity: Math.random() * 0.6 + 0.3
+        });
+      }
+
+      function render() {
+        ctx.clearRect(0, 0, width, height);
+        for (let i = 0; i < flakesCount; i++) {
+          const flake = flakes[i];
+          ctx.beginPath();
+          ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${flake.opacity})`;
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = "rgba(224, 242, 254, 0.8)";
+          ctx.fill();
+          flake.y += flake.speedY;
+          flake.x += flake.speedX;
+          if (flake.y > height) { flake.y = -5; flake.x = Math.random() * width; }
+          if (flake.x > width) flake.x = 0;
+          if (flake.x < 0) flake.x = width;
+        }
+        requestAnimationFrame(render);
+      }
+      render();
+    })();
+
+    /* GOOGLE SHEETS & LOGIC LỊCH TRÌNH */
+    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRDdQBion_yHeDasMcUbRsl5qSyXq7_3s-X9cTDPpfTk63MefxFIxw0XmZVu-wg-zGrcZq7CalrRJfj/pub?output=csv";
+
+    let scheduleData = [];
+    let currentViewingDate = new Date();
+
+    function parseCSV(str) {
+      const arr = [];
+      let quote = false;
+      let col = 0, row = 0;
+      for (let c = 0; c < str.length; c++) {
+        let cc = str[c], nc = str[c+1];
+        arr[row] = arr[row] || [];
+        arr[row][col] = arr[row][col] || '';
+        if (cc === '"' && quote && nc === '"') { arr[row][col] += '"'; ++c; continue; }
+        if (cc === '"') { quote = !quote; continue; }
+        if (cc === ',' && !quote) { ++col; continue; }
+        if (cc === '\r' && nc === '\n' && !quote) { ++row; col = 0; ++c; continue; }
+        if (cc === '\n' && !quote) { ++row; col = 0; continue; }
+        if (cc === '\r' && !quote) { ++row; col = 0; continue; }
+        arr[row][col] += cc;
+      }
+      return arr;
+    }
+
+    async function loadScheduleFromSheet() {
+      try {
+        const res = await fetch(CSV_URL);
+        const text = await res.text();
+        const rows = parseCSV(text);
+        scheduleData = [];
+        for (let i = 1; i < rows.length; i++) {
+          const r = rows[i];
+          if (r && r[0] && r[0].trim()) {
+            scheduleData.push({
+              date: r[0].trim(),
+              time: r[1] ? r[1].trim() : 'Cả ngày',
+              title: r[2] ? r[2].trim() : '',
+              hashtags: r[3] ? r[3].trim() : '',
+              threads_topic: r[4] ? r[4].trim() : '',
+              desc: r[5] ? r[5].trim() : ''
+            });
+          }
+        }
+        checkTodayEvents();
+        renderUpcomingWidget();
+      } catch (err) {
+        console.error("Lỗi Google Sheets:", err);
+      }
+    }
+
+    // Hiển thị 2 lịch trình gần nhất trong Profile
+    function renderUpcomingWidget() {
+      const box = document.getElementById('upcomingEventsContainer');
+      if (!box) return;
+      const today = new Date();
+      const todayStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+      
+      const upcoming = scheduleData
+        .filter(e => e.date >= todayStr)
+        .sort((a, b) => a.date.localeCompare(b.date))
+        .slice(0, 2);
 
       if (upcoming.length === 0) {
-
-        container.innerHTML = `<div style="color: var(--text-dim); font-size: 0.85rem;">Không có lịch trình sắp tới.</div>`;
-
+        box.innerHTML = `<div style="font-size: 11.5px; color: #94a3b8;">Hiện tại chưa có lịch trình sắp tới.</div>`;
         return;
-
       }
 
-      upcoming.slice(0, 3).forEach(evt => {
-
-        const card = document.createElement("div");
-
-        card.className = "upcoming-card";
-
-        card.innerHTML = `
-
-          <span class="date-badge">${evt.date}</span>
-
-          <span class="event-title">${evt.title}</span>
-
+      box.innerHTML = upcoming.map(e => {
+        const [y, m, d] = e.date.split('-');
+        return `
+          <div class="upcoming-item">
+            <span class="upcoming-date mono">${d}/${m} · ${e.time}</span>
+            <span class="upcoming-title">${e.title}</span>
+          </div>
         `;
-
-        container.appendChild(card);
-
-      });
-
+      }).join('');
     }
 
-    // Check for Today's Event and Trigger Pop-up Signal
+    function checkTodayEvents() {
+      const today = new Date();
+      const todayStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+      const evs = scheduleData.filter(e => e.date === todayStr);
+      if (evs.length > 0) {
+        const popDay = document.getElementById('popupDay');
+        const popMonth = document.getElementById('popupMonth');
+        const popCount = document.getElementById('popupCountText');
+        const list = document.getElementById('popupEventsList');
+        
+        if (popDay) popDay.innerText = String(today.getDate()).padStart(2,'0');
+        if (popMonth) popMonth.innerText = `TH${today.getMonth()+1}`;
+        if (popCount) popCount.innerText = `${evs.length} SỰ KIỆN HÔM NAY`;
+        if (list) {
+          list.innerHTML = evs.map(e => `
+            <div class="popup-event-item">
+              <span class="popup-event-time mono">${e.time}</span>
+              <span class="popup-event-name">${e.title}</span>
+            </div>
+          `).join('');
+        }
+        const todayPopup = document.getElementById('todayPopup');
+        if (todayPopup) todayPopup.classList.add('show');
+      }
+    }
 
-    function checkTodayEvent() {
+    function closeTodayPopup() {
+      const todayPopup = document.getElementById('todayPopup');
+      if (todayPopup) todayPopup.classList.remove('show');
+    }
 
-      const todayStr = formatDateDDMMYYYY(new Date());
+    function openScheduleModalFromPopup() {
+      closeTodayPopup();
+      openScheduleModal();
+    }
 
-      const todayEvent = scheduleData.find(item => item.date === todayStr);
+    function changeMonth(step) {
+      currentViewingDate.setMonth(currentViewingDate.getMonth() + step);
+      renderCalendar();
+    }
 
-      if (todayEvent) {
+    function renderCalendar() {
+      const grid = document.getElementById('calendarGrid');
+      if (!grid) return;
+      grid.innerHTML = ['CN','T2','T3','T4','T5','T6','T7'].map(d => `<div class="cal-day-name mono">${d}</div>`).join('');
+      
+      const y = currentViewingDate.getFullYear(), m = currentViewingDate.getMonth();
+      const titleEl = document.getElementById('calMonthYearTitle');
+      if (titleEl) titleEl.innerText = `THÁNG ${m+1} / ${y}`;
 
-        const popup = document.getElementById("toastPopup");
+      const realToday = new Date();
+      const realTodayStr = `${realToday.getFullYear()}-${String(realToday.getMonth()+1).padStart(2,'0')}-${String(realToday.getDate()).padStart(2,'0')}`;
 
-        const content = document.getElementById("toastContent");
+      const first = new Date(y, m, 1).getDay();
+      const total = new Date(y, m+1, 0).getDate();
 
-        content.innerText = `[${todayEvent.date}] ${todayEvent.title}`;
-
-        popup.classList.add("active");
-
+      for (let i = 0; i < first; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'cal-date-cell empty';
+        grid.appendChild(emptyCell);
       }
 
+      for (let d = 1; d <= total; d++) {
+        const dStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        const has = scheduleData && scheduleData.some(e => e.date === dStr);
+        const isToday = (dStr === realTodayStr);
+
+        const cell = document.createElement('div');
+        cell.className = `cal-date-cell ${has ? 'has-event' : ''} ${isToday ? 'is-today' : ''}`;
+        cell.innerHTML = `<img src="hatde2.png.PNG" alt="acorn" class="acorn-bg"><span class="acorn-day-number">${d}</span>`;
+        
+        cell.onclick = () => {
+          document.querySelectorAll('.cal-date-cell').forEach(c => c.classList.remove('active-selected'));
+          cell.classList.add('active-selected');
+          showDateDetail(dStr);
+        };
+        grid.appendChild(cell);
+      }
     }
 
-    function closeToast() {
+    function showDateDetail(dStr) {
+      const [y, m, d] = dStr.split('-');
+      const heading = document.getElementById('detailDateHeading');
+      if (heading) heading.innerText = `LỊCH TRÌNH NGÀY ${d}/${m}/${y}`;
+      
+      const list = document.getElementById('detailContentList');
+      if (!list) return;
 
-      document.getElementById("toastPopup").classList.remove("active");
+      const evs = (scheduleData || []).filter(e => e.date === dStr);
+      if (evs.length === 0) {
+        list.innerHTML = `<div style="font-size:12px;color:#94a3b8;">Không có sự kiện nào trong ngày này.</div>`;
+        return;
+      }
+      list.innerHTML = evs.map(e => `
+        <div class="schedule-detail-card">
+          <div class="detail-time mono">⏰ ${e.time}</div>
+          <div class="detail-event-title">${e.title}</div>
 
+          ${e.hashtags ? `
+            <div style="margin-top: 8px;">
+              <span class="detail-label">Hashtag:</span>
+              <div class="detail-action-row">
+                <span class="detail-copy-text mono">${e.hashtags}</span>
+                <button class="btn-copy-mini mono" onclick="copyContent('${e.hashtags.replace(/'/g, "\\'")}', this)">Sao chép</button>
+              </div>
+            </div>
+          ` : ''}
+
+          ${e.threads_topic ? `
+            <div style="margin-top: 8px;">
+              <span class="detail-label">Threads Topic:</span>
+              <div class="detail-action-row">
+                <span class="detail-copy-text">${e.threads_topic}</span>
+                <button class="btn-copy-mini mono" onclick="copyContent('${e.threads_topic.replace(/'/g, "\\'")}', this)">Sao chép</button>
+              </div>
+            </div>
+          ` : ''}
+
+          ${e.desc ? `<div style="margin-top:8px;font-size:11px;color:#94a3b8;line-height:1.4;">${e.desc}</div>` : ''}
+        </div>
+      `).join('');
     }
 
-    // Schedule Modal Logic
+    function copyContent(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.innerText;
+        btn.innerText = '✓ Đã chép';
+        btn.style.borderColor = '#4ade80';
+        btn.style.color = '#4ade80';
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.borderColor = '#38bdf8';
+          btn.style.color = '#38bdf8';
+        }, 1500);
+      }).catch(err => {
+        console.error('Lỗi khi sao chép:', err);
+      });
+    }
 
     function openScheduleModal() {
-
-      document.getElementById("scheduleModal").classList.add("active");
-
-      renderCalendar(selectedMonth, selectedYear);
-
+      const modal = document.getElementById('scheduleModal');
+      if (!modal) return;
+      modal.classList.add('show');
+      renderCalendar();
+      const t = new Date();
+      const todayStr = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}-${String(t.getDate()).padStart(2,'0')}`;
+      showDateDetail(todayStr);
     }
 
     function closeScheduleModal() {
-
-      document.getElementById("scheduleModal").classList.remove("active");
-
+      const modal = document.getElementById('scheduleModal');
+      if (modal) modal.classList.remove('show');
     }
 
-    function prevMonth() {
-
-      selectedMonth--;
-
-      if (selectedMonth < 0) {
-
-        selectedMonth = 11;
-
-        selectedYear--;
-
-      }
-
-      renderCalendar(selectedMonth, selectedYear);
-
-    }
-
-    function nextMonth() {
-
-      selectedMonth++;
-
-      if (selectedMonth > 11) {
-
-        selectedMonth = 0;
-
-        selectedYear++;
-
-      }
-
-      renderCalendar(selectedMonth, selectedYear);
-
-    }
-
-    // Render Monthly Calendar Grid
-
-    function renderCalendar(month, year) {
-
-      const monthYearTitle = document.getElementById("calendarMonthYear");
-
-      const grid = document.getElementById("calendarGrid");
-
-      grid.innerHTML = "";
-
-      const monthNames = ["Tháng 01", "Tháng 02", "Tháng 03", "Tháng 04", "Tháng 05", "Tháng 06", "Tháng 07", "Tháng 08", "Tháng 09", "Tháng 10", "Tháng 11", "Tháng 12"];
-
-      monthYearTitle.innerText = `${monthNames[month]} / ${year}`;
-
-      const firstDay = new Date(year, month, 1).getDay();
-
-      const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-      const todayStr = formatDateDDMMYYYY(new Date());
-
-      // Empty padding cells for start of month
-
-      for (let i = 0; i < firstDay; i++) {
-
-        const emptyCell = document.createElement("div");
-
-        emptyCell.className = "day-cell empty";
-
-        grid.appendChild(emptyCell);
-
-      }
-
-      // Populate day cells
-
-      for (let day = 1; day <= daysInMonth; day++) {
-
-        const cell = document.createElement("div");
-
-        cell.className = "day-cell";
-
-        const formattedDay = String(day).padStart(2, '0');
-
-        const formattedMonth = String(month + 1).padStart(2, '0');
-
-        const cellDateStr = `${formattedDay}/${formattedMonth}/${year}`;
-
-        if (cellDateStr === todayStr) {
-
-          cell.classList.add("active-today");
-
-        }
-
-        const hasEvent = scheduleData.some(item => item.date === cellDateStr);
-
-        if (hasEvent) {
-
-          cell.classList.add("has-event");
-
-        }
-
-        cell.innerHTML = `<span class="day-num">${day}</span>`;
-
-        cell.onclick = () => selectDate(cellDateStr);
-
-        grid.appendChild(cell);
-
-      }
-
-    }
-
-    // Select Date & Display Details with Copy Action
-
-    function selectDate(dateStr) {
-
-      const detailBox = document.getElementById("eventDetailBox");
-
-      const events = scheduleData.filter(item => item.date === dateStr);
-
-      if (events.length === 0) {
-
-        detailBox.innerHTML = `
-
-          <div style="color: var(--text-dim); text-align: center; font-size: 0.85rem;">
-
-            Không có lịch trình cho ngày ${dateStr}
-
-          </div>
-
-        `;
-
-        return;
-
-      }
-
-      let html = `<div style="font-size:0.85rem; font-weight:700; color:#fff; margin-bottom:10px;">Lịch trình ngày: ${dateStr}</div>`;
-
-      events.forEach((evt, idx) => {
-
-        html += `
-
-          <div class="event-detail-item">
-
-            <h4>${evt.title}</h4>
-
-            
-
-            ${evt.hashtags ? `
-
-              <div class="field-label">Hashtag</div>
-
-              <div class="copy-row">
-
-                <code>${evt.hashtags}</code>
-
-                <button class="btn-copy" onclick="copyToClipboard('${evt.hashtags}', this)">Sao chép</button>
-
-              </div>
-
-            ` : ''}
-
-            ${evt.threadsTopic ? `
-
-              <div class="field-label">Threads Topic</div>
-
-              <div class="copy-row">
-
-                <code>${evt.threadsTopic}</code>
-
-                <button class="btn-copy" onclick="copyToClipboard('${evt.threadsTopic}', this)">Sao chép</button>
-
-              </div>
-
-            ` : ''}
-
-          </div>
-
-        `;
-
-      });
-
-      detailBox.innerHTML = html;
-
-    }
-
-    // Copy to Clipboard Utility with Visual Feedback
-
-    function copyToClipboard(text, btn) {
-
-      navigator.clipboard.writeText(text).then(() => {
-
-        const originalText = btn.innerText;
-
-        btn.innerText = "Đã chép!";
-
-        btn.classList.add("copied");
-
-        setTimeout(() => {
-
-          btn.innerText = originalText;
-
-          btn.classList.remove("copied");
-
-        }, 2000);
-
-      }).catch(err => {
-
-        console.error('Copy failed: ', err);
-
-      });
-
-    }
-
+    window.addEventListener('DOMContentLoaded', loadScheduleFromSheet);
   </script>
-
 </body>
-
 </html>
