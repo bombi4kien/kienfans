@@ -1006,7 +1006,7 @@
 
       <!-- MỤC LỊCH TRÌNH SẮP TỚI RIÊNG TRONG PROFILE -->
       <div class="upcoming-schedule-box">
-        <div class="upcoming-header mono">LỊCH TRÌNH SẮP TỚI</div>
+        <div class="upcoming-header mono">SỰ KIỆN SẮP TỚI</div>
         <div id="upcomingEventsContainer">
           <div style="font-size: 11.5px; color: #94a3b8;">Đang cập nhật lịch trình...</div>
         </div>
@@ -1015,7 +1015,7 @@
       <!-- NÚT BẤM XEM LỊCH TRÌNH -->
       <button class="mono schedule-trigger-btn" onclick="openScheduleModal()">
         <img src="hatde.png.PNG" alt="Acorn" class="acorn-btn-icon">
-        <span class="schedule-btn-text">XEM LỊCH TRÌNH →</span>
+        <span class="schedule-btn-text">XEM CÁC SỰ KIỆN →</span>
       </button>
     </section>
 
@@ -1268,16 +1268,16 @@
   <div class="schedule-popup-backdrop" id="todayPopup">
     <div class="schedule-popup-card">
       <button class="popup-close-x" onclick="closeTodayPopup()">✕</button>
-      <div class="popup-tag"><span class="popup-tag-dot"></span>TÍN HIỆU HÔM NAY · Signal Detected</div>
-      <div class="popup-headline">Hôm nay có điều gì đó đang diễn ra ✦</div>
+      <div class="popup-tag"><span class="popup-tag-dot"></span>------------------> Hạt dẻ đang rơi</div>
+      <div class="popup-headline">Hôm nay KIEN làm gì thế?</div>
       <div class="popup-date-row">
         <div class="popup-date-box mono"><div class="p-day" id="popupDay">--</div><div class="p-month" id="popupMonth">TH--</div></div>
-        <div class="popup-count-text mono" id="popupCountText">0 SỰ KIỆN HÔM NAY</div>
+        <div class="popup-count-text mono" id="popupCountText">0 SỰ KIỆN</div>
       </div>
       <div class="popup-events-list" id="popupEventsList"></div>
       <div class="popup-actions">
-        <button class="popup-btn-main mono" onclick="openScheduleModalFromPopup()">XEM LỊCH TRÌNH →</button>
-        <button class="popup-btn-dismiss mono" onclick="closeTodayPopup()">Tiếp tục khám phá</button>
+        <button class="popup-btn-main mono" onclick="openScheduleModalFromPopup()">XEM CHI TIẾT →</button>
+        <button class="popup-btn-dismiss mono" onclick="closeTodayPopup()">Về trang chủ</button>
       </div>
     </div>
   </div>
