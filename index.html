@@ -1754,10 +1754,33 @@
       if (todayPopup) todayPopup.classList.remove('show');
     }
 
-    function openScheduleModalFromPopup() {
+        function openScheduleModalFromPopup() {
       closeTodayPopup();
-      openScheduleModal();
+      
+      const t = new Date();
+      currentViewingDate = new Date(t.getFullYear(), t.getMonth(), 1);
+      const todayStr = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}-${String(t.getDate()).padStart(2,'0')}`;
+      
+      const modal = document.getElementById('scheduleModal');
+      if (modal) modal.classList.add('show');
+      
+      renderCalendar();
+      showDateDetail(todayStr);
+
+      // Tự động làm sáng ô ngày hôm nay và cuộn đến khung chi tiết
+      setTimeout(() => {
+        const todayCell = document.querySelector('.cal-date-cell.is-today');
+        if (todayCell) {
+          document.querySelectorAll('.cal-date-cell').forEach(c => c.classList.remove('active-selected'));
+          todayCell.classList.add('active-selected');
+        }
+        const detailPanel = document.querySelector('.day-detail-panel');
+        if (detailPanel) {
+          detailPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }, 50);
     }
+
 
     function changeMonth(step) {
       currentViewingDate.setMonth(currentViewingDate.getMonth() + step);
