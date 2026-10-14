@@ -1622,10 +1622,13 @@
       }
     }
 
-    /* NHẠC NỀN YOUTUBE */
-    const YT_VIDEO_ID = 'V1Ehfy4YFFg';
+       /* NHẠC NỀN YOUTUBE CẮT ĐOẠN (2:15 - 2:40) */
+    const YT_VIDEO_ID = 'KnrtgYvM-kA';
+    const START_TIME = 135; // 2:15
+    const END_TIME = 160;   // 2:40
     let player;
     let isPlaying = false;
+    let checkTimeInterval;
     const musicBtn = document.getElementById('musicBtn');
 
     const tag = document.createElement('script');
@@ -1638,16 +1641,26 @@
         height: '1',
         width: '1',
         videoId: YT_VIDEO_ID,
-        playerVars: { autoplay: 0, loop: 1, playlist: YT_VIDEO_ID, playsinline: 1 },
-        events: { 'onReady': onPlayerReady }
+        playerVars: { 
+          autoplay: 0, 
+          playsinline: 1,
+          start: START_TIME,
+          end: END_TIME
+        },
+        events: { 
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
       });
     }
 
     function onPlayerReady() {
       function startOnFirstTouch() {
         if (!isPlaying && player && player.playVideo) {
+          player.seekTo(START_TIME, true);
           player.playVideo();
           isPlaying = true;
+          startLoopCheck();
           if (musicBtn) {
             musicBtn.classList.add('playing');
             musicBtn.innerText = '🎵';
@@ -1660,25 +1673,48 @@
       document.addEventListener('touchstart', startOnFirstTouch);
     }
 
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.ENDED) {
+        player.seekTo(START_TIME, true);
+        player.playVideo();
+      }
+    }
+
+    function startLoopCheck() {
+      clearInterval(checkTimeInterval);
+      checkTimeInterval = setInterval(() => {
+        if (player && player.getCurrentTime && isPlaying) {
+          const current = player.getCurrentTime();
+          if (current >= END_TIME || current < START_TIME - 1) {
+            player.seekTo(START_TIME, true);
+          }
+        }
+      }, 500);
+    }
+
     function toggleAudio(e) {
       if (e) { e.stopPropagation(); e.preventDefault(); }
       if (!player || !player.playVideo) return;
       if (isPlaying) {
         player.pauseVideo();
         isPlaying = false;
+        clearInterval(checkTimeInterval);
         if (musicBtn) {
           musicBtn.classList.remove('playing');
           musicBtn.innerText = '🔇';
         }
       } else {
+        player.seekTo(START_TIME, true);
         player.playVideo();
         isPlaying = true;
+        startLoopCheck();
         if (musicBtn) {
           musicBtn.classList.add('playing');
           musicBtn.innerText = '🎵';
         }
       }
     }
+
 
     /* HIỆU ỨNG TUYẾT RƠI CANVAS */
     (function initSnow() {
